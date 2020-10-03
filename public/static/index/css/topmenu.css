@@ -1,0 +1,25 @@
+﻿/*=========�����˵�===========*/
+div#topmenu{
+margin: 0;
+padding:0;
+border: 0;
+height: 28px;
+line-height:28px;
+color:#555;
+text-align:center;
+}
+
+
+div#topmenu a:link,div#topmenu a:visited,div#topmenu a:active{
+margin:0 5px;
+color:#555;
+font:12px/28px 'microsoft yahei',Verdana, Arial;
+text-decoration: none;
+}
+
+div#topmenu a:hover{
+margin:0 5px;
+color:#EF7D1A;
+font-weight:bold;
+text-decoration: none;
+}

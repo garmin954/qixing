@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{$info['title']}-{$config.web_name}</title>
+    <link rel="stylesheet" href="STATIC/css/swiper.min.css">
+    <link rel="stylesheet" href="STATIC/font/iconfont.css">
+    <link rel="stylesheet" href="STATIC/css/yuanlu.css">
+    <meta name="keywords" content="{$config.keywords}{$info.title}">
+    <meta name="description" content="{$config.description}{$info.title}">
+</head>
+<body>
+
+<!-- 导航 -->
+{include file="template/header"}
+
+<div class="middle">
+    <div class="addr">当前位置：
+        {volist name="$result['cates']" id="cate_nav"}
+        {if condition="$i eq 1"}{else/}>{/if}
+        <a href="{:url('/category/'.$cate_nav)}">{:getField('cate',$cate_nav,'cate_name')}</a>
+        {/volist}
+        > <a href="#">{$info.title}</a>
+    </div>
+
+
+
+
+    <!-- 列表 -->
+    <div class="list-box">
+
+        <div class="cate-boxs">
+            <div class="cate-box shadow">
+                <ul id="as-info">
+                    <li>
+                        <dl>
+                            <dt style="padding-bottom: 5px;">相关文章  </dt>
+                            {volist name="as_art" id="alist"}
+                            <dd><a  href="{:url('/info/'.$alist['id'])}" title="{$alist.title}">{$alist.title}</a></dd>
+                            {/volist}
+
+                        </dl>
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <div class="cate-box shadow">
+                <h4 style="text-align: center">赞赏</h4>
+                <div class="btn">
+                    <a target="_blank" href="{:url('/miPay')}" class="zan-btn">打赏一元</a>
+                </div>
+            </div>
+        </div>
+        <div class="info-box shadow">
+            <div class="info-header">
+                <h3>{$info.title}</h3>
+                <span><b>作者：</b>{$info.author}</span>&nbsp; <span><b>发布时间：</b>{$info.add_time|date="Y-m-d H:i:s",###}</span>
+                <dl class="yl-info">
+                    <dd onclick="clickBtn({$info.id});"><i class="icon iconfont" >&#xe7ed;</i>&nbsp;{$info.click}</dd>
+                    <dd><i class="icon iconfont"  >&#xe640;</i>&nbsp;{$info.look}</dd>
+                </dl>
+            </div>
+            <hr>
+            <div class="info-content">
+                {$info.content|htmlspecialchars_decode}
+            </div>
+
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>
+
+<div class="clearfix"></div>
+
+
+<!--底部-->
+{include file="template/footer"}
+
+
+
+<!-- Swiper JS -->
+<script src="STATIC/js/jquery.min.js"></script>
+
+<script type="text/javascript" src="STATIC/js/yuanlu.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+
+<script>
+    function getTrItem(i) {
+        // alert(i);
+        var html = "          <tr >\n" +
+            "                <td>\n" +
+            "                    <a title=\"添加一栏\" onclick=\"addCate(this)\" href=\"javascript:;\">\n" +
+            "                        <i class=\"iconfont\" style=\"color: #03051f\">&#xe604;</i>\n" +
+            "                    </a>\n" +
+            "                    &nbsp;\n" +
+            "                    <a title=\"删除\" onclick=\"delCate(this)\" href=\"javascript:;\">\n" +
+            "                        <i class=\"layui-icon\" style=\"font-size: 19px;color: orangered;\">&#xe640;</i>\n" +
+            "                    </a>\n" +
+            "                </td>\n" +
+            "                <td>\n" +
+            "                    <input type=\"text\" name=\"form["+i+"]['field']['name']\" placeholder=\"字段名称\" class=\"layui-input\">\n" +
+            "                </td>\n" +
+            "                <td>\n" +
+            "                    <input type=\"text\" name=\"form["+i+"]['field']['type']\" placeholder=\"字段类型\" class=\"layui-input\">\n" +
+            "                </td>\n" +
+            "                <td>\n" +
+            "                    <input type=\"text\" name=\"form["+i+"]['field']['default']\" placeholder=\"默认值\" style=\"width: 100px\" class=\"layui-input\">\n" +
+            "                <td>\n" +
+            "                    <input type=\"checkbox\" name=\"form["+i+"]['field']['isnull']\" title=\"\">\n" +
+            "                </td>\n" +
+            "                <td>\n" +
+            "                    <input type=\"checkbox\" name=\"form["+i+"]['field']['iskey']\" title=\"\">\n" +
+            "                </td>\n" +
+            "                <td>\n" +
+            "                    <input type=\"text\" name=\"form["+i+"]['field']['comment']\" placeholder=\"注释\" style=\"width: 100px\" class=\"layui-input\">\n" +
+            "                </td>\n" +
+            "                <td class=\"\">\n" +
+            "                    <a title=\"表单设置\" onclick=\"showForms(this)\" href=\"javascript:;\">\n" +
+            "                        <span class=\"layui-badge layui-bg-green\">表单</span>\n" +
+            "                    </a>\n" +
+            "                    <a title=\"搜索设置\" onclick=\"showSearch(this)\" href=\"javascript:;\">\n" +
+            "                        <span class=\"layui-badge layui-bg-green\">搜索</span>\n" +
+            "                    </a>\n" +
+            "\n" +
+            "                    <a title=\"表单验证设置\" onclick=\"showValidate(this)\" href=\"javascript:;\">\n" +
+            "                        <span class=\"layui-badge layui-bg-green\">验证</span>\n" +
+            "                    </a>\n" +
+            "\n" +
+            "                    <!--表单-->\n" +
+            "                    <div class=\"forms\">\n" +
+            "                        <div class=\"layui-card-header\">表单设置 <a href=\"javascript:;\" onclick=\"closeForm()\"  style=\"float: right\">X</a></div>\n" +
+            "                        <div class=\"layui-card-body\">\n" +
+            "                            <div class=\"layui-form-item\">\n" +
+            "                                <label class=\"layui-form-label\">表单开/关</label>\n" +
+            "                                <div class=\"layui-input-block\">\n" +
+            "                                    <select name=\"interest\"  >\n" +
+            "                                        <option value=\"\"></option>\n" +
+            "                                        <option value=\"0\">否</option>\n" +
+            "                                        <option value=\"1\">是</option>\n" +
+            "                                    </select>\n" +
+            "                                </div>\n" +
+            "                            </div>\n" +
+            "\n" +
+            "                            <div class=\"layui-form\" class=\"yl-form\">\n" +
+            "                                <div class=\"layui-form-item\">\n" +
+            "                                    <label class=\"layui-form-label\">标题</label>\n" +
+            "                                    <div class=\"layui-input-block\">\n" +
+            "                                        <input type=\"text\" name=\"form["+i+"]['form']['title']\" lay-verify=\"title\" autocomplete=\"off\"\n" +
+            "                                               placeholder=\"请输入标题\" class=\"layui-input\">\n" +
+            "                                    </div>\n" +
+            "                                </div>\n" +
+            "                                <div class=\"layui-form-item\">\n" +
+            "                                    <label class=\"layui-form-label\">名称</label>\n" +
+            "                                    <div class=\"layui-input-block\">\n" +
+            "                                        <input type=\"text\" name=\"form["+i+"]['form']['name']\" placeholder=\"字段名/字母\" autocomplete=\"off\"\n" +
+            "                                               class=\"layui-input\">\n" +
+            "                                    </div>\n" +
+            "                                </div>\n" +
+            "\n" +
+            "                                <div class=\"layui-form-item\">\n" +
+            "                                    <label class=\"layui-form-label\">表单类型</label>\n" +
+            "                                    <div class=\"layui-input-block\">\n" +
+            "                                        <select name=\"form["+i+"]['form']['type']\"  >\n" +
+            "                                            <option value=\"\"></option>\n" +
+            "                                            <option value=\"text\">text</option>\n" +
+            "                                            <option value=\"radio\">radio</option>\n" +
+            "                                            <option value=\"select\">select</option>\n" +
+            "                                            <option value=\"checkbox\">checkbox</option>\n" +
+            "                                            <option value=\"textarea\">textarea</option>\n" +
+            "                                            <option value=\"password\">password</option>\n" +
+            "                                        </select>\n" +
+            "                                    </div>\n" +
+            "                                </div>\n" +
+            "\n" +
+            "                                <div class=\"layui-form-item layui-form-text\">\n" +
+            "                                    <label class=\"layui-form-label\">选项值</label>\n" +
+            "                                    <div class=\"layui-input-block\">\n" +
+            "                                        <textarea placeholder=\"选项值以#隔开\" class=\"layui-textarea\" name=\"form["+i+"]['form']['values']\"></textarea>\n" +
+            "                                    </div>\n" +
+            "                                </div>\n" +
+            "\n" +
+            "\n" +
+            "                                <div class=\"layui-form-item\">\n" +
+            "                                    <div class=\"layui-input-block\">\n" +
+            "                                        <a href=\"javascript:closeForm();\" class=\"layui-btn\">确认</a>\n" +
+            "                                        <a href=\"javascript:;\" onclick=\"closeObj(this)\" class=\"layui-btn layui-btn-danger\">清空设置</a>\n" +
+            "                                    </div>\n" +
+            "                                </div>\n" +
+            "                            </div>\n" +
+            "                        </div>\n" +
+            "                    </div>\n" +
+            "\n" +
+            "\n" +
+            "                    <!--搜索-->\n" +
+            "                    <div class=\"searchs\">\n" +
+            "                        <div class=\"layui-card-header\">搜索设置 <a href=\"javascript:;\" onclick=\"closeSearch()\"\n" +
+            "                                                                 style=\"float: right\">X</a></div>\n" +
+            "                        <div class=\"layui-card-body\">\n" +
+            "                            <div class=\"layui-form\" class=\"yl-form\">\n" +
+            "\n" +
+            "                                <div class=\"layui-form-item\">\n" +
+            "                                    <label class=\"layui-form-label\">表单搜索</label>\n" +
+            "                                    <div class=\"layui-input-block\">\n" +
+            "                                        <select name=\"form["+i+"]['search']['title']\"  >\n" +
+            "                                            <option value=\"0\">否</option>\n" +
+            "                                            <option value=\"1\">是</option>\n" +
+            "                                        </select>\n" +
+            "                                    </div>\n" +
+            "                                </div>\n" +
+            "\n" +
+            "\n" +
+            "                                <div class=\"layui-form-item\">\n" +
+            "                                    <label class=\"layui-form-label\">表单类型</label>\n" +
+            "                                    <div class=\"layui-input-block\">\n" +
+            "                                        <select name=\"form["+i+"]['search']['type']\"  >\n" +
+            "                                            <option value=\"text\">text</option>\n" +
+            "                                            <option value=\"select\">select</option>\n" +
+            "                                            <option value=\"date\">date</option>\n" +
+            "                                        </select>\n" +
+            "                                    </div>\n" +
+            "                                </div>\n" +
+            "\n" +
+            "                                <div class=\"layui-form-item\">\n" +
+            "                                    <div class=\"layui-input-block\">\n" +
+            "                                        <a href=\"javascript:closeSearch();\" class=\"layui-btn\">确认</a>\n" +
+            "                                        <a href=\"javascript:;\" onclick=\"closeObj(this)\" class=\"layui-btn layui-btn-danger\">清空设置</a>\n" +
+            "                                    </div>\n" +
+            "                                </div>\n" +
+            "                            </div>\n" +
+            "                        </div>\n" +
+            "                    </div>\n" +
+            "\n" +
+            "\n" +
+            "                    <!--验证-->\n" +
+            "                    <div class=\"validates\">\n" +
+            "                        <div class=\"layui-card-header\">表单验证设置 <a href=\"javascript:;\" onclick=\"closeValidate()\"  style=\"float: right\">X</a></div>\n" +
+            "                        <div class=\"layui-card-body\">\n" +
+            "\n" +
+            "                                <div class=\"layui-form-item layui-form-text\">\n" +
+            "                                    <label class=\"layui-form-label\">验证规则</label>\n" +
+            "                                    <div class=\"layui-input-block\">\n" +
+            "                                        <textarea placeholder=\"require|number\" class=\"layui-textarea\" name=\"form["+i+"]['validate']['rule']\"></textarea>\n" +
+            "                                    </div>\n" +
+            "                                </div>\n" +
+            "\n" +
+            "                            <div class=\"layui-form-item layui-form-text\">\n" +
+            "                                <label class=\"layui-form-label\">错误提示</label>\n" +
+            "                                <div class=\"layui-input-block\">\n" +
+            "                                    <textarea placeholder=\"名称不能为空|名称必须是数字\" class=\"layui-textarea\" name=\"form["+i+"]['validate']['msg']\"></textarea>\n" +
+            "                                </div>\n" +
+            "                            </div>\n" +
+            "\n" +
+            "\n" +
+            "                                <div class=\"layui-form-item\">\n" +
+            "                                    <div class=\"layui-input-block\">\n" +
+            "                                        <a href=\"javascript:closeValidate();\" class=\"layui-btn\">确认</a>\n" +
+            "                                        <a href=\"javascript:;\" onclick=\"closeObj(this)\" class=\"layui-btn layui-btn-danger\">清空设置</a>\n" +
+            "                                    </div>\n" +
+            "                                </div>\n" +
+            "                            </div>\n" +
+            "                        </div>\n" +
+            "\n" +
+            "\n" +
+            "\n" +
+            "                </td></tr>";
+        return html;
+    }
+</script>

@@ -1,0 +1,59 @@
+<div class="left-nav">
+    <div id="side-nav">
+
+
+        {volist name="left_nav" id ="nav_top"}
+        <div id="nav-id-{$nav_top.id}" style="display: block">
+            <ul id="nav">
+
+                {if condition="$nav_top['level'] eq 0"}
+
+                {volist name="left_nav" id ="nav_er"}
+                {if condition="$nav_er['pid'] eq $nav_top['id']"}
+                {if condition="$nav_er['types'] eq 2"}
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="iconfont">{$nav_er.icon}</i>
+                        <cite>{$nav_er.title}</cite>
+                        <i class="iconfont nav_right">&#xe6d7;</i>
+                    </a>
+                    <ul class="sub-menu" style="display: none;">
+                        {volist name="left_nav" id ="nav_san"}
+
+                        {if condition="$nav_san['types'] eq 3"}
+                        {if condition="$nav_er['id'] eq $nav_san['pid']"}
+
+                        <li>
+                            <a _href='{:url("$nav_san[name]")}'>
+                                <i class="iconfont">&#xe67e;</i>
+                                <cite>{$nav_san.title}</cite>
+                            </a>
+                        </li>
+                        {/if}
+                        {/if}
+                        {/volist}
+                    </ul>
+                </li>
+                {/if}
+                {/if}
+                {/volist}
+
+
+                {/if}
+
+            </ul>
+
+        </div>
+
+
+        {/volist}
+
+
+    </div>
+</div>
+<script>
+    function navShow(id) {
+        $("#" + id).show();
+        $("#" + id).siblings().hide();
+    }
+</script>

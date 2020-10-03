@@ -1,0 +1,166 @@
+{extend name="template/template" /}
+{block name="script"}
+
+<script type="text/javascript" src="STATIC/admin/lib/layui/layui.all.js" charset="utf-8"></script>
+
+<!--<script type="text/javascript" src="STATIC/admin/lib/layui/layui.js" charset="utf-8"></script>-->
+<script type="text/javascript" src="STATIC/admin/js/yuanlu.js"></script>
+<link rel="StyleSheet" href="STATIC/vendor/tree/css/dtree.css" type="text/css" />
+<script type="text/javascript" src="STATIC/vendor/tree/js/dtree.js?v=513213"></script>
+<style>
+    .dtree input{position: relative;margin-right: 5px;  bottom: -5px;height: 18px;padding-right: 0px; width: 18px;cursor: pointer}
+</style>
+{/block}
+
+{block name="body"}
+<div class="x-nav">
+      <span class="layui-breadcrumb" style="visibility: visible; font-size: 1px;">
+        <a href="">首页</a> /
+        <a href="">管理员管理</a> /
+        <a>
+          <cite>权限管理</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body layui-col-md3 layui-col-lg3 layui-col-sm3  layui-col-xs3 " style="background: #f3f5e5;overflow-y: scroll;max-height: 490px;" >
+    <div class="dtree">
+
+        <script type="text/javascript">
+
+            d = new dTree('d');
+
+            d.add(0,-1,'权限管理');
+
+            {volist name="rules" id="rule"}
+            d.add({$rule.id},{$rule.pid},'authority','{$rule.id}','{$rule.title}@yl');
+            {/volist}
+
+            document.write(d);
+                    d.openAll();
+
+                    {volist name="rule_top" id="top"}
+                    d.openTo({$top['id']},true);
+
+                    {/volist}
+            $(function () {
+                $("[name='authority']").hide();
+            })
+
+            function yladdNode(obj){
+                var pid =$(obj).attr('data-id');
+                console.log(pid)
+                x_admin_show('添加规则',"/admin/auth_rule/add?pid="+pid,650,400);
+            }
+            function yleditNode(obj){
+                var id =$(obj).attr('data-id');
+                x_admin_show('编辑规则',"/admin/auth_rule/edit?id="+id,650,400);
+            }
+
+        </script>
+    </div>
+
+    </body>
+
+
+</div>
+<div class="x-body layui-col-md9 layui-col-lg9 layui-col-sm9  layui-col-xs9" >
+    <!--<div class="layui-row">-->
+    <!--<form class="layui-form layui-col-md12 x-so">-->
+    <!--<input class="layui-input" placeholder="开始日" name="start" id="start">-->
+    <!--<input class="layui-input" placeholder="截止日" name="end" id="end">-->
+    <!--<input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">-->
+    <!--<button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>-->
+    <!--</form>-->
+    <!--</div>-->
+    <form action="" id="sort_all">
+    <xblock>
+        <button class="layui-btn layui-btn" type="button" id="sortAll"><i class="layui-icon"></i>一键排序</button>
+        <button class="layui-btn" type="button" onclick="x_admin_show('添加规则','{:url('admin/auth_rule/add')}',650,400)"><i
+                class="layui-icon"></i>添加
+        </button>
+        <span class="x-right" style="line-height:40px">共有数据：{$nums} 条</span>
+    </xblock>
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>
+            </th>
+            <th>ID</th>
+            <th>排序</th>
+            <th>规则名</th>
+            <th>控制器/方法</th>
+            <!--<th>上级规则</th>-->
+            <th>状态</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+
+        {volist name="lists" id="vo"}
+        <tr pid="{$vo['pid']}" mid="{$vo['id']}" {if condition="$vo['level'] neq 0" }style="display:none; background: lightgoldenrodyellow;"{/if} >
+        <td id="click" style="padding-left: <?php echo $vo['level']+2; ?>0px">
+            <i class="iconfont" id="off" onclick="showCate(this)">&#xe6d7;</i>
+
+        </td>
+        <td>{$vo.id}</td>
+        <td style="width: 65px;">
+            <div class="layui-table-cell laytable-cell-1-id ">
+                <input type="text" class="yl-form-sort" name="sort[{$vo.id}]" value="{$vo['sort']}">
+                <span class="layui-table-sort layui-inline">
+                  <i class="layui-edge layui-table-sort-asc" onclick="changeNum(this,'asc')"></i>
+                  <i class="layui-edge layui-table-sort-desc" onclick="changeNum(this,'desc')"></i>
+                </span>
+            </div>
+        </td>
+
+        <td><i class="iconfont">{$vo['icon']}</i>&nbsp;
+            {if condition="$vo['level'] gt 0"}|{/if}
+            <?php echo str_repeat('----+',$vo['level']);?>
+            {$vo.title}
+
+            <a style="float: right" title="添加子规则"
+                           onclick="x_admin_show('添加规则','{:url('admin/auth_rule/add',array('pid'=>$vo['id']))}',650,400)"
+                           href="javascript:;">
+            <i class="iconfont">&#xe600;</i>
+        </a></td>
+        <td>
+            {$vo['name']}
+        </td>
+
+        <!--<td></td>-->
+
+        <td class="td-status">
+            <div id="{$vo.id}" onclick="closes(this)"
+                 class="layui-unselect layui-form-switch
+             {if condition=" $vo.status eq 1
+            "}layui-form-onswitch{/if}" lay-skin="_switch">
+            <em>{if condition="$vo.status eq 1"}开启{else/}关闭{/if}</em><i></i>
+</div>
+</td>
+<td class="td-manage">
+
+    <a title="编辑" onclick="x_admin_show('修改规则','{:url('admin/auth_rule/edit',array('id'=>$vo.id))}',650,400)"
+       href="javascript:;">
+        <i class="layui-icon">&#xe642;</i>
+    </a>
+    <a title="删除" onclick="member_del(this,{$vo.id})" href="javascript:;">
+        <i class="layui-icon">&#xe640;</i>
+    </a>
+
+
+</td>
+</tr>
+{/volist}
+</tbody>
+</table>
+</form>
+<div class="page">
+
+</div>
+</div>
+
+{/block}
+{block name="js"}
+{include file="template/base"}
+{/block}

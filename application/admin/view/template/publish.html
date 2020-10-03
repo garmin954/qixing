@@ -1,0 +1,34 @@
+<script>
+
+    var url = ("{$Request.action}");
+
+    $("#btn").on('click',function(){
+        $.ajax({
+            type:"post",
+            url:"{:url('"+url+"')}",
+            data:$(".layui-form").serialize(),
+            dataType:"json",
+            success:function(data){
+                if(data.status == 1){
+                    layer.msg(data.msg,{time:2000,icon:1,shade:0.6});
+                    setTimeout(function(){
+                        window.parent.location.reload();
+                    },2000);
+                }else{
+                    layer.msg(data.msg,{icon:5,shade:0.6,time:2000});
+                }
+            }
+        })
+    })
+
+
+        $(".layui-input-block").on('click',function(){
+            if($(".layui-input-block em").html() == "开启"){
+                $("input[name='status']").val(1);
+            }
+            if($(".layui-input-block em").html() == "关闭") {
+                $("input[name='status']").val(0);
+            }
+        })
+
+</script>

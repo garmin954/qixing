@@ -1,0 +1,455 @@
+{extend name="template/template" /}
+
+{block name="body"}
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">工具管理</a>
+        <a>
+          <cite>代码自动生成</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+
+<form action="" id="generate">
+<div class="x-body">
+
+    <div class="layui-form layui-form-pane">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+            <legend>控制器信息</legend>
+        </fieldset>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="x-red">*</span>模块</label>
+            <div class="layui-input-inline">
+                <input type="text" name="mvc[module]" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"><span class="x-red">*</span>控制器</label>
+                <div class="layui-input-block">
+                    <input type="text" name="mvc[controller]" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label"><span class="x-red">*</span>中文名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="mvc[controller_name]"  class="layui-input">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--//表单-->
+    <div class="layui-form layui-form-pane">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+            <legend>表单信息</legend>
+        </fieldset>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label"><span class="x-red">*</span>数据表表名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="table[table]"   placeholder="默认为控制器名" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">数据表类型</label>
+            <div class="layui-input-inline">
+                <select name="table[table_type]"  >
+                    <option value="MyISAM">MyISAM</option>
+                    <option value="InnoDB">InnoDB</option>
+                    <option value="MRG_MYISAM">MRG_MYISAM</option>
+                    <option value="MEMORY">MEMORY</option>
+                </select>
+            </div>
+        </div>
+
+        <table class="layui-table  ">
+            <thead>
+            <tr>
+                <th rowspan="2">
+                    <a title="添加一栏" onclick="addCate()" href="javascript:;">
+                        <i class="iconfont" style="color: #03051f">&#xe604;</i> 添加一栏
+                    </a>
+                </th>
+                <th colspan="6" style="text-align: center">字段设置</th>
+                <th rowspan="2">表单设置</th>
+            </tr>
+            <tr>
+                <th style="width: 15%;">字段名称</th>
+                <th style="width: 18%;">字段类型（长度）</th>
+                <th style="width: 15%;">默认值</th>
+                <th style="width: 8%;">不是null</th>
+                <th style="width: 6%;">索引</th>
+                <th style="width: 14%;">注释</th>
+            </tr>
+
+            </thead>
+            <tbody class="cloneNode">
+            <tr >
+                <td>
+                    <a title="添加一栏" onclick="addCate(this)" href="javascript:;">
+                        <i class="iconfont" style="color: #03051f">&#xe604;</i>
+                    </a>
+                    &nbsp;
+                    <a title="删除" onclick="delCate(this)" href="javascript:;">
+                        <i class="layui-icon" style="font-size: 19px;color: orangered;">&#xe640;</i>
+                    </a>
+                </td>
+                <td>
+                    <input type="text" name="table[form][0]['field']['name']" placeholder="字段名称" class="layui-input">
+                </td>
+                <td>
+                    <input type="text" name="table[form][0]['field']['type']" placeholder="字段类型" class="layui-input">
+                </td>
+                <td>
+                    <input type="text" name="table[form][0]['field']['default']" placeholder="默认值" style="width: 100px" class="layui-input">
+                <td>
+                    <input  type="checkbox" name="table[form][0]['field']['isnull']" title="" style="display: block!important;">
+                </td>
+                <td>
+                    <input type="checkbox" name="table[form][0]['field']['iskey']" title=""  style="display: block!important;">
+                </td>
+                <td>
+                    <input type="text" name="table[form][0]['field']['comment']" placeholder="注释" style="width: 100px" class="layui-input">
+                </td>
+                <td class="">
+                    <a title="表单设置" onclick="showForms(this)" href="javascript:;">
+                        <span class="layui-badge layui-bg-green">表单</span>
+                    </a>
+                    <a title="搜索设置" onclick="showSearch(this)" href="javascript:;">
+                        <span class="layui-badge layui-bg-green">搜索</span>
+                    </a>
+
+                    <a title="表单验证设置" onclick="showValidate(this)" href="javascript:;">
+                        <span class="layui-badge layui-bg-green">验证</span>
+                    </a>
+
+                    <!--表单-->
+                    <div class="forms">
+                        <div class="layui-card-header">表单设置 <a href="javascript:;" onclick="closeForm()"  style="float: right">X</a></div>
+                        <div class="layui-card-body">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">表单开/关</label>
+                                <div class="layui-input-block">
+                                    <select name="table[form][0]['form']['name']"  >
+
+                                        <option value="0">否</option>
+                                        <option value="1">是</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="layui-form" class="yl-form">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">标题</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="table[form][0]['form']['tiele']" lay-verify="title" autocomplete="off"
+                                               placeholder="请输入标题" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">名称</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="table[form][0]['form']['name']" placeholder="字段名/字母" autocomplete="off"
+                                               class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">表单类型</label>
+                                    <div class="layui-input-block">
+                                        <select name="table[form][0]['form']['type']"  >
+
+                                            <option value="text">text</option>
+                                            <option value="radio">radio</option>
+                                            <option value="select">select</option>
+                                            <option value="checkbox">checkbox</option>
+                                            <option value="textarea">textarea</option>
+                                            <option value="password">password</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item layui-form-text">
+                                    <label class="layui-form-label">选项值</label>
+                                    <div class="layui-input-block">
+                                        <textarea placeholder="选项值以#隔开" class="layui-textarea" name="table[form][0]['form']['values']"></textarea>
+                                    </div>
+                                </div>
+
+
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <a href="javascript:closeForm();" class="layui-btn">确认</a>
+                                        <a href="javascript:;" onclick="closeObj(this)" class="layui-btn layui-btn-danger">清空设置</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--搜索-->
+                    <div class="searchs">
+                        <div class="layui-card-header">搜索设置 <a href="javascript:;" onclick="closeSearch()"
+                                                                 style="float: right">X</a></div>
+                        <div class="layui-card-body">
+                            <div class="layui-form" class="yl-form">
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">表单搜索</label>
+                                    <div class="layui-input-block">
+                                        <select name="table[form][0]['search']['issearch']"  >
+                                            <option value="0" selected ="selected">否</option>
+                                            <option value="1">是</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">表单类型</label>
+                                    <div class="layui-input-block">
+                                        <select name="table[form][0]['search']['type']"  >
+                                            <option value="text">text</option>
+                                            <option value="select">select</option>
+                                            <option value="date">date</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <a href="javascript:closeSearch();" class="layui-btn">确认</a>
+                                        <a href="javascript:;" onclick="closeObj(this)" class="layui-btn layui-btn-danger">清空设置</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--验证-->
+                    <div class="validates">
+                        <div class="layui-card-header">表单验证设置 <a href="javascript:;" onclick="closeValidate()"  style="float: right">X</a></div>
+                        <div class="layui-card-body">
+
+                                <div class="layui-form-item layui-form-text">
+                                    <label class="layui-form-label">验证规则</label>
+                                    <div class="layui-input-block">
+                                        <textarea placeholder="require|number" class="layui-textarea" name="table[form][0]['validate']['rule']"></textarea>
+                                    </div>
+                                </div>
+
+                            <div class="layui-form-item layui-form-text">
+                                <label class="layui-form-label">错误提示</label>
+                                <div class="layui-input-block">
+                                    <textarea placeholder="名称不能为空|名称必须是数字" class="layui-textarea" name="table[form][0]['validate']['msg']"></textarea>
+                                </div>
+                            </div>
+
+
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <a href="javascript:closeValidate();" class="layui-btn">确认</a>
+                                        <a href="javascript:;" onclick="closeObj(this)" class="layui-btn layui-btn-danger">清空设置</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                </td>
+
+                <style>
+
+                    .forms, .searchs ,.validates{
+                        display: none;
+                        position: fixed;
+                        background: white;
+                        left: 50%;
+                        z-index: 100;
+                        height: 450px;
+                        /*padding: 5%;*/
+                        overflow: hidden;
+                        box-shadow: 1px 0px 8px;
+                        margin-left: -233.5px;
+                        top: 5%;
+                    }
+                    .layui-form-checkbox{display: none
+                    }
+                    .layui-input-block .layui-form-checkbox{
+                        display: inline-block;}
+
+                    .forms .layui-card-body {
+                        overflow-y: scroll;
+                        height: 400px;
+                    }
+                    select{
+                        display: block!important;
+                        height: 38px;
+                    }
+                    .layui-form-select {
+                        display: none!important;
+                    }
+
+
+                </style>
+
+
+
+
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!--//其他选项-->
+    <div class="layui-form layui-form-pane">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+            <legend>其他选项</legend>
+        </fieldset>
+
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">列表页菜单</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="menu[add]" lay-skin="primary" title="添加" checked="">
+                <input type="checkbox" name="menu[del]" lay-skin="primary" title="删除">
+                <input type="checkbox" name="menu[edit]" lay-skin="primary" title="编辑"   >
+                <input type="checkbox" name="menu[delAll]" lay-skin="primary" title="一键删除"  >
+                <input type="checkbox" name="menu[sortAll]" lay-skin="primary" title="一键排序" >
+
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">所属栏目</label>
+            <div class="layui-input-inline">
+                <select name="left_menu[cate]"  >
+                    <option value="0">顶级栏目</option>
+                    {volist name="top_cate" id="topcate"}
+                    <option value="{$topcate.id}">{$topcate.title}</option>
+                    {/volist}
+                </select>
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                左侧菜单栏目
+            </div>
+        </div>
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">管理组分配</label>
+            <div class="layui-input-block">
+                {volist name="group" id="group"}
+                <input type="checkbox" name="left_menu[group][]" value="{$group.id}" lay-skin="primary" title="{$group.title}" >
+                {/volist}
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" type="button" id="submit">确认创建</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+</form>
+{/block}
+{block name="js"}
+<script>
+    $("#submit").click(function () {
+        $.post("{:url('admin/generate/index')}",$("#generate").serialize(),function () {
+
+        })
+    })
+    var i =0;
+    let news = '';
+    var newa ='';
+    window.onload = function(){
+         newa = $('.cloneNode').html();
+    }
+
+    function addCate(obj) {
+        i=i+1;
+        news = newa.replace(/\[0]/g,'['+i+']');
+       $('.cloneNode').append(news)
+
+    }
+
+    function delCate(obj) {
+        layer.msg('确认删除这一行吗？', {
+            btn: ['确认', '取消'],
+            icon: 3,
+            title: '信息',
+            time: 10000,
+            btnAlign: 'c',
+            yes: function () {
+                layer.closeAll()
+                var news = $(obj).parents('tr').remove();
+            }
+        })
+    }
+
+    function showForms(obj) {
+        $(obj).siblings('.forms').show();
+    }
+    function showSearch(obj) {
+        $(obj).siblings('.searchs').show();
+    }
+    function showValidate(obj) {
+        $(obj).siblings('.validates').show();
+    }
+
+    function closeSearch(obj) {
+        $('.searchs').hide();
+    }
+    function closeValidate(obj) {
+        $('.validates').hide();
+    }
+
+
+    function closeObj(obj) {
+        // console.log($(obj).parent().parent().parent().children().html())
+
+        $(obj).parent().parent().parent().children().find('input').each(function (e) {
+            $(this).val('');
+            $(this).attr('checked', 'false');
+            $(this).attr('selected', 'false');
+        });
+        $(obj).parent().parent().parent().children().find('option').each(function (e) {
+            $(this).attr('selected', 'false');
+        });
+        $(obj).parent().parent().parent().children().find('textarea').each(function (e) {
+            $(this).val('');
+        });
+    }
+
+    function closeForm(obj) {
+        $('.forms').hide();
+    }
+
+    // $(document).click(function(e) {
+    //     console.log($('.forms').css('display'))
+    //     if($('.forms').css('display') === 'block'){
+    //
+    //         var _con = $('.forms'); // 设置目标区域
+    //         if(!_con.is(e.target) && _con.has(e.target).length === 0) {
+    //             $('.forms').hide();
+    //         }
+    //     }
+    //
+    // });
+</script>
+
+{/block}

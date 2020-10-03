@@ -1,0 +1,163 @@
+<script>
+
+    //排序值增大减小
+    function changeNum(obj,type)
+    {
+        var num = ($(obj).parent().siblings().find('.yl-form-sort')['prevObject'][0]['value'])
+
+        if(type == 'asc'){
+            num++;
+        }else{
+            num--;
+        }
+        $(obj).parent().siblings().find('.yl-form-sort')['prevObject'][0]['value'] = num;
+
+    }
+
+
+    //一键删除
+
+    function delAll (url,reload=false) {
+
+        var data = tableCheck.getData();
+
+
+        layer.confirm('确认要删除吗？',{btnAlign:'c'},function(index){
+
+            $.post(url,{'ids':data},function (data) {
+                if(data.status==1){
+                    layer.msg(data.msg,{icon:1,time:2000,shade:0.7})
+                    if(reload){
+                        setTimeout(function () {
+                            window.location.reload();
+                        },2000)
+                    }else{
+                        $(".layui-form-checked").not('.header').parents('tr').remove();
+                    }
+
+                }else{
+                    layer.msg(data.msg,{icon:2,time:2000,shade:0.7})
+
+                }
+            })
+        });
+        $(".layui-layer-content").attr('style','text-align:center')
+    }
+
+    function ajax_post(url,id,frame=false) {
+
+
+        $.post(url,$("#"+id).serialize(),function (data) {
+
+            if(frame == true){
+                var index = parent.layer.getFrameIndex(window.name);
+
+                if(data.status==1){
+                    layer.msg(data.msg,{icon:1,shade:0.5,time:2000})
+
+                    setTimeout(function () {
+                        parent.layer.close(index);
+                    },2000)
+                }else{
+                    layer.msg(data.msg,{icon:2,shade:0.5,time:2000})
+                }
+            } else{
+
+                if(data.status==1){
+                    layer.msg(data.msg,{icon:1,shade:0.5,time:2000})
+                }else{
+                    layer.msg(data.msg,{icon:2,shade:0.5,time:2000})
+                }
+            }
+        },'json')
+    }
+
+    /*用户-停用*/
+    function member_stop(obj,id,url,field,type){
+
+        if(type=='close'){
+            var tip = '确认要停用吗？';
+            var status = 0;
+        }else{
+            var tip = '确认要开启吗？';
+            var status = 1;
+        }
+        layer.confirm(tip,{btnAlign:'c'},function(index){
+            $.post(url,{'id':id,field:field+'/'+status},function (data) {
+                if(data.status==1){
+
+                    layer.msg(data.msg,{icon:1,time:2000,shade:0.7})
+                    setTimeout(function () {
+                        window.location.reload();
+                    },2000)
+                }else{
+                    layer.msg(data.msg,{icon:2,time:2000,shade:0.7})
+
+                }
+            })
+
+        });
+        $(".layui-layer-content").attr('style','text-align:center')
+    }
+
+
+    /*用户-删除*/
+    function member_del(obj,id,url,reload=false){
+
+        layer.confirm('确认要删除吗？',{btnAlign: 'c'},function(index){
+            //发异步删除数据
+            $.post(url,{id:id},function (data) {
+                if(data.status==1){
+
+                    layer.msg(data.msg,{icon:1,time:2000,shade:0.7})
+                    if(reload){
+                        setTimeout(function () {
+                            window.location.reload();
+                        },2000)
+                    }else{
+                        $(obj).parents("tr").remove();
+                    }
+
+                }else{
+                    layer.msg(data.msg,{icon:2,time:2000,shade:0.7})
+                }
+            })
+        });
+        $(".layui-layer-content").attr('style','text-align:center')
+    }
+
+    /*
+     *图片放大 photos: '#'+id,
+     *<td id="$list.id"><img src="__IMAGE__$list.brand_logo"></td>
+     */
+    function showImage(id)
+    {
+
+        layer.photos({
+            photos: '#'+id,
+            shadeClose:false,
+            closeBtn:2,
+            anim: 0
+        });
+    }
+
+    //小tips
+    function showTip(obj){
+        var id   = $(obj)[0]['id'];
+        var text = $(obj)[0]['innerText'];
+
+        console.log($(obj))
+        layer.tips(text, '#'+id, {
+            tips: 1
+        });
+    }
+
+    //小tips
+    function showBox(obj){
+        var id   = $(obj)[0]['id'];
+        var text = $(obj)[0]['innerText'];
+
+        console.log($(obj))
+        layer.msg(text );
+    }
+</script>

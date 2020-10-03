@@ -1,0 +1,509 @@
+{extend name="template/template" /}
+
+{block name="body"}
+    <div class="x-body" style="padding-top: 0px">
+        <form class="layui-form">
+
+
+            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                <ul class="layui-tab-title" style="margin-bottom: 20px">
+                    <li class="layui-this">基本设置</li>
+                    <!--<li class="">文件上传</li>-->
+                    <li class="">描述SEO</li>
+                    <li class="">内容</li>
+                    <!--<li class="">相册</li>-->
+                </ul>
+                <div class="layui-tab-content " >
+                    <div class="layui-tab-item layui-show">
+
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span>标题
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="cname" name="title" required="" lay-verify="required" value=""
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">
+                                <span class="x-red">*</span>必填
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span>短标题
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text"   name="sort_title" required="" lay-verify="required" value=""
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">
+
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span>作者
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text"  name="author" required="" lay-verify="required" value="远路"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        {if $Request.param.cate_id == $Think.config.home_category_id.yxzx}
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span>学院信息
+                            </label>
+                            <div class="layui-input-inline" style="width: 430px">
+                                <textarea name="sort_desc" class="layui-textarea"  style="border:1px solid #e6e6e6;padding: 10px">
+<h2> University of Birmingham </h2>
+<p> 英国英格兰 </p>
+<p> 学校类型：公立 </p>
+<p> 热门专业：商科 机械工程 化学 戏剧 国际关系 </p>
+                                </textarea>
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">
+                                <span class="x-red">格式请按框里的，`< h2 >``< p >` 请勿删改！，改里面文字即可</span>
+                            </div>
+                        </div>
+                        {/if}
+
+
+                        {if in_array($Request.param.cate_id, array_column(cateTree('cate', $Think.config.home_category_id.gwtd), 'id'))}
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span>老师信息
+                            </label>
+                            <div class="layui-input-inline" style="width: 430px">
+                                <textarea name="sort_desc" class="layui-textarea"  style="border:1px solid #e6e6e6;padding: 10px">
+<p>从业时间：10+年</p>
+<p>从事：凯银智梦CEO</p>
+                                </textarea>
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">
+                                <span class="x-red">格式请按框里的，`< p >` 请勿删改！，改里面文字即可</span>
+                            </div>
+                        </div>
+                        {/if}
+
+                        {if $yxzx == $Request.param.cate_id}
+<!--                        <div class="layui-form-item">-->
+<!--                            <label   class="layui-form-label">-->
+<!--                                <span class="x-red">*</span>关联落地页-->
+<!--                            </label>-->
+<!--                            <div class="layui-input-inline" style="width: 430px">-->
+<!--                                <select name="link">-->
+<!--                                    <option value="">请选择</option>-->
+<!--                                    {volist name="country" id="countrys" }-->
+<!--                                    <option value="{$countrys.link}">{$countrys.cate_name}</option>-->
+<!--                                    {/volist}-->
+<!--                                </select>-->
+<!--                            </div>-->
+<!--                            <div class="layui-form-mid layui-word-aux">-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span>国家
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="country" name="country" required="" lay-verify="required" value=""
+                                       autocomplete="off" class="layui-input">
+                            </div>
+
+                        </div>
+                        {/if}
+                        <div class="layui-form-item">
+                            <label  class="layui-form-label">
+                                 所属栏目
+                            </label>
+                            <div class="layui-input-inline">
+                                <select name="cate_id" >
+                                    {volist name=":cateTree('cate')" id="cl"}
+                                    <?php echo str_repeat("-----|",$cl['level']); ?>
+                                        <option {if condition="$cl['id'] eq $Request.param.cate_id"}selected{/if} value="{$cl.id}">{$cl.cate_name}</option>
+                                    {/volist}
+                                </select>
+
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">
+                                <span class="x-red">*</span>
+                            </div>
+                        </div>
+
+                        {if $Request.param.cate_id== $Think.config.home_category_id.yxzx}
+                        <div class="layui-form-item" pane="">
+                            <label class="layui-form-label">关联标签</label>
+                            <div class="layui-input-block">
+                                {volist name="tag_list" id="tag_lists"}
+                                <input type="checkbox" name="tag[]" lay-skin="primary"  value="{$tag_lists.id}" title="{$tag_lists.title}">
+                                {/volist}
+                            </div>
+                        </div>
+                        {/if}
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">图片 </label>
+                            <div class="layui-input-block">
+
+                                <div class="layui-upload" >
+                                        <div id="queue"></div>
+                                        <button  id="file_upload" type="button" class="layui-btn" ><i class="layui-icon"></i>上传文件</button>
+                                        <button id="back_out"  type="button" class="layui-btn layui-btn-danger">撤销上传</button>
+                                        <br><img id="show_img" height="120px" src=" "  alt="上传的图片" style="display: none ;margin-top: 5px" >
+                                    <input type="hidden" name="thumb" value="">
+                                </div>
+
+                            </div>
+                        </div>
+<!--
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">副图 </label>
+                            <div class="layui-input-block">
+
+                                <div class="layui-upload" >
+
+                                    <button  id="file_uploadt" type="button" class="layui-btn" ><i class="layui-icon"></i>上传文件</button>
+                                    <button id="back_outt"  type="button" class="layui-btn layui-btn-danger">撤销上传</button>
+                                    <br><img id="show_imgt" height="120px" src=" "  alt="上传的图片" style="display: none ;margin-top: 5px" >
+                                    <input type="hidden" name="thumbs" value="">
+                                </div>
+
+                            </div>
+                        </div>
+-->
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">状态：</label>
+                            <div class="layui-input-block" style="width: 50px">
+                                <input type="checkbox"  name="status" lay-skin="switch" value="1" lay-text="开启|关闭" checked="checked">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-----文件上传----->
+
+                    <!-----seo----->
+                    <div class="layui-tab-item">
+                    <div class="layui-form-item">
+                        <label   class="layui-form-label">
+                            <span class="x-red">*</span>栏目描述
+                        </label>
+                        <div class="layui-input-inline">
+                            <textarea name="desc"   id="" cols="60" rows="5" style="border:1px solid #e6e6e6;padding: 10px"></textarea>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+
+                        </div>
+                    </div>
+
+                    <!--<div class="layui-form-item">-->
+                    <!--<label   class="layui-form-label">-->
+                    <!--<span class="x-red">*</span>栏目SEO-->
+                    <!--</label>-->
+                    <!--<div class="layui-input-inline">-->
+
+                    <!--<textarea name="cate_seo"  cols="60" rows="5" style="border:1px solid #e6e6e6;padding: 10px"></textarea>-->
+                    <!--</div>-->
+                    <!--<div class="layui-form-mid layui-word-aux">-->
+
+                    <!--</div>-->
+                    <!--</div>-->
+
+                </div>
+
+                    <!-----内容----->
+                    <div class="layui-tab-item">
+                        <textarea name="content" id="container"  type="text/plain" ></textarea>
+                    </div>
+
+                    <!-----商品相册----->
+                    <div class="layui-tab-item">
+                        <div class="layui-form-item" id="yl-show">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span>压缩图
+                            </label>
+                            <div class="layui-input-inline" style="width: 100%;">
+                                <input type="file"     id="file_uploads" style="width: 30%; ">
+                                <input type="hidden"  name="thumb_list"  value="">
+                            </div>
+
+                            <div id="thumb_list" style="margin:10px 110px;">
+                            </div>
+                            <style>
+                                #thumb_list img{
+                                    width: 100px;
+                                }
+                                .boximg{
+                                    position: relative;
+                                    width: 100px;
+                                    display: inline-block;
+                                    margin: 5px;
+                                }
+                                .boximg a{
+                                    position: absolute;
+                                    bottom: 0px;
+                                    height: 20px;
+                                    width: 100px;
+                                    text-align: center;
+                                    background: red;
+                                    cursor: pointer;
+                                }
+                            </style>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+          <div class="layui-form-item">
+              <label   class="layui-form-label">
+              </label>
+              <button id="btn"  type="button" class="layui-btn" lay-filter="add"  >
+                  增加
+              </button>
+          </div>
+      </form>
+    </div>
+
+
+
+
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="STATIC/vendor/ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="STATIC/vendor/ueditor/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('container',{
+            initialFrameHeight:'400',
+            initialFrameWidth:'100%',
+
+        });
+
+    </script>
+
+    <script type="text/javascript" src="STATIC/vendor/uploadifive/jquery.uploadifive.min.js"></script>
+    <script>
+
+        $(function() {
+
+            $('#file_uploads').uploadifive({
+                'auto' : true,//是否自动上传
+                //服务器端处理文件上传的文件访问路径
+                'uploadScript' : "{:url(request()->controller().'/uploadList').'?id='.input('id')}",
+                //设定name
+                'fileObjName'      : 'images',
+                uploadLimit:9,
+                //发送方法
+                'method'       : 'post',
+                'height'        : '38',
+                //绑定class
+                'buttonClass'  : 'layui-btn',
+                'buttonText'   : '图片上传',
+                //上传完成之后的回调函数
+                'onUploadComplete' : function(file, data) {
+
+                    $("#uploadifive-file_uploads-queue").attr('style','display:none');
+                    //json转成对象
+
+                    if(data){
+                        // var image =data.split('=min$');
+                        var image =data.split('=min$');
+                        var html ="<div class='boximg'><a href='javascript:;' onclick=\"delImg(this,"+"'"+image[0]+"'"+")\">删除</a><img src=\""+'/public/'+image[0]+"\" class=\"yl-show_img\" alt=\"1\"></div>";
+                        var val = $("[name='thumb_list']").val();
+                        if(val == ''){
+                            $("[name='thumb_list']").val(image[0]);
+                        }else{
+                            $("[name='thumb_list']").val(val+'yl'+image[0]);
+                        }
+                        $("#thumb_list").append(html);
+                    }
+
+                }
+            });
+
+            $('#file_uploadt').uploadifive({
+
+                'auto' : true,//是否自动上传
+                //显示文件上传进度的元素id
+                'queueID' : 'queue',
+                //服务器端处理文件上传的文件访问路径
+                'uploadScript' : "{:url('admin/cate/upimg')}",
+                //设定name
+                'fileObjName'      : 'website_logo',
+                //发送方法
+                'method'       : 'post',
+                'height'        : '38',
+                //绑定class
+                'buttonClass'  : 'layui-btn',
+                'buttonText'   : '图片上传',
+                //上传完成之后的回调函数
+                'onUploadComplete' : function(file, data) {
+
+                    //json转成对象
+                    data  = $.parseJSON(data)
+                    if(data){
+                        $("#show_imgt").show(400);
+                        $("#show_imgt").attr('src','/public/'+data.website_logo);
+                        $("input[name='thumbs']").val(data.website_logo);
+                    }
+
+                }
+            });
+            //图片撤销
+            $("#back_outt").on('click',function(){
+
+                //获取图片路径
+                var path = $("#show_imgt").attr('src');
+
+                $.post("{:url('admin/article/backOut')}",{'path':path},function (data) {
+
+                    if(data.status == 1){
+                        $("[name='file_link']").val('');
+                        $("#show_imgt").hide()
+                    }
+                })
+            })
+            $('#file_uploadv').uploadifive({
+
+                'auto' : true,//是否自动上传
+                //显示文件上传进度的元素id
+                'queueID' : 'queue',
+                //服务器端处理文件上传的文件访问路径
+                'uploadScript' : "{:url('admin/cate/upimg')}",
+                //设定name
+                'fileObjName'      : 'website_logo',
+                //发送方法
+                'method'       : 'post',
+                'height'        : '38',
+                //绑定class
+                'buttonClass'  : 'layui-btn',
+                'buttonText'   : '视频上传',
+                //上传完成之后的回调函数
+                'onUploadComplete' : function(file, data) {
+
+                    //json转成对象
+                    data  = $.parseJSON(data)
+                    if(data){
+                        $("input[name='file_link']").val(data.website_logo);
+                    }
+
+                }
+            });
+            //图片撤销
+            $("#back_outv").on('click',function(){
+
+                //获取图片路径
+                var path = $("[name='file_link']").val();
+
+                $.post("{:url('admin/article/backOut')}",{'path':path},function (data) {
+
+                    if(data.status == 1){
+                        $("[name='file_link']").val('');
+
+                    }
+                })
+            })
+        });
+
+        function delImg(obj,img){
+            $.post("{:url('admin/article/delImg')}",{'img':img},function (data) {
+                $(obj).parent().remove();
+                var val = $("[name='thumb_list']").val();
+                val= val.replace(img+'yl','');
+                val= val.replace(img,'');
+                $("[name='thumb_list']").val(val);
+            })
+        }
+        $(function() {
+            $('#file_upload').uploadifive({
+                'auto' : true,//是否自动上传
+                //显示文件上传进度的元素id
+                'queueID' : 'queue',
+                //服务器端处理文件上传的文件访问路径
+                'uploadScript' : "{:url('admin/cate/upimg')}",
+                //设定name
+                'fileObjName'      : 'website_logo',
+                //发送方法
+                'method'       : 'post',
+                'height'        : '38',
+                //绑定class
+                'buttonClass'  : 'layui-btn',
+                'buttonText'   : '图片上传',
+                //上传完成之后的回调函数
+                'onUploadComplete' : function(file, data) {
+                    $("#uploadifive-file_uploads-queue").attr('style','display:none');
+                    //json转成对象
+                    data  = $.parseJSON(data)
+                    if(data){
+                        $("#show_img").show(400);
+                        $("#show_img").attr('src','/public/'+data.website_logo);
+                        $("input[name='thumb']").val(data.website_logo);
+                    }
+
+                }
+            });
+        });
+
+        //图片撤销
+        $("#back_out").on('click',function(){
+
+            //获取图片路径
+            var path = $("#show_img").attr('src');
+            path= path.replace('/public/','')
+            console.log(path)
+            $.post("{:url('admin/cate/backOut')}",{'path':path},function (data) {
+
+                if(data.status == 1){
+                    $("#show_img").hide()
+                }
+            })
+
+        })
+
+        $("#btn").on('click',function(){
+
+          $.ajax({
+            type:"post",
+            url:"{:url('admin/article/add')}",
+            data:$(".layui-form").serialize(),
+            dataType:"json",
+            success:function(data){
+
+              if(data.status == 1){
+
+                  layer.msg(data.msg,{time:2000,icon:1,shade:0.6});
+              setTimeout(function(){
+                  window.parent.location.reload();
+                },2000);
+            }else{
+
+              layer.msg(data.msg,{icon:5,shade:0.6,time:2000});
+             }
+            }
+          })
+        })
+
+        $(".layui-input-block").on('click',function(){
+
+          if($(".layui-input-block em").html() == "开启"){
+
+            $("input[name='status']").val(1);
+          }
+
+          if($(".layui-input-block em").html() == "关闭") {
+            $("input[name='status']").val(0);
+          }
+
+        })
+
+
+    </script>
+{/block}

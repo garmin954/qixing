@@ -1,0 +1,128 @@
+{extend name="template/template" /}
+
+{block name="body"}
+<div class="x-body">
+    <form class="layui-form">
+        <input type="hidden"  name="id" value ="{$lists['id']}">
+
+        <div class="layui-form-item">
+            <label for="ename" class="layui-form-label">
+                <span class="x-red">*</span>中文配置名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="cname" name="cname" required="" lay-verify="required" value="{$lists.cname}"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="x-red">*</span>必填
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="phone" class="layui-form-label">
+                <span class="x-red">*</span>英文配置名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="phone" name="ename" required=""  value="{$lists.ename}"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="x-red">*</span>必填
+            </div>
+        </div>
+
+
+
+
+        <div class="layui-form-item">
+            <label  class="layui-form-label">
+                <span class="x-red">*</span>配置类型
+            </label>
+            <div class="layui-input-inline">
+                <select name="type" >
+
+                    <option  {if condition="$lists.type eq 1"}selected="selected"{/if} value="1">输入框</option>
+                    <option  {if condition="$lists.type eq 2"}selected="selected"{/if} value="2">下拉选择框</option>
+                    <option  {if condition="$lists.type eq 3"}selected="selected"{/if} value="3">复选框</option>
+
+                    <option  {if condition="$lists.type eq 5"}selected="selected"{/if} value="5">单选框</option>
+                    <option  {if condition="$lists.type eq 6"}selected="selected"{/if} value="6">文本框</option>
+                    <option  {if condition="$lists.type eq 7"}selected="selected"{/if} value="7">附件</option>
+                </select>
+
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="x-red">*</span>
+            </div>
+        </div>
+
+
+
+
+        <div class="layui-form-item">
+            <label  class="layui-form-label">
+                <span class="x-red">*</span>所属类型
+            </label>
+            <div class="layui-input-inline">
+                <select name="type_id" >
+
+                    {volist name="type_list" id="type_lists"}
+                    <option {if condition="$lists.type_id eq $type_lists['id']"}selected="selected"{/if}  value="{$type_lists.id}">{$type_lists.type_name}</option>
+                    {/volist}
+                </select>
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="x-red">*</span>
+            </div>
+        </div>
+
+
+
+        <div class="layui-form-item">
+            <label for="L_email" class="layui-form-label">
+                <span class="x-red">*</span>配置值
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_email" name="value" value="{$lists.value}"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="x-red">*</span>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="L_email" class="layui-form-label">
+                <span class="x-red">*</span>多值配置
+            </label>
+            <div class="layui-input-inline">
+
+                <textarea name="values"   id="" cols="60" rows="5" style="border:1px solid #e6e6e6;padding: 10px">{$lists.values}</textarea>
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否开启：</label>
+            <div class="layui-input-block" style="width: 50px">
+                <input type="checkbox"  name="status" lay-skin="switch" value="{$lists['status']}" lay-text="开启|关闭"   {if condition="$lists['status'] eq 1 "}checked{/if}>
+
+
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label for="L_repass" class="layui-form-label">
+            </label>
+            <button id="btn"  type="button" class="layui-btn" lay-filter="add"  >
+              修改
+            </button>
+        </div>
+    </form>
+</div>
+{/block}
+{block name="js"}
+{include file="template/publish"}
+{/block}

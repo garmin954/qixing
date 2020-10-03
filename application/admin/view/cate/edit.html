@@ -1,0 +1,292 @@
+{extend name="template/template" /}
+
+{block name="body"}
+<div class="x-body" style="padding-top: 0px">
+    <form class="layui-form">
+        <input type="hidden"  name="id" value ="{$lists['id']}">
+
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title" style="margin-bottom: 20px">
+                <li class="layui-this">基本设置</li>
+                <li class="">描述SEO</li>
+                <li class="">内容</li>
+            </ul>
+            <div class="layui-tab-content " >
+                <div class="layui-tab-item layui-show">
+
+                    <div class="layui-form-item">
+                        <label for="ename" class="layui-form-label">
+                            <span class="x-red">*</span>栏目名称
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="cname" name="cate_name" required="" lay-verify="required" value="{$lists.cate_name}"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red">*</span>必填
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <label  class="layui-form-label">
+                            <span class="x-red">*</span>上级栏目
+                        </label>
+                        <div class="layui-input-inline">
+                            <select name="pid" >
+                                <option value="0" selected>顶级栏目  </option>
+                                {volist name=":cateTree('cate')" id="cl"}
+
+                                <option {if condition="$cl['id'] eq $lists['pid']"}selected{/if} value="{$cl.id}">{:str_repeat("-----|",$cl['level'])}{$cl.cate_name}</option>
+                                {/volist}
+
+                            </select>
+
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red">*</span>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">栏目类型</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="type" value="1" title="列表页" {if condition="$lists['type'] eq 1"}checked{/if}><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>列表页</div></div>
+                            <input type="radio" name="type" value="0" title="内容页"{if condition="$lists['type'] eq 0"}checked{/if}><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>内容页</div></div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="layui-form-item">
+                        <label   class="layui-form-label">
+                            <span class="x-red">*</span>链接
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id=" " name="link" required="" lay-verify="required" value="{$lists['link']}"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">栏目图片 </label>
+                        <div class="layui-input-block">
+
+                            <div class="layui-upload" >
+                                <div id="queue"></div>
+                                <button  id="file_upload" type="button" class="layui-btn" ><i class="layui-icon"></i>上传文件</button>
+                                <button id="back_out"  type="button" class="layui-btn layui-btn-danger">撤销上传</button>
+                                <br><img id="show_img" height="120px" src="__PUBLIC__{$lists['thumb']}"  alt="上传的图片" style="margin-top: 5px" >
+                                <input type="hidden" name="thumb" value="{$lists['thumb']}">
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否开启：</label>
+                        <div class="layui-input-block" style="width: 50px">
+                            <input type="checkbox"  name="status" lay-skin="switch" value="{$lists['status']}" lay-text="开启|关闭"   {if condition="$lists['status'] eq 1 "}checked{/if}>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="layui-tab-item">
+
+
+
+
+
+
+                    <div class="layui-form-item">
+                        <label   class="layui-form-label">
+                            <span class="x-red">*</span>栏目描述
+                        </label>
+                        <div class="layui-input-inline">
+
+                            <textarea name="cate_desc"   id="" cols="60" rows="5" style="border:1px solid #e6e6e6;padding: 10px"> {$lists.cate_desc}</textarea>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label   class="layui-form-label">
+                            <span class="x-red">*</span>栏目SEO
+                        </label>
+                        <div class="layui-input-inline">
+
+                            <textarea name="cate_seo"   id="" cols="60" rows="5" style="border:1px solid #e6e6e6;padding: 10px">{$lists.cate_seo}</textarea>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="layui-tab-item">
+
+                    <textarea name="content" id="container"  type="text/plain" >{$lists.content|htmlspecialchars_decode}</textarea>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label   class="layui-form-label">
+            </label>
+            <button id="btn"  type="button" class="layui-btn" lay-filter="add"  >
+                增加
+            </button>
+        </div>
+    </form>
+</div>
+
+
+
+<!-- 配置文件 -->
+<script type="text/javascript" src="STATIC/vendor/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="STATIC/vendor/ueditor/ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('container',{
+
+        toolbars: [
+            ['anchor', //锚点
+                'undo', //撤销
+                'redo', //重做
+                'bold', //加粗
+                'indent', //首行缩进
+                'snapscreen', //截图
+                'italic', //斜体
+                'underline', //下划线
+                'strikethrough', //删除线
+                'subscript', //下标
+                'fontborder', //字符边框
+                'superscript', //上标
+                'formatmatch', //格式刷
+                'source', //源代码
+                'blockquote', //引用
+                'pasteplain', //纯文本粘贴模式
+                'selectall', //全选
+                'print', //打印
+                'preview', //预览
+                'horizontal', //分隔线
+                'removeformat', //清除格式
+                'time', //时间
+                'date', //日期
+
+                'insertcode', //代码语言
+                'fontfamily', //字体
+                'fontsize', //字号
+                'paragraph', //段落格式
+                'simpleupload', //单图上传
+                'insertimage', //多图上传
+                'edittable', //表格属性
+                'edittd', //单元格属性
+                'link', //超链接
+                'emotion', //表情
+                'spechars', //特殊字符
+                'searchreplace', //查询替换
+            ]
+        ]
+    });
+
+</script>
+
+<script type="text/javascript" src="STATIC/vendor/uploadifive/jquery.uploadifive.min.js"></script>
+<script>
+    $(function() {
+        $('#file_upload').uploadifive({
+            'auto' : true,//是否自动上传
+            //显示文件上传进度的元素id
+            'queueID' : 'queue',
+            //服务器端处理文件上传的文件访问路径
+            'uploadScript' : "{:url('admin/cate/upimg')}",
+            //设定name
+            'fileObjName'      : 'website_logo',
+            //发送方法
+            'method'       : 'post',
+            'height'        : '38',
+            //绑定class
+            'buttonClass'  : 'layui-btn',
+            'buttonText'   : '图片上传',
+            //上传完成之后的回调函数
+            'onUploadComplete' : function(file, data) {
+
+                //json转成对象
+                data  = $.parseJSON(data)
+                if(data){
+                    $("#show_img").show(400);
+                    $("#show_img").attr('src','/public/'+data.website_logo);
+                    $("input[name='thumb']").val(data.website_logo);
+                }
+
+            }
+        });
+    });
+
+    //图片撤销
+    $("#back_out").on('click',function(){
+
+        //获取图片路径
+        var path = $("#show_img").attr('src');
+        path = path.replace('/public/','');
+
+        $.post("{:url('admin/cate/backOut')}",{'path':path},function (data) {
+
+            if(data.status == 1){
+                $("#show_img").hide()
+            }
+        })
+
+    })
+
+    $("#btn").on('click',function(){
+
+        $.ajax({
+            type:"post",
+            url:"{:url('admin/cate/edit')}",
+            data:$(".layui-form").serialize(),
+            dataType:"json",
+            success:function(data){
+
+                if(data.status == 1){
+
+                    layer.msg(data.msg,{time:2000,icon:1,shade:0.6});
+                    setTimeout(function(){
+                        window.parent.location.reload();
+                    },2000);
+                }else{
+
+                    layer.msg(data.msg,{icon:5,shade:0.6,time:2000});
+                }
+            }
+        })
+    })
+
+    $(".layui-input-block").on('click',function(){
+
+        if($(".layui-input-block em").html() == "开启"){
+
+            $("input[name='status']").val(1);
+        }
+
+        if($(".layui-input-block em").html() == "关闭") {
+            $("input[name='status']").val(0);
+        }
+
+    })
+
+</script>
+{/block}

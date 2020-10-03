@@ -1,0 +1,17 @@
+﻿
+
+/*=========����=========*/
+div#nav {
+color:#00000;
+border:1px #CCCCCC solid;
+background:#F5F5F5;
+height:46px;
+line-height:46px;
+font-size:14px;
+padding-left:20px;
+}
+
+div#nav a{
+text-decoration: none;
+}
+

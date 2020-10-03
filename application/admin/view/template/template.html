@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet"href="STATIC/admin/css/font.css">
+    <link rel="stylesheet"href="STATIC/admin/css/yuanlu.css">
+    <script src="STATIC/admin/js/jquery.min.js"></script>
+    {block name="script"}
+
+    <script type="text/javascript" src="STATIC/admin/lib/layui/layui.all.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="STATIC/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="STATIC/admin/js/yuanlu.js"></script>
+     {/block}
+    {include file="template/style"}
+
+</head>
+<style>#off,#on{
+    cursor: pointer;
+}
+.uploadifive-queue-item{display: none}
+</style>
+
+<body>
+{block name="body"}
+{/block}
+
+{block name="js"}
+{include file="template/layer-js"}
+{include file="template/base"}
+{/block}
+</body>
+</html>

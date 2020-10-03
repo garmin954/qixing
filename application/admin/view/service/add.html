@@ -1,0 +1,91 @@
+{extend name="template/template" /}
+
+{block name="body"}
+
+  <body>
+    <div class="x-body" style="padding-top: 0px">
+        <form class="layui-form">
+
+
+            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                <ul class="layui-tab-title" style="margin-bottom: 20px">
+                    <li class="layui-this">基本设置</li>
+                    <!--<li class="">描述SEO</li>-->
+                    <!--<li class="">内容</li>-->
+                </ul>
+                <div class="layui-tab-content " >
+                    <div class="layui-tab-item layui-show">
+
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span>服务编号
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="number" name="number"  value=""
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">
+                                <span class="x-red">*</span>必填
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span>姓名
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="name" name="name"  value=""
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">
+                                <span class="x-red">*</span>必填
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span>信息
+                            </label>
+                            <div class="layui-input-inline">
+                                <textarea name="info" id="info" class="layui-textarea"></textarea>
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">
+                                <span class="x-red">*</span>必填
+                            </div>
+                        </div>
+                        
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span>备注
+                            </label>
+                            <div class="layui-input-inline">
+                                <textarea name="memo" id="memo" class="layui-textarea"></textarea>
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">
+                                <span class="x-red">*</span>必填
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="layui-tab-item">
+                    </div>
+                </div>
+            </div>
+
+
+          <div class="layui-form-item">
+              <label   class="layui-form-label">
+              </label>
+              <button id="btn"  type="button" class="layui-btn" lay-filter="add"  >
+                  增加
+              </button>
+          </div>
+      </form>
+    </div>
+
+
+
+    {/block}
+    {block name="js"}
+    {include file="template/publish"}
+    {/block}

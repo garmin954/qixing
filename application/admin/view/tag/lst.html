@@ -1,0 +1,82 @@
+{extend name="template/template" /}
+
+{block name="body"}
+<style>
+  .layui-table td, .layui-table th{
+    padding: 6px 5px;
+  }
+</style>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">链接</a>
+        <a>
+          <cite>链接列表</cite></a>
+      </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+  <!--<div class="layui-row">-->
+    <!--<form class="layui-form layui-col-md12 x-so">-->
+      <!--<input class="layui-input" placeholder="开始日" name="start" id="start">-->
+      <!--<input class="layui-input" placeholder="截止日" name="end" id="end">-->
+      <!--<input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">-->
+      <!--<button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>-->
+    <!--</form>-->
+  <!--</div>-->
+  <xblock>
+    <button class="layui-btn layui-btn" type="button" id="sortAll"><i class="layui-icon"></i>一键排序</button>
+    <button class="layui-btn" onclick="x_admin_show('添加链接','{:url('admin/Tag/add')}',750,500)"><i class="layui-icon"></i>添加</button>
+    <span class="x-right" style="line-height:40px">共有数据：{$lists->count()} 条</span>
+  </xblock>
+  <form action="" id="sort_all">
+  <table class="layui-table">
+    <thead>
+    <tr>
+
+      <th>ID</th>
+      <th>标签名称</th>
+
+      <th>状态</th>
+      <th>操作</th>
+    </thead>
+    <tbody>
+    {volist name="lists" id="vo"}
+    <tr   >
+
+      <td>{$vo.id}</td>
+
+      <td>{$vo.title}</td>
+      <td class="td-status">
+        <div id="{$vo.id}" onclick="closes(this)"
+             class="layui-unselect layui-form-switch
+             {if condition="$vo.status eq 1"}layui-form-onswitch{/if}" lay-skin="_switch">
+        <em>{if condition="$vo.status eq 1"}开启{else/}关闭{/if}</em><i></i></div>
+</form>
+</td>
+<td class="td-manage">
+
+  <a title="编辑" onclick="x_admin_show('修改','{:url('admin/tag/edit',array('id'=>$vo.id))}',750,500)" href="javascript:;">
+    <i class="layui-icon">&#xe642;</i>
+  </a>
+  <a title="删除" onclick="member_del(this,{$vo.id})" href="javascript:;">
+    <i class="layui-icon">&#xe640;</i>
+  </a>
+
+
+</td>
+</tr>
+{/volist}
+</tbody>
+</table>
+<div class="page">
+{$lists->render()}
+</div>
+
+</div>
+{/block}
+{block name="js"}
+{include file="template/layer-js"}
+{include file="template/base"}
+{/block}

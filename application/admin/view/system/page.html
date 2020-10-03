@@ -1,0 +1,331 @@
+{extend name="template/template" /}
+
+{block name="body"}
+<style>
+    .layui-input, .layui-textarea {width: 80%;}
+    .layui-form-label {width: 100px}
+    .layui-form-item {margin-bottom: 0px;clear: both;}
+
+  </style>
+
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">系统设置</a>
+        <a>
+          <cite>配置页</cite></a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+
+
+      <xblock>
+
+        <button class="layui-btn" onclick="x_admin_show('添加系统配置','{:url('admin/System/add')}',850,500)"><i class="layui-icon"></i>添加</button>
+
+      </xblock>
+      <form class="layui-form" action="" lay-filter="component-form-element">
+          <div class="layui-card-body" style="padding: 0px;">
+            <div class="layui-tab layui-tab-brief" lay-filter="component-tabs-brief">
+              <ul class="layui-tab-title">
+
+                {volist name="type_list" id="type"}
+                  <li class=" ">{$type.type_name}</li>
+                {/volist}
+
+              </ul>
+              <div class="layui-tab-content">
+
+
+
+                {volist name="type_list" id="type"}
+                  <div class="layui-tab-item {if condition='$i eq 1'}layui-show{/if}" >
+
+                  {volist name="type.disploy" id="disploy"}
+
+
+                    <div class="layui-card-body">
+
+              <div class="layui-row layui-col-space10 layui-form-item">
+
+                {if condition="$disploy.type eq 1"}
+                <div class="layui-col-lg6">
+                  <label class="layui-form-label">{$disploy.cname}：<br><code>{$disploy.ename}</code></label>
+                  <div class="layui-input-block">
+                    <input type="text" name="{$disploy.ename}" lay-verify="required" value="{$disploy.value}" autocomplete="off" class="layui-input">
+                  </div>
+                </div>
+                {/if}
+
+                 {if condition="$disploy.type eq 2"}
+                <div class="layui-col-lg4" style="width: 420px;">
+                  <label class="layui-form-label">{$disploy.cname}：<br><code>{$disploy.ename}</code></label>
+                  <div class="layui-input-block" >
+                    <select name="{$disploy.ename}"  >
+                      <option value=""></option>
+                      <?php $values =explode(',',$disploy['values']);  ?>
+
+                      {volist name="values" id="vs"}
+                      <option {if  condition="$vs eq $disploy.value"}selected="selected"{/if} value="{$vs}">{$vs} </option>
+                      {/volist}
+                    </select>
+                  </div>
+                </div>
+                {/if}
+
+              </div>
+
+              {if condition="$disploy.type eq 3"}
+              <div class="layui-form-item">
+                <label class="layui-form-label">{$disploy.cname}：<br><code>{$disploy.ename}</code></label>
+                <div class="layui-input-block">
+
+                {volist name=":explode('/',$disploy.values)" id="values"}
+                  <input {in name="$values" value=":str_replace('/',',',$disploy['value'])" } checked  {/in} type="checkbox" name="{$disploy.ename}[]" title="{$values}" value="{$values}" lay-skin="primary">
+                {/volist}
+                 </div>
+              </div>
+              {/if}
+
+              {if condition="$disploy.type eq 4"}
+              <!--<div class="layui-form-item">-->
+                <!--<label class="layui-form-label">{$disploy.cname}：</label>-->
+                <!--<div class="layui-input-block" id="changes" >-->
+                  <!--<input type="checkbox" {if condition='$disploy.value eq 1'}checked="checked" value="1" {else/}value="0"{/if}   name="{$disploy.ename}" lay-skin="switch" lay-text="是|否">-->
+                  <!--<div class="layui-unselect layui-form-switch " ><em>{if condition="$disploy.value eq 1"}是{else/}否{/if}</em><i></i></div>-->
+                <!--</div>-->
+              <!--</div>-->
+
+
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">{$disploy.cname}：<br><code>{$disploy.ename}</code></label>
+                        <div class="layui-input-block" >
+
+                          <div id="{$disploy.ename}" onclick="changes(this)" class="layui-unselect layui-form-switch {if condition='$disploy.value eq 1'}layui-form-onswitch{/if} " lay-skin="_switch"><em>{if condition="$disploy.value eq 1"}开启{else/}关闭{/if} </em><i></i></div>
+
+                        </div>
+                      </div>
+              {/if}
+
+              {if condition="$disploy.type eq 5"}
+              <div class="layui-form-item">
+                <label class="layui-form-label">{$disploy.cname}：<br><code>{$disploy.ename}</code></label>
+                <div class="layui-input-block">
+
+                    {volist name=":explode('/',$disploy.values)" id="values"}
+                    <input {if condition="trim($values) eq trim($disploy['value'])"} checked  {/if} type="radio" name="{$disploy.ename}" title="{$values}" value="{$values}" lay-skin="primary">
+                    {/volist}
+                </div>
+              </div>
+              {/if}
+
+
+              {if condition="$disploy.type eq 6"}
+              <div class="layui-form-item">
+                <label class="layui-form-label">{$disploy.cname}：<br><code>{$disploy.ename}</code></label>
+                <div class="layui-input-block">
+                  <textarea name="{$disploy.ename}" placeholder="" class="layui-textarea">{$disploy.value}</textarea>
+                </div>
+              </div>
+              {/if}
+
+              {if condition="$disploy.type eq 7"}
+
+              <div class="layui-form-item">
+                <label class="layui-form-label">{$disploy.cname}：<br><code>{$disploy.ename}</code></label>
+                <div class="layui-input-block">
+
+                 <div class="layui-upload" style="    margin-left: 20px;">
+                        <form>
+                          <div id="queue"></div>
+                          <button  id="file_upload{$disploy['id']}" type="button" class="layui-btn" ><i class="layui-icon"></i>上传文件</button>
+                          <button id="back_out{$disploy['id']}"  type="button" class="layui-btn layui-btn-danger">撤销上传</button>
+                          <br>
+                          <a href="javascript:;" id="{$disploy['id']}"  onclick="showImage({$disploy['id']})" >
+                          <img id="show_img{$disploy['id']}" width="100px" src="__PUBLIC__/{$disploy.value}"  alt="上传的图片" style="display:{if condition='$disploy.value neq null'}block{else/}none{/if};margin-top: 5px" >
+                          </a>
+                        </form>
+                   <input type="hidden" name="{$disploy.ename}" value="{$disploy.value}">
+                </div>
+                </div>
+              </div>
+
+                      <script>
+                        $(function() {
+                          $("#file_upload{$disploy['id']}").uploadifive({
+                            'auto' : true,'queueID' : 'queue','uploadScript' : "{:url('admin/system/upimg')}", 'fileObjName'      : 'website_logo',
+                            //发送方法
+                            'method'       : 'post','height'        : '38','buttonClass'  : 'layui-btn','buttonText'   : '图片上传','onUploadComplete' : function(file, data) {
+                              //json转成对象
+                              data  = $.parseJSON(data)
+                              if(data){
+                                $("#show_img{$disploy['id']}").show(400);
+                                $("#show_img{$disploy['id']}").attr('src','/public/'+data.website_logo);
+                                $("input[name='{$disploy[\'ename\']}']").val(data.website_logo);
+                              }}}); });
+                        //图片撤销
+                        $("#back_out{$disploy['id']}").on('click',function(){
+                          //获取图片路径
+                          var path = $("#show_img{$disploy['id']}").attr('src');
+                          path = path.replace('/public/','');
+                          $.post("{:url('admin/cate/backOut')}",{'path':path},function (data) {
+                            if(data.status == 1){$("#show_img{$disploy['id']}").hide() }}) })
+
+                      </script>
+              {/if}
+
+                </div>
+                  {/volist}
+                  </div>
+                {/volist}
+                <div class="layui-form-item">
+                <div class="layui-input-block">
+                  <button class="layui-btn" id="btn"  type="button" lay-filter="component-form-element">立即提交</button>
+                  <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+</form>
+    </div>
+{include file="template/uploads"}
+{include file="template/layer-js"}
+    <script type="text/javascript" src="STATIC/vendor/uploadifive/jquery.uploadifive.min.js"></script>
+
+    <!--<link rel="stylesheet" type="text/css" href="STATIC/vendor/uploadifive/uploadifive.css" />-->
+
+    <script type="text/javascript">
+
+        // $("#changes").on('click',function () {
+        //
+        //     alert("开启提交")
+        // })
+
+        function changes(vals){
+            console.log(vals);
+            var zhi = $("#"+vals.id+" em").html();
+            if(zhi == "开启"){
+
+                $("#"+vals.id).removeClass('layui-form-onswitch');
+                $.post("{:url('admin/system/changeState')}",{'id':vals.id,'status':0},function(data){
+                    $("#"+vals.id+" em").html('关闭');
+                })
+            }else{
+                $("#"+vals.id+" em").html('开启');
+                $("#"+vals.id).addClass('layui-form-onswitch');
+                $.post("{:url('admin/system/changeState')}",{'id':vals.id,'status':1},function(data){
+
+                })
+            }
+        }
+
+
+        $("#btn").on('click',function () {
+
+            $.ajax({
+                type:'post',
+                url:"{:url('admin/system/page')}",
+                data: $(".layui-form").serialize(),
+                dataType:'json',
+                success:function(data){
+                  if(data){
+                      layer.msg("更新成功",{icon:6,shade:0.6,time:2000});
+                      setTimeout(function () {
+                        location.reload();
+                      },2000)
+                  }
+                }
+            })
+        })
+
+    </script>
+
+
+
+
+    <script>
+
+      layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#start' //指定元素
+        });
+
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#end' //指定元素
+        });
+      });
+
+       /*用户-停用*/
+      function member_stop(obj,id){
+          layer.confirm('确认要停用吗？',function(index){
+
+              if($(obj).attr('title')=='启用'){
+
+                //发异步把用户状态进行更改
+                $(obj).attr('title','停用')
+                $(obj).find('i').html('&#xe62f;');
+
+                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
+                layer.msg('已停用!',{icon: 5,time:1000});
+
+              }else{
+                $(obj).attr('title','启用')
+                $(obj).find('i').html('&#xe601;');
+
+                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
+                layer.msg('已启用!',{icon: 5,time:1000});
+              }
+
+          });
+      }
+
+      /*用户-删除*/
+      function member_del(obj,id){
+          layer.confirm('确认要删除吗？',function(index){
+              //发异步删除数据
+              $(obj).parents("tr").remove();
+              layer.msg('已删除!',{icon:1,time:1000});
+          });
+      }
+
+
+
+      function delAll (argument) {
+
+        var data = tableCheck.getData();
+
+        layer.confirm('确认要删除吗？'+data,function(index){
+            //捉到所有被选中的，发异步进行删除
+            layer.msg('删除成功', {icon: 1});
+            $(".layui-form-checked").not('.header').parents('tr').remove();
+        });
+      }
+    </script>
+
+
+      <script>
+layui.use('upload', function(){
+  var upload = layui.upload;
+
+  //执行实例
+  var uploadInst = upload.render({
+    elem: '#test1' //绑定元素
+    ,url: '/upload/' //上传接口
+    ,done: function(res){
+      //上传完毕回调
+    }
+    ,error: function(){
+      //请求异常回调
+    }
+  });
+});
+</script>
+{/block}

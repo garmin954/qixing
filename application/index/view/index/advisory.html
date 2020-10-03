@@ -1,0 +1,115 @@
+{extend name="template/base" /}
+{block name="link"}
+<link href="STATIC/css/advsglobalpic2.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/topmenu.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/dropmenu40.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/shop_search_dolphin.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/pagetitlemenu_1.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/nav_1.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/newsquery.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/a.css" rel="stylesheet" type="text/css" />
+<style>
+    /*#contain{height: 1600px}*/
+    ul.pagination {display: inline-block;padding: 0;margin: 0;display: flex;justify-content: center}
+    .pagination a{text-decoration: none;margin-right: 0px!important; }
+    ul.pagination li {display: inline;}
+    .disabled ,.pagination  .active, .pagination li a {color: black; float: left;padding: 8px 16px;text-decoration: none;transition: background-color .3s;border: 1px solid #ddd; margin: 0 4px;}
+    .pagination .active{background-color: #4CAF50;color: white;border: 1px solid #4CAF50;}
+    .disabled{background-color: rgba(236, 236, 236, 0.78);}
+    ul.pagination  a.active {background-color: #4CAF50;color: white;border: 1px solid #4CAF50;}
+    ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+    #pdv_6925{
+        height: 1671px!important;
+    }
+    #pdv_6920{float: left!important;position: absolute!important;}
+</style>
+{/block}
+{block name="header"}
+{/block}
+
+{block name="content"}
+
+<div style="position: relative;display: inline-block">
+    {include file="template/about"}
+</div>
+
+<!-- 当前位置提示条 -->
+
+<div id='pdv_6924' class='pdv_class'  title='当前位置' style='width:910px;height:48px;top:0px;left:290px; z-index:10'>
+    <div id='spdv_6924' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+        <div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px #dddddd solid;background:#fff;">
+            <div style="height:25px;margin:1px;display:none;background:#cccccc;">
+                <div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;color:#fff">
+                    当前位置
+                </div>
+                <div style="float:right;margin-right:10px;display:none">
+                    <a href="-1" style="line-height:25px;color:#fff">更多</a>
+                </div>
+            </div>
+            <div style="padding:0px">
+
+                <link href="STATIC/css/nav_1.css" rel="stylesheet" type="text/css" />
+                <div id="nav">
+                    您现在的位置：<a href="../../../">留学网站</a>
+
+                    &gt; <a href="../../../news/" >商城新闻</a>
+
+                    &gt; 留学资讯
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 全站翻页文章列表 -->
+
+<div id='pdv_6925' class='pdv_class'  title='最新文章' style='position:relative;width:910px;height:auto;top:52px;left:290px; z-index:12'>
+    <div id='spdv_6925' class='pdv_content' style='overflow:visible;width:100%;'>
+        <div class="pdv_border">
+
+            <link href="STATIC/css/newsquery.css" rel="stylesheet" type="text/css" />
+            <ul class="newsbox">
+
+                {volist name="artList" id="art_list"}
+                <li class="even2">
+                    <div class="wrap">
+                        <div class="date">
+                            <div class="wrap">
+                                <span class="date_y">{$art_list['add_time']|date="Y",###}</span>
+                                <span class="split_m">-</span>
+                                <span class="date_m">{$art_list['add_time']|date="m",###}</span>
+                                <span class="split_d">-</span>
+                                <span class="date_d">{$art_list['add_time']|date="d",###}</span>
+                            </div>
+                        </div>
+                        <dl>
+                            <dd class="topic"><a href="{:url('/cinfo?id='.$art_list['id'])}" title="{$art_list['title']}！" target="_self" style="">{$art_list['title']}！</a>
+                            </dd>
+                            <dd class="content">{$art_list['desc']}</dd>
+                        </dl>
+                        <div class="more"><a href="{:url('/cinfo?id='.$art_list['id'])}">MORE</a></div>
+                    </div>
+                </li>
+                {/volist}
+
+            </ul>
+            <div id="showpages">
+                {$artList->render()}
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+</div>
+{/block}
+<!--底部-->
+
+{block name="script"}
+
+{/block}
+    

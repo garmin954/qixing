@@ -1,0 +1,21 @@
+﻿div.titlemenu_1{
+margin:20px;
+padding:0;
+}
+
+div.titlemenu_1 a.titlemenu_1:link,div.titlemenu_1 a.titlemenu_1:visited,div.titlemenu_1 a.titlemenu_1:active{
+display:block;
+text-decoration: none;
+font:14px/42px 'microsoft yahei',Verdana, Arial;
+height:42px;
+text-align:left;
+border-bottom: 1px dotted #FFA427;
+margin:0px;
+color:#2e2e2e;
+}
+
+div.titlemenu_1 a.titlemenu_1:hover{
+display:block;
+color:#FFA427; 
+text-decoration: none;
+}

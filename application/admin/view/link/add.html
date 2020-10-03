@@ -1,0 +1,448 @@
+{extend name="template/template" /}
+
+{block name="body"}
+
+  <body>
+    <div class="x-body" style="padding-top: 0px">
+        <form class="layui-form">
+
+
+            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                <ul class="layui-tab-title" style="margin-bottom: 20px">
+                    <li class="layui-this">基本设置</li>
+                    <!--<li class="">描述SEO</li>-->
+                    <!--<li class="">内容</li>-->
+                </ul>
+                <div class="layui-tab-content " >
+                    <div class="layui-tab-item layui-show">
+
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span>序号
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="cname" name="title"  value=""
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">
+                                <span class="x-red">*</span>必填
+                            </div>
+                        </div>
+
+
+
+                    <div class="layui-form-item">
+                        <label   class="layui-form-label">
+                            <span class="x-red">*</span> 推荐等级
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="link" name="level" required="" lay-verify="required" value=""
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <span class="x-red">*</span>必填
+                        </div>
+                    </div>
+
+
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span> APP名称
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="link" name="app_name" required="" lay-verify="required" value=""
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">
+                                <span class="x-red">*</span>必填
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">APP名称是否显图：</label>
+                            <div class="layui-input-block" style="width: 50px">
+                                <input type="checkbox"  name="app_show" lay-skin="switch" value="1" lay-text="开启|关闭" checked="checked">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span>描述
+                            </label>
+                            <div class="layui-input-inline">
+
+                                <textarea name="desc"    cols="60" rows="5" style="border:1px solid #e6e6e6;padding: 10px">  </textarea>
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">
+
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span> 提现方式
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text"  name="type" required="" lay-verify="required" value=""
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">
+                                <span class="x-red">*</span>必填
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span> 联系方式
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="link" name="contact" required="" lay-verify="required" value=""
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">
+                                <span class="x-red">*</span>必填
+                            </div>
+                        </div>
+
+
+                        <div class="layui-form-item">
+                            <label   class="layui-form-label">
+                                <span class="x-red">*</span> 内页一句话
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="hua" name="hua" required="" lay-verify="required" value=""
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">
+                                <span class="x-red">*</span>必填
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">大图一 </label>
+                            <div class="layui-input-block">
+
+                                <div class="layui-upload" >
+                                    <div id="queue1"></div>
+                                    <button  id="file_upload1" type="button" class="layui-btn" ><i class="layui-icon"></i>上传文件</button>
+                                    <button id="back_out1"  type="button" class="layui-btn layui-btn-danger">撤销上传</button>
+                                    <br><img id="show_img1" height="120px" src=" "  alt="上传的图片" style="display: none ;margin-top: 5px" >
+                                    <input type="hidden" name="thumb1" value="">
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">大图二 </label>
+                            <div class="layui-input-block">
+
+                                <div class="layui-upload" >
+                                    <div id="queue2"></div>
+                                    <button  id="file_upload2" type="button" class="layui-btn" ><i class="layui-icon"></i>上传文件</button>
+                                    <button id="back_out2"  type="button" class="layui-btn layui-btn-danger">撤销上传</button>
+                                    <br><img id="show_img2" height="120px" src=" "  alt="上传的图片" style="display: none ;margin-top: 5px" >
+                                    <input type="hidden" name="thumb2" value="">
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">大图三 </label>
+                            <div class="layui-input-block">
+
+                                <div class="layui-upload" >
+                                    <div id="queue3"></div>
+                                    <button  id="file_upload3" type="button" class="layui-btn" ><i class="layui-icon"></i>上传文件</button>
+                                    <button id="back_out3"  type="button" class="layui-btn layui-btn-danger">撤销上传</button>
+                                    <br><img id="show_img3" height="120px" src=" "  alt="上传的图片" style="display: none ;margin-top: 5px" >
+                                    <input type="hidden" name="thumb3" value="">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                        <label class="layui-form-label">大图四 </label>
+                        <div class="layui-input-block">
+
+                            <div class="layui-upload" >
+                                <div id="queue4"></div>
+                                <button  id="file_upload4" type="button" class="layui-btn" ><i class="layui-icon"></i>上传文件</button>
+                                <button id="back_out4"  type="button" class="layui-btn layui-btn-danger">撤销上传</button>
+                                <br><img id="show_img4" height="120px" src=" "  alt="上传的图片" style="display: none ;margin-top: 5px" >
+                                <input type="hidden" name="thumb4" value="">
+                            </div>
+
+                        </div>
+                    </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">二维码 </label>
+                            <div class="layui-input-block">
+
+                                <div class="layui-upload" >
+                                    <div id="queue"></div>
+                                    <button  id="file_upload" type="button" class="layui-btn" ><i class="layui-icon"></i>上传文件</button>
+                                    <button id="back_out"  type="button" class="layui-btn layui-btn-danger">撤销上传</button>
+                                    <br><img id="show_img" height="120px" src=" "  alt="上传的图片" style="display: none ;margin-top: 5px" >
+                                    <input type="hidden" name="thumb" value="">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">状态：</label>
+                            <div class="layui-input-block" style="width: 50px">
+                                <input type="checkbox"  name="status" lay-skin="switch" value="1" lay-text="开启|关闭" checked="checked">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="layui-tab-item">
+
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+          <div class="layui-form-item">
+              <label   class="layui-form-label">
+              </label>
+              <button id="btn"  type="button" class="layui-btn" lay-filter="add"  >
+                  增加
+              </button>
+          </div>
+      </form>
+    </div>
+
+
+
+    {/block}
+    {block name="js"}
+    {include file="template/publish"}
+
+
+
+    <script type="text/javascript" src="STATIC/vendor/uploadifive/jquery.uploadifive.min.js"></script>
+    <script>
+        $(function() {
+            $('#file_upload').uploadifive({
+                'auto' : true,//是否自动上传
+                //显示文件上传进度的元素id
+                'queueID' : 'queue',
+                //服务器端处理文件上传的文件访问路径
+                'uploadScript' : "{:url('admin/cate/upimg')}",
+                //设定name
+                'fileObjName'      : 'website_logo',
+                //发送方法
+                'method'       : 'post',
+                'height'        : '38',
+                //绑定class
+                'buttonClass'  : 'layui-btn',
+                'buttonText'   : '图片上传',
+                //上传完成之后的回调函数
+                'onUploadComplete' : function(file, data) {
+
+                    //json转成对象
+                    data  = $.parseJSON(data)
+                    if(data){
+                        $("#show_img").show(400);
+                        $("#show_img").attr('src','/public/'+data.website_logo);
+                        $("input[name='thumb']").val(data.website_logo);
+                    }
+
+                }
+            });
+        });
+
+        //图片撤销
+        $("#back_out").on('click',function(){
+            //获取图片路径
+            var path = $("input[name='thumb']").val();
+            $.post("{:url('admin/cate/backOut')}",{'path':path},function (data) {
+                if(data.status == 1){
+                    $("#show_img").hide()
+                }
+            })
+        })
+
+
+        $(function() {
+            $('#file_upload1').uploadifive({
+                'auto' : true,//是否自动上传
+                //显示文件上传进度的元素id
+                'queueID' : 'queue1',
+                //服务器端处理文件上传的文件访问路径
+                'uploadScript' : "{:url('admin/cate/upimg')}",
+                //设定name
+                'fileObjName'      : 'website_logo',
+                //发送方法
+                'method'       : 'post',
+                'height'        : '38',
+                //绑定class
+                'buttonClass'  : 'layui-btn',
+                'buttonText'   : '图片上传',
+                //上传完成之后的回调函数
+                'onUploadComplete' : function(file, data) {
+
+                    //json转成对象
+                    data  = $.parseJSON(data)
+                    if(data){
+                        $("#show_img1").show(400);
+                        $("#show_img1").attr('src','/public/'+data.website_logo);
+                        $("input[name='thumb1']").val(data.website_logo);
+                    }
+
+                }
+            });
+        });
+        //图片撤销
+        $("#back_out1").on('click',function(){
+            //获取图片路径
+            var path = $("input[name='thumb1']").val();
+            $.post("{:url('admin/cate/backOut')}",{'path':path},function (data) {
+                if(data.status == 1){
+                    $("#show_img1").hide()
+                }
+            })
+        })
+
+
+
+        $(function() {
+            $('#file_upload2').uploadifive({
+                'auto' : true,//是否自动上传
+                //显示文件上传进度的元素id
+                'queueID' : 'queue2',
+                //服务器端处理文件上传的文件访问路径
+                'uploadScript' : "{:url('admin/cate/upimg')}",
+                //设定name
+                'fileObjName'      : 'website_logo',
+                //发送方法
+                'method'       : 'post',
+                'height'        : '38',
+                //绑定class
+                'buttonClass'  : 'layui-btn',
+                'buttonText'   : '图片上传',
+                //上传完成之后的回调函数
+                'onUploadComplete' : function(file, data) {
+
+                    //json转成对象
+                    data  = $.parseJSON(data)
+                    if(data){
+                        $("#show_img2").show(400);
+                        $("#show_img2").attr('src','/public/'+data.website_logo);
+                        $("input[name='thumb2']").val(data.website_logo);
+                    }
+
+                }
+            });
+        });
+        //图片撤销
+        $("#back_out2").on('click',function(){
+            //获取图片路径
+            var path = $("input[name='thumb2']").val();
+            $.post("{:url('admin/cate/backOut')}",{'path':path},function (data) {
+                if(data.status == 1){
+                    $("#show_img2").hide()
+                }
+            })
+        })
+
+
+        $(function() {
+            $('#file_upload3').uploadifive({
+                'auto' : true,//是否自动上传
+                //显示文件上传进度的元素id
+                'queueID' : 'queue',
+                //服务器端处理文件上传的文件访问路径
+                'uploadScript' : "{:url('admin/cate/upimg')}",
+                //设定name
+                'fileObjName'      : 'website_logo',
+                //发送方法
+                'method'       : 'post',
+                'height'        : '38',
+                //绑定class
+                'buttonClass'  : 'layui-btn',
+                'buttonText'   : '图片上传',
+                //上传完成之后的回调函数
+                'onUploadComplete' : function(file, data) {
+
+                    //json转成对象
+                    data  = $.parseJSON(data)
+                    if(data){
+                        $("#show_img3").show(400);
+                        $("#show_img3").attr('src','/public/'+data.website_logo);
+                        $("input[name='thumb3']").val(data.website_logo);
+                    }
+
+                }
+            });
+        });
+        //图片撤销
+        $("#back_out3").on('click',function(){
+            //获取图片路径
+            var path = $("input[name='thumb3']").val();
+            $.post("{:url('admin/cate/backOut')}",{'path':path},function (data) {
+                if(data.status == 1){
+                    $("#show_img3").hide()
+                }
+            })
+        })
+
+
+        $(function() {
+            $('#file_upload4').uploadifive({
+                'auto' : true,//是否自动上传
+                //显示文件上传进度的元素id
+                'queueID' : 'queue',
+                //服务器端处理文件上传的文件访问路径
+                'uploadScript' : "{:url('admin/cate/upimg')}",
+                //设定name
+                'fileObjName'      : 'website_logo',
+                //发送方法
+                'method'       : 'post',
+                'height'        : '38',
+                //绑定class
+                'buttonClass'  : 'layui-btn',
+                'buttonText'   : '图片上传',
+                //上传完成之后的回调函数
+                'onUploadComplete' : function(file, data) {
+
+                    //json转成对象
+                    data  = $.parseJSON(data)
+                    if(data){
+                        $("#show_img4").show(400);
+                        $("#show_img4").attr('src','/public/'+data.website_logo);
+                        $("input[name='thumb4']").val(data.website_logo);
+                    }
+
+                }
+            });
+        });
+        //图片撤销
+        $("#back_out4").on('click',function(){
+            //获取图片路径
+            var path = $("input[name='thumb4']").val();
+            $.post("{:url('admin/cate/backOut')}",{'path':path},function (data) {
+                if(data.status == 1){
+                    $("#show_img4").hide()
+                }
+            })
+        })
+
+
+    </script>
+    {/block}

@@ -1,0 +1,95 @@
+<!-- 配置文件 -->
+<script type="text/javascript" src="STATIC/vendor/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="STATIC/vendor/ueditor/ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('container',{
+
+        initialFrameWidth:'100%',
+
+    });
+
+    var ue = UE.getEditor('containers',{
+
+        initialFrameWidth:'100%',
+
+    });
+
+</script>
+
+<script type="text/javascript" src="STATIC/vendor/uploadifive/jquery.uploadifive.min.js"></script>
+<script>
+    $(function() {
+        $('#file_upload').uploadifive({
+            'auto' : true,//是否自动上传
+            //显示文件上传进度的元素id
+            'queueID' : 'queue',
+            //服务器端处理文件上传的文件访问路径
+            'uploadScript' : "{:url('admin/cate/upimg')}",
+            //设定name
+            'fileObjName'      : 'website_logo',
+            //发送方法
+            'method'       : 'post',
+            'height'        : '38',
+            //绑定class
+            'buttonClass'  : 'layui-btn',
+            'buttonText'   : '图片上传',
+            //上传完成之后的回调函数
+            'onUploadComplete' : function(file, data) {
+
+                //json转成对象
+                data  = $.parseJSON(data)
+                if(data){
+                    $("#show_img").show(400);
+                    $("#show_img").attr('src','/public/'+data.website_logo);
+                    $("input[name='thumb']").val(data.website_logo);
+                }
+            }
+        });
+    });
+
+    $(function() {
+        $('#file_uploads').uploadifive({
+            'auto' : true,//是否自动上传
+            //显示文件上传进度的元素id
+            'queueID' : 'queue',
+            //服务器端处理文件上传的文件访问路径
+            'uploadScript' : "{:url('admin/cate/upimg')}",
+            //设定name
+            'fileObjName'      : 'website_logo',
+            //发送方法
+            'method'       : 'post',
+            'height'        : '38',
+            //绑定class
+            'buttonClass'  : 'layui-btn',
+            'buttonText'   : '图片上传',
+            //上传完成之后的回调函数
+            'onUploadComplete' : function(file, data) {
+
+                //json转成对象
+                data  = $.parseJSON(data)
+                if(data){
+                    $("#show_imgs").show(400);
+                    $("#show_imgs").attr('src','/public/'+data.website_logo);
+                    $("input[name='thumb2']").val(data.website_logo);
+                }
+
+            }
+        });
+    });
+
+    //图片撤销
+    $("#back_out").on('click',function(){
+
+        //获取图片路径
+        var path = $("#show_img").attr('src');
+
+        $.post("{:url('admin/cate/backOut')}",{'path':path},function (data) {
+
+            if(data.status == 1){
+                $("#show_img").hide()
+            }
+        })
+    })
+    </script>

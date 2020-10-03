@@ -1,0 +1,70 @@
+﻿{extend name="template/base" /}
+{block name="seo"}
+<title>{$info.title}-{$config['web_name']}</title>
+<meta name="Keywords" content="{$config['description']}"/>
+<meta name="Description" content="{$config['keywords']}"/>
+{/block}
+{block name="link"}
+
+{/block}
+ {block name="content"}
+
+<div class="content">
+    <!--设备展示-->
+    <h2 class="warp_list_h2" id="go3">{$info.title}<span> </span>
+    </h2>
+
+    <div class="detail">
+        {$info.content}
+    </div>
+    <style>
+
+        .detail {
+            color: #70807e;
+            line-height: 26px;
+			overflow: hidden;
+        }
+        .recommend{width: 100%;height: 350px;margin: 50px 0px;display: block}
+        .recommend .rem-item{width: 100%}
+        .recommend dl dd{width: 22%;height:100%;float: left;margin: 0% 1.5%;            overflow: hidden;/*超出部分隐藏*/
+            white-space: nowrap;/*不换行*/
+            text-overflow:ellipsis;/*超出部分文字以...显示*/}
+        /*.recommend dl dd:nth-child(1){margin-left: 0%}*/
+        .recommend .rem-item dd img{    height: 85%; width: 100%; display: block;}
+        .recommend .rem-item dd p{width: 100%;margin-top: 8px; text-align: center}
+
+
+        @media screen and (max-width: 600px) {
+            .recommend dl dd{width: 97%;height:100%;float: left;margin: 2% 1.5%;            overflow: hidden;/*超出部分隐藏*/
+                white-space: nowrap;/*不换行*/
+                text-overflow:ellipsis;/*超出部分文字以...显示*/}
+            .detail {
+                color: #70807e;
+                line-height: 26px
+            }
+        }
+
+    </style>
+    <div class="recommend">
+        <h2 class="warp_list_h2" > 相关推荐</h2>
+        {volist name="related" id="relateds"}
+        <dl class="rem-item">
+            <a href="{:url('/article/'.$relateds['id'])}">
+                <dd>
+                    <img src="PUBLIC{$relateds.thumb}" alt="{$relateds.title}">
+                    <p>{$relateds.title}</p>
+                </dd>
+            </a>
+        </dl>
+        {/volist}
+    </div>
+</div>
+
+<div class="clear"></div>
+{/block}
+<!--底部-->
+{block name="script"}
+
+{/block}
+</body>
+</html>

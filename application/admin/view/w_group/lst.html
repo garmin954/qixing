@@ -1,0 +1,82 @@
+{extend name="template/template" /}
+
+{block name="body"}
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="{:url('admin/cate/lst')}">栏目</a>
+        <a href="{:url('admin/WGroup/lst')}">文章</a>
+        <a>
+          <cite>文章列表</cite></a>
+      </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+  <!--<div class="layui-row">-->
+    <!--<form class="layui-form layui-col-md12 x-so">-->
+      <!--<input class="layui-input" placeholder="开始日" name="start" id="start">-->
+      <!--<input class="layui-input" placeholder="截止日" name="end" id="end">-->
+      <!--<input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">-->
+      <!--<button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>-->
+    <!--</form>-->
+  <!--</div>-->
+  <xblock>
+    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+    <span class="x-right" style="line-height:40px">共有数据：{$nums} 条</span>
+  </xblock>
+  <table class="layui-table">
+    <thead>
+    <tr>
+      <th>
+        <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+      </th>
+      <th>ID</th>
+      <th>姓名</th>
+      <th>联系方式</th>
+      <th>留言(点击留言查看更多)</th>
+      <th>操作</th>
+    </thead>
+    <tbody>
+    {volist name="lists" id="vo"}
+    <tr    >
+      <td >
+        <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+      </td>
+      <td>{$vo.id}</td>
+      <td style="    width: 150px;
+            overflow: hidden;/*超出部分隐藏*/
+            white-space: nowrap;/*不换行*/
+            text-overflow:ellipsis;/*超出部分文字以...显示*/">{$vo.name}</td>
+      <td style="    width: 150px;
+            overflow: hidden;/*超出部分隐藏*/
+            white-space: nowrap;/*不换行*/
+            text-overflow:ellipsis;/*超出部分文字以...显示*/">{$vo.contact}</td>
+      <td onclick="showBox(this)" style="    width: 150px;
+            overflow: hidden;/*超出部分隐藏*/
+            white-space: nowrap;/*不换行*/
+            text-overflow:ellipsis;/*超出部分文字以...显示*/">{$vo.message}</td>
+
+
+      <td class="td-manage">
+
+  <a title="删除" onclick="member_del(this,{$vo.id})" href="javascript:;">
+    <i class="layui-icon">&#xe640;</i>
+  </a>
+
+
+</td>
+</tr>
+{/volist}
+</tbody>
+</table>
+<div class="page">
+{$lists->render()}
+</div>
+
+</div>
+
+{/block}
+{block name="js"}
+{include file="template/layer-js"}
+{include file="template/base"}
+{/block}

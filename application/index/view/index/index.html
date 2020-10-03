@@ -1,0 +1,953 @@
+{extend name="template/base" /}
+
+
+{block name="content"}
+<style>
+    #contain{
+        margin-bottom: 50px!important;
+    }
+    .tab .bd .model p,.tab .hd .item.current .icon {
+        background: orange;
+    }
+    .tab .hd .item .num{color:orange }
+</style>
+<div id='content' style='width:1200px;height:4184px;background:transparent;margin:0px auto'>
+
+    <!-- 文字广告（静态） -->
+
+    <div id='pdv_6747' class='pdv_class' title='广告位' style='width:1200px;height:65px;top:47px;left:0px; z-index:10'>
+        <div id='spdv_6747' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border">
+                <div class="fadeInUp">
+                    <div class="fadeInUp">免费留学规划</div>
+                    <span class="s-line" style="margin-bottom: 20px;color: #d29f08"></span></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 图片轮播(S1) -->
+
+    <div id='pdv_6749' class='pdv_class' title='留学国家选择'
+         style='width:1200px;height:215px;top:124px;left:0px; z-index:11'>
+        <div id='spdv_6749' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border">
+
+                <div class="overseas_right">
+
+
+                    <div class="terBoxhj2017">
+                        <div class="OnterBox1"><img src="STATIC/images/留学国家选择1.jpg" height="193" width="291"></div>
+                        <div class="OnterBox2"><img src="STATIC/picture/csbg.png" height="193" width="291"></div>
+                        <div class="picimg"><img src="STATIC/picture/1500977780_s.png" height="60" width="61"></div>
+                        <div class="biaoticx1">留学国家选择</div>
+                        <div class="biaoticx2">留学国家选择</div>
+                        <div class="yinwd">试试看您更适合哪些国家？</div>
+                        <div class="xiaohx"></div>
+                        <div class="txtbut"><a href="http://" target="_blank" class="tit">立刻体验</a></div>
+                    </div>
+
+                    <div class="terBoxhj2017">
+                        <div class="OnterBox1"><img src="STATIC/images/学历提升咨询1.jpg" height="193" width="291"></div>
+                        <div class="OnterBox2"><img src="STATIC/picture/csbg.png" height="193" width="291"></div>
+                        <div class="picimg"><img src="STATIC/picture/1500977823_s.png" height="60" width="61"></div>
+                        <div class="biaoticx1">学历提升咨询</div>
+                        <div class="biaoticx2">学历提升咨询</div>
+                        <div class="yinwd">试试看您更适合什么学历？</div>
+                        <div class="xiaohx"></div>
+                        <div class="txtbut"><a href="http://" target="_blank" class="tit">立刻体验</a></div>
+                    </div>
+
+                    <div class="terBoxhj2017">
+                        <div class="OnterBox1"><img src="STATIC/images/申请学校评估1.jpg" height="193" width="291"></div>
+                        <div class="OnterBox2"><img src="STATIC/picture/csbg.png" height="193" width="291"></div>
+                        <div class="picimg"><img src="STATIC/picture/1500977889_s.png" height="60" width="61"></div>
+                        <div class="biaoticx1">申请院校评估</div>
+                        <div class="biaoticx2">申请院校评估</div>
+                        <div class="yinwd">专家帮您评估适合申请哪些学校？</div>
+                        <div class="xiaohx"></div>
+                        <div class="txtbut"><a href="http://" target="_blank" class="tit">立刻体验</a></div>
+                    </div>
+
+                    <div class="terBoxhj2017" style='margin-right: 0'>
+                        <div class="OnterBox1"><img src="STATIC/images/留学生活指南1.jpg" height="193" width="291"></div>
+                        <div class="OnterBox2"><img src="STATIC/picture/csbg.png" height="193" width="291"></div>
+                        <div class="picimg"><img src="STATIC/picture/1500977931_s.png" height="60" width="61"></div>
+                        <div class="biaoticx1">留学生活指南</div>
+                        <div class="biaoticx2">留学生活指南</div>
+                        <div class="yinwd">专家帮您评估目标院校是否合适？</div>
+                        <div class="xiaohx"></div>
+                        <div class="txtbut"><a href="http://" target="_blank" class="tit">立刻体验</a></div>
+                    </div>
+
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('.terBoxhj2017').hover(function () {
+                            $(this).children('.OnterBox1').hide();
+                            $(this).children('.OnterBox2').show();
+                            $(this).children('.picimg').animate({top: '-220%'}, 500);
+
+                            $(this).children('.biaoticx1').stop(true).animate({bottom: '-240%'}, 500)
+                            $(this).children('.biaoticx2').stop(true).animate({top: '15%'}, 500);
+
+                            $(this).children('.yinwd').stop(true).animate({left: '0'}, 800);
+                            $(this).children('.xiaohx').stop(true).animate({left: '43%'}, 800);
+
+                            $(this).children('.txtbut').stop(true).animate({bottom: '12%'}, 1000);
+
+                        }, function () {
+                            $(this).children('.OnterBox1').show();
+                            $(this).children('.OnterBox2').hide();
+                            $(this).children('.picimg').stop(true).animate({top: '22%'}, 500);
+
+                            $(this).children('.biaoticx1').stop(true).animate({bottom: '24%'}, 800);
+                            $(this).children('.biaoticx2').stop(true).animate({top: '-150%'}, 300);
+
+                            $(this).children('.yinwd').stop(true).animate({left: '-100%'}, 300);
+                            $(this).children('.xiaohx').stop(true).animate({left: '-100%'}, 300);
+
+                            $(this).children('.txtbut').stop(true).animate({bottom: '-120%'}, 300);
+                        });
+                    })
+                </script>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 文字广告（静态） -->
+
+    <div id='pdv_6750' class='pdv_class' title='广告位'
+         style='width:1200px;height:73px;top:381px;left:0px; z-index:13'>
+        <div id='spdv_6750' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border">
+                <div class="fadeInUp">
+                    <div class="fadeInUp">一次信任，全程保障</div>
+                    <span class="s-line" style="margin-bottom: 20px;"></span></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 自定义模版 -->
+
+    <div id='pdv_6751' class='pdv_class' title='自定模版'
+         style='width:1200px;height:318px;top:474px;left:0px; z-index:14'>
+        <div id='spdv_6751' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border">
+                <div class="colxsy">
+
+                    <div class="tab">
+                        <!--<h2 class="h2tit">一站式服务，留学有保障</h2>-->
+                        <!--<div class="line"></div>-->
+                        <div class="hd">
+                            <div class="item">
+                                <div class="num">1</div>
+                                <div class="icon">
+                                    <img src="STATIC/images/icon1.png" alt="" />
+                                    <div class="tit">咨询规划</div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="num">2</div>
+                                <div class="icon">
+                                    <img src="STATIC/images/icon2.png" alt="" />
+                                    <div class="tit">院校申请</div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="num">3</div>
+                                <div class="icon">
+                                    <img src="STATIC/images/icon3.png" alt="" />
+                                    <div class="tit">行前服务</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bd">
+                            <div class="model">
+                                <p>
+                                    免费留学背景评估
+                                </p>
+                                <p>
+                                    意向院校申请盘点
+                                </p>
+                                <p>
+                                    成功案例展示介绍
+                                </p>
+                                <p>
+                                    留学国家优势比较
+                                </p>
+                            </div>
+                            <div class="model">
+                                <p>
+                                    个性化定制留学方案
+                                </p>
+                                <p>
+                                    三对一服务模式
+                                </p>
+                                <p>
+                                    细节服务，全程全时
+                                </p>
+                                <p>
+                                    在线随时查询服务
+                                </p>
+                            </div>
+                            <div class="model">
+                                <p>
+                                    学生签证辅导服务
+                                </p>
+                                <p>
+                                    学生签证代办服务
+                                </p>
+                                <p>
+                                    留学地衣食住行盘点
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+
+
+                        $('.tab .hd .item').eq(0).addClass('current');
+                        $('.tab .bd .model').hide()
+                        $('.tab .bd .model').eq(0).show()
+                        $('.tab .hd .item').hover(function(){
+                            var thisa=$('.tab .hd .item').index(this);
+                            $('.tab .hd .item').removeClass('current');
+                            $(this).addClass('current');
+                            $('.tab .bd .model').not($('.tab .bd .model').eq(thisa)).hide();
+                            $('.tab .bd .model').eq(thisa).stop();
+                            $('.tab .bd .model').eq(thisa).fadeIn(100)
+                        })
+
+
+                    </script>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 文字广告（静态） -->
+
+    <div id='pdv_6752' class='pdv_class' title='广告位'
+         style='width:1200px;height:73px;top:861px;left:0px; z-index:15'>
+        <div id='spdv_6752' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border">
+                <div class="fadeInUp">
+                    <div class="fadeInUp">助力留学梦-我们的优势</div>
+                    <span class="s-line" style="margin-bottom: 20px;"></span></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 图片轮播(S1) -->
+
+    <div id='pdv_6754' class='pdv_class' title='留学国家选择'
+         style='width:1200px;height:316px;top:948px;left:22px; z-index:16'>
+        <div id='spdv_6754' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border">
+
+                <div class="colxsy">
+                    <ul class="defaInUp">
+
+                        <li>
+                            <div class="name-co" style="background: url(STATIC/images/三对一模式.png) no-repeat;"></div>
+                            <div class="conone">
+                                <h3>三对一</h3>
+                                <p>留学/移民管家、留学/移民顾问<br/>文书老师，三方共同服务于一位客户。
+                                </p>
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <div class="name-co" style="background: url(STATIC/images/专业顾问团队.png) no-repeat;"></div>
+                            <div class="conone">
+                                <h3>专业顾问团队</h3>
+                                <p>国内外名牌大学顾问团队，<br/>硕博背景顾问占比团队90%以上。
+                                </p>
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <div class="name-co" style="background: url(STATIC/images/实时查询服务.png) no-repeat;"></div>
+                            <div class="conone">
+                                <h3>实时查询服务</h3>
+                                <p>登录官网/微信公众号，<br/>即可实时查询留学/移民申请进度。
+                                </p>
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <div class="name-co" style="background: url(STATIC/images/二分之一中介费.png) no-repeat;"></div>
+                            <div class="conone">
+                                <h3>1/2线下中介费</h3>
+                                <p>优惠的服务费用，<br/>仅为线下传统中介的50%。
+                                </p>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 文字广告（静态） -->
+
+    <div id='pdv_6756' class='pdv_class' title='广告位'
+         style='width:1200px;height:73px;top:1348px;left:0px; z-index:17'>
+        <div id='spdv_6756' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border">
+                <div class="fadeInUp">
+                    <div class="fadeInUp">精选留学产品</div>
+                    <span class="s-line" style="margin-bottom: 20px;"></span></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 图片轮播广告 -->
+
+    <!--<div id='pdv_6757' class='pdv_class' title='轮播广告'-->
+    <!--style='width:602px;height:392px;top:1437px;left:0px; z-index:18'>-->
+    <!--<div id='spdv_6757' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>-->
+    <!--<div class="pdv_border" style="margin:0;padding:0;height:100%;border:1px #ddd solid;background:;">-->
+    <!--<div style="height:25px;margin:1px;display:none;background:;">-->
+    <!--<div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;color:">-->
+    <!--轮播广告-->
+    <!--</div>-->
+    <!--<div style="float:right;margin-right:10px;display:none">-->
+    <!--<a href="-1" style="line-height:25px;color:">更多</a>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div style="padding:0px">-->
+
+    <!--<link href="STATIC/css/advslb.css" rel="stylesheet" type="text/css"/>-->
+    <!--<script type=text/javascript src="STATIC/js/yu200712201.js"></script>-->
+    <!--<script type=text/javascript src="STATIC/js/yu200712202.js"></script>-->
+    <!--<div id='MainPromotionBanner'>-->
+    <!--<div id='SlidePlayer'>-->
+    <!--<ul class='Slides'>-->
+
+    <!--<li>-->
+    <!--<a target='_blank' href='http://'><img src='picture/1500993601.jpg'></a>-->
+    <!--</li>-->
+
+    <!--<li>-->
+    <!--<a target='_blank' href='http://'><img src='picture/1500993721.jpg'></a>-->
+    <!--</li>-->
+
+    <!--<li>-->
+    <!--<a target='_blank' href='http://'><img src='picture/1500993746.png'></a>-->
+    <!--</li>-->
+
+    <!--<li>-->
+    <!--<a target='_blank' href='http://'><img src='picture/1500993761.jpg'></a>-->
+    <!--</li>-->
+
+    <!--</ul>-->
+    <!--</div>-->
+    <!--<script type='text/javascript'>-->
+    <!--TB.widget.SimpleSlide.decoration('SlidePlayer', {eventType: 'mouse', effect: 'scroll'});-->
+    <!--</script>-->
+
+    <!--</div>-->
+
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--</div>-->
+    <!--</div>-->
+
+    <!-- 自选商品列表 -->
+
+    <div id='pdv_6758' class='pdv_class' title='最新商品'
+         style='width:100%;height:520px;top:1436px;left:16px; z-index:19'>
+        <div id='spdv_6758' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border">
+
+                <link href="STATIC/css/shoplist_5.css" rel="stylesheet" type="text/css"/>
+                <script type=text/javascript src="STATIC/js/cart.js"></script>
+
+                <div class="shoplist_5">
+                    <div class="fang" style="width:205px;height:205px">
+                        <div class="picFit" style="width:205px;height:205px">
+                            <a href="https://item.taobao.com/item.htm?id=597851479727" target="_self">
+                                <img src="STATIC/images/goods1.jpg"  style="width:165px;height:165px" border="0"/>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="javascript:;" target="_self" class="prodtitle">
+                        英国澳洲新西兰香港留学访问学者申请咨询服务
+                        <!--<span class="price">￥4,999.00</span>-->
+                    </a>
+                </div>
+                <div class="shoplist_5">
+                    <div class="fang" style="width:205px;height:205px">
+                        <div class="picFit" style="width:205px;height:205px">
+                            <a href="https://item.taobao.com/item.htm?id=597480501578" target="_self">
+                                <img src="STATIC/images/goods2.jpg"  style="width:165px;height:165px" border="0"/>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="javascript:;" target="_self" class="prodtitle">
+                        欧洲法国瑞士比利时芬兰荷兰瑞典留学访问学者申请咨询服务
+                        <!--<span class="price">￥4,999.00</span>-->
+                    </a>
+                </div>
+                <div class="shoplist_5">
+                    <div class="fang" style="width:205px;height:205px">
+                        <div class="picFit" style="width:205px;height:205px">
+                            <a href="https://item.taobao.com/item.htm?id=597645902538" target="_self">
+                                <img src="STATIC/images/goods3.jpg"  style="width:165px;height:165px" border="0"/>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="javascript:;" target="_self" class="prodtitle">
+                        美国留学申请咨询服务
+                        <!--<span class="price">￥4,999.00</span>-->
+                    </a>
+                </div>
+                <div class="shoplist_5">
+                    <div class="fang" style="width:205px;height:205px">
+                        <div class="picFit" style="width:205px;height:205px">
+                            <a href="https://item.taobao.com/item.htm?id=597852275382" target="_self">
+                                <img src="STATIC/images/goods4.jpg"  style="width:165px;height:165px" border="0"/>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="javascript:;" target="_self" class="prodtitle">
+                        加拿大留学访问学者申请咨询服务
+                        <!--<span class="price">￥4,999.00</span>-->
+                    </a>
+                </div>
+                <div class="shoplist_5">
+                    <div class="fang" style="width:205px;height:205px">
+                        <div class="picFit" style="width:205px;height:205px">
+                            <a href="https://item.taobao.com/item.htm?id=597580421494" target="_self">
+                                <img src="STATIC/images/goods5.jpg"  style="width:165px;height:165px" border="0"/>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="javascript:;" target="_self" class="prodtitle">
+                        马耳他国债永居移民咨询服务
+                        <!--<span class="price">￥4,999.00</span>-->
+                    </a>
+                </div>
+                <div class="shoplist_5">
+                    <div class="fang" style="width:205px;height:205px">
+                        <div class="picFit" style="width:205px;height:205px">
+                            <a href="https://item.taobao.com/item.htm?id=610932014089" target="_self">
+                                <img src="STATIC/images/goods6.jpg"  style="width:165px;height:165px" border="0"/>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="javascript:;" target="_self" class="prodtitle">
+                        美国英国加拿大香港澳洲新西兰欧洲留学申请规划访问学者咨询服务
+                        <!--<span class="price">￥4,999.00</span>-->
+                    </a>
+                </div>
+                <div class="shoplist_5">
+                    <div class="fang" style="width:205px;height:205px">
+                        <div class="picFit" style="width:205px;height:205px">
+                            <a href="https://item.taobao.com/item.htm?id=626646253769" target="_self">
+                                <img src="STATIC/images/goods7.jpg"  style="width:165px;height:165px" border="0"/>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="javascript:;" target="_self" class="prodtitle">
+                        美国英国加拿大香港澳洲新西兰马耳他移民申请签证咨询
+                        <!--<span class="price">￥4,999.00</span>-->
+                    </a>
+                </div>
+                <div class="shoplist_5">
+                    <div class="fang" style="width:205px;height:205px">
+                        <div class="picFit" style="width:205px;height:205px">
+                            <a href="https://item.taobao.com/item.htm?id=599153944043" target="_self">
+                                <img src="STATIC/images/goods8.jpg"  style="width:165px;height:165px" border="0"/>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="javascript:;" target="_self" class="prodtitle">
+                        留学文书写作创作修改翻译英国香港美国澳新法国瑞士比利时
+                        <!--<span class="price">￥4,999.00</span>-->
+                    </a>
+                </div>
+                <div class="shoplist_5">
+                    <div class="fang" style="width:205px;height:205px">
+                        <div class="picFit" style="width:205px;height:205px">
+                            <a href="https://item.taobao.com/item.htm?id=610448964298" target="_self">
+                                <img src="STATIC/images/goods9.jpg"  style="width:165px;height:165px" border="0"/>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="javascript:;" target="_self" class="prodtitle">
+                        欧洲美国加拿大香港奖学金申请规划
+                        <!--<span class="price">￥4,999.00</span>-->
+                    </a>
+                </div>
+                <div class="shoplist_5">
+                    <div class="fang" style="width:205px;height:205px">
+                        <div class="picFit" style="width:205px;height:205px">
+                            <a href="https://item.taobao.com/item.htm?id=599563976509" target="_self">
+                                <img src="STATIC/images/goods10.jpg"  style="width:165px;height:165px" border="0"/>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="javascript:;" target="_self" class="prodtitle">
+                        马耳他移民咨询国债融资
+                        <!--<span class="price">￥4,999.00</span>-->
+                    </a>
+                </div>
+
+
+                <script>
+                    $(function () {
+                        $().picFit("fill");
+                    });
+                </script>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 文章图片+标题 -->
+
+    <div id='pdv_6762' class='pdv_class' title='图片新闻'
+         style='width:1200px;height:452px;top:2110px;left:0px; z-index:20;background: white;'>
+        <div id='spdv_6762' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border">
+
+                <div class="result-content">
+
+                    <ul class="list-unstyled">
+
+                        <li class="clearfix case-li">
+                            <div class="case-student-name">
+                                <span>张YQ</span>
+                            </div>
+                            <div class="student-name">
+                                <div>伦敦大学学院（ULC）</div>
+                                <p class="project-name"><span>录取专业: 计算机工程    硕士</span></p>
+                                <p><span>院校背景：东华大学</span></p>
+                                <p><span>均分：87</span></p>
+                                <p><span>雅思：6.5</span></p>
+                            </div>
+                            <div class="button-name">
+                                <span class="live800 meiqia yuyue button-name-wangxun">详细了解方案</span>
+                                <span class="button-name-form"><a href="#" class="rate-btn" data-toggle="modal" data-target="#acceptanceRate" data-school="普瑞特艺术学院">测试录取率</a></span>
+                            </div>
+                            <a href="###df2c3837-9fb4-4ac1-b9fb-bfdbd980d7d0.html" target="_blank" class="list-box" title="Pratt设计本科录取"></a>
+                        </li>
+                        <li class="clearfix case-li">
+                            <div class="case-student-name">
+                                <span>金C</span>
+                            </div>
+                            <div class="student-name">
+                                <div>曼彻斯特大学</div>
+                                <p class="project-name"><span>录取专业:商科硕士</span></p>
+                                <p><span>院校背景：上海大学</span></p>
+                                <p><span>均分：87</span></p>
+                                <p><span>雅思：6.5</span></p>
+                            </div>
+                            <div class="button-name">
+                                <span class="live800 meiqia yuyue button-name-wangxun">详细了解方案</span>
+                                <span class="button-name-form"><a href="#" class="rate-btn" data-toggle="modal" data-target="#acceptanceRate" data-school="普瑞特艺术学院">测试录取率</a></span>
+                            </div>
+                            <a href="###df2c3837-9fb4-4ac1-b9fb-bfdbd980d7d0.html" target="_blank" class="list-box" title="Pratt设计本科录取"></a>
+                        </li>
+                        <li class="clearfix case-li">
+                            <div class="case-student-name">
+                                <span>顾YZ</span>
+                            </div>
+                            <div class="student-name">
+                                <div>南加州大学</div>
+                                <p class="project-name"><span>录取专业: 商科本科</span></p>
+                                <p><span>院校背景：普通高中</span></p>
+                                <p><span>均分：92</span></p>
+                                <p><span>SAT：1450+</span></p>
+                            </div>
+                            <div class="button-name">
+                                <span class="live800 meiqia yuyue button-name-wangxun">详细了解方案</span>
+                                <span class="button-name-form"><a href="#" class="rate-btn" data-toggle="modal" data-target="#acceptanceRate" data-school="普瑞特艺术学院">测试录取率</a></span>
+                            </div>
+                            <a href="###df2c3837-9fb4-4ac1-b9fb-bfdbd980d7d0.html" target="_blank" class="list-box" title="Pratt设计本科录取"></a>
+                        </li>
+                        <li class="clearfix case-li">
+                            <div class="case-student-name">
+                                <span>史RM</span>
+                            </div>
+                            <div class="student-name">
+                                <div>弗罗里达大学</div>
+                                <p class="project-name"><span>录取专业: 海洋科学硕士</span></p>
+                                <p><span>院校背景：厦门大学</span></p>
+                                <p><span>均分：83</span></p>
+                                <p><span>GRE: 328</span></p>
+                            </div>
+                            <div class="button-name">
+                                <span class="live800 meiqia yuyue button-name-wangxun">详细了解方案</span>
+                                <span class="button-name-form"><a href="#" class="rate-btn" data-toggle="modal" data-target="#acceptanceRate" data-school="普瑞特艺术学院">测试录取率</a></span>
+                            </div>
+                            <a href="###df2c3837-9fb4-4ac1-b9fb-bfdbd980d7d0.html" target="_blank" class="list-box" title="Pratt设计本科录取"></a>
+                        </li>
+                        <li class="clearfix case-li">
+                            <div class="case-student-name">
+                                <span>周LF</span>
+                            </div>
+                            <div class="student-name">
+                                <div>奥克兰大学</div>
+                                <p class="project-name"><span>录取专业: 教育学学士</span></p>
+                                <p><span>院校背景：国际高中</span></p>
+                                <p><span>均分：84</span></p>
+                                <p><span>雅思：7</span></p>
+                            </div>
+                            <div class="button-name">
+                                <span class="live800 meiqia yuyue button-name-wangxun">详细了解方案</span>
+                                <span class="button-name-form"><a href="#" class="rate-btn" data-toggle="modal" data-target="#acceptanceRate" data-school="普瑞特艺术学院">测试录取率</a></span>
+                            </div>
+                            <a href="###df2c3837-9fb4-4ac1-b9fb-bfdbd980d7d0.html" target="_blank" class="list-box" title="Pratt设计本科录取"></a>
+                        </li>
+                        <li class="clearfix case-li">
+                            <div class="case-student-name">
+                                <span>杨JH</span>
+                            </div>
+                            <div class="student-name">
+                                <div>悉尼大学</div>
+                                <p class="project-name"><span>录取专业:经济学硕士</span></p>
+                                <p><span>院校背景：浙江大学宁波理工学院</span></p>
+                                <p><span>均分：84</span></p>
+                                <p><span>雅思：6.5</span></p>
+                            </div>
+                            <div class="button-name">
+                                <span class="live800 meiqia yuyue button-name-wangxun">详细了解方案</span>
+                                <span class="button-name-form"><a href="#" class="rate-btn" data-toggle="modal" data-target="#acceptanceRate" data-school="普瑞特艺术学院">测试录取率</a></span>
+                            </div>
+                            <a href="###df2c3837-9fb4-4ac1-b9fb-bfdbd980d7d0.html" target="_blank" class="list-box" title="Pratt设计本科录取"></a>
+                        </li>
+                        <li class="clearfix case-li">
+                            <div class="case-student-name">
+                                <span>耿Y</span>
+                            </div>
+                            <div class="student-name">
+                                <div>香港中文大学</div>
+                                <p class="project-name"><span>录取专业: 金融硕士</span></p>
+                                <p><span>院校背景：湖南大学</span></p>
+                                <p><span>均分：83</span></p>
+                                <p><span>雅思：7</span></p>
+                            </div>
+                            <div class="button-name">
+                                <span class="live800 meiqia yuyue button-name-wangxun">详细了解方案</span>
+                                <span class="button-name-form"><a href="#" class="rate-btn" data-toggle="modal" data-target="#acceptanceRate" data-school="普瑞特艺术学院">测试录取率</a></span>
+                            </div>
+                            <a href="###df2c3837-9fb4-4ac1-b9fb-bfdbd980d7d0.html" target="_blank" class="list-box" title="Pratt设计本科录取"></a>
+                        </li>
+                        <li class="clearfix case-li">
+                            <div class="case-student-name">
+                                <span>张X</span>
+                            </div>
+                            <div class="student-name">
+                                <div>香港大学</div>
+                                <p class="project-name"><span>录取专业: 机械工程硕士</span></p>
+                                <p><span>院校背景：苏州大学</span></p>
+                                <p><span>均分：90</span></p>
+                                <p><span>雅思：6.5</span></p>
+                            </div>
+                            <div class="button-name">
+                                <span class="live800 meiqia yuyue button-name-wangxun">详细了解方案</span>
+                                <span class="button-name-form"><a href="#" class="rate-btn" data-toggle="modal" data-target="#acceptanceRate" data-school="普瑞特艺术学院">测试录取率</a></span>
+                            </div>
+                            <a href="###df2c3837-9fb4-4ac1-b9fb-bfdbd980d7d0.html" target="_blank" class="list-box" title="Pratt设计本科录取"></a>
+                        </li>
+                        <li class="clearfix case-li">
+                            <div class="case-student-name">
+                                <span>杨ZH</span>
+                            </div>
+                            <div class="student-name">
+                                <div>鲁汶大学</div>
+                                <p class="project-name"><span>录取专业: 精算和财务工程硕士</span></p>
+                                <p><span>院校背景：宁波大学</span></p>
+                                <p><span>GPA: 82</span></p>
+                                <p><span>GMAT: 650+</span></p>
+                            </div>
+                            <div class="button-name">
+                                <span class="live800 meiqia yuyue button-name-wangxun">详细了解方案</span>
+                                <span class="button-name-form"><a href="#" class="rate-btn" data-toggle="modal" data-target="#acceptanceRate" data-school="普瑞特艺术学院">测试录取率</a></span>
+                            </div>
+                            <a href="###df2c3837-9fb4-4ac1-b9fb-bfdbd980d7d0.html" target="_blank" class="list-box" title="Pratt设计本科录取"></a>
+                        </li>
+                        <li class="clearfix case-li">
+                            <div class="case-student-name">
+                                <span>施RN</span>
+                            </div>
+                            <div class="student-name">
+                                <div>代尔夫特理工大学</div>
+                                <p class="project-name"><span>录取专业: 船舶与海洋工程</span></p>
+                                <p><span>院校背景：中国海洋大学</span></p>
+                                <p><span>均分：78</span></p>
+                                <p><span>雅思：7</span></p>
+                            </div>
+                            <div class="button-name">
+                                <span class="live800 meiqia yuyue button-name-wangxun">详细了解方案</span>
+                                <span class="button-name-form"><a href="#" class="rate-btn" data-toggle="modal" data-target="#acceptanceRate" data-school="普瑞特艺术学院">测试录取率</a></span>
+                            </div>
+                            <a href="###df2c3837-9fb4-4ac1-b9fb-bfdbd980d7d0.html" target="_blank" class="list-box" title="Pratt设计本科录取"></a>
+                        </li>
+
+
+
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 文字广告（静态） -->
+
+    <div id='pdv_6759' class='pdv_class' title='广告位'
+         style='width:1200px;height:73px;top:2020px;left:0px; z-index:21'>
+        <div id='spdv_6759' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border">
+                <div class="fadeInUp">
+                    <div class="fadeInUp">实现留学梦-成功案例</div>
+                    <span class="s-line" style="margin-bottom: 20px;"></span></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 文字广告（静态） -->
+
+    <div id='pdv_6764' class='pdv_class' title='广告位'
+         style='width:1200px;height:73px;top:2645px;left:0px; z-index:22'>
+        <div id='spdv_6764' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border">
+                <div class="fadeInUp">
+                    <div class="fadeInUp">信息汇-留学院校</div>
+                    <span class="s-line" style="margin-bottom: 20px;"></span></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 文章图片+标题 -->
+
+    <div id='pdv_6766' class='pdv_class' title='留学院校'
+         style='width:884px;height:604px;top:2639px;left:0px; z-index:23'>
+        <div id='spdv_6766' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border" style="margin:0px;height:100%">
+                <div style="height:42px;border-bottom:1px #ddd solid;">
+                    <div style="float:left;color:#FF8000;text-align:left;font:24px/42px 'microsoft yahei',Verdana, Arial;">
+                        留学院校
+                    </div>
+                    <div style="float:right;margin-right:8px">
+                        <a href="{:url('/collage')}"
+                           style="font:14px/42px 'microsoft yahei',Verdana, Arial;display:inline">更多>></a>
+                    </div>
+                </div>
+                <div style="padding:0px">
+
+                    <div class="dxlist">
+                        <ul>
+
+                            {volist name="schoolList" id='school_list'}
+                            <li>
+                                <div class="toplist">
+                                    <a href="{:url('/cinfo?id='.$school_list['id'])}" target="_blank" title="{$school_list['title']}">
+                                        <img src="PUBLIC{$school_list['thumb']}" alt="{$school_list['title']}">
+                                    </a>
+                                </div>
+                                <div class="xinxila">
+                                    <h3><a href="{:url('/cinfo?id='.$school_list['id'])}" target="_blank" class="xxmingc" title="{$school_list['title']}">{$school_list['title']}</a>
+                                    </h3>
+                                    <p class="ywmingc">{$school_list['sort_title']}</p>
+
+                                    <?php
+                                         preg_match("/<p>(.*?)<\/p>/", $school_list['sort_desc'], $str);
+                                    echo $str[0];
+                                    ?>
+
+                                </div>
+                            </li>
+                            {/volist}
+
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 顶部菜单(一级) -->
+
+    <div id='pdv_6768' class='pdv_class' style='width:298px;height:218px;top:2089px;left:902px; z-index:25'>
+        <div id='spdv_6768' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border" style="margin:0px;height:100%">
+                <div style="height:42px;border-bottom:1px #ddd solid;">
+                    <div style="float:left;color:#FF8000;text-align:left;font:24px/42px 'microsoft yahei',Verdana, Arial;">
+                        热门国家
+                    </div>
+                    <div style="float:right;margin-right:8px">
+                        <a href="-1"
+                           style="font:14px/42px 'microsoft yahei',Verdana, Arial;display:none">更多>></a>
+                    </div>
+                </div>
+                <div style="padding:0px">
+
+                    <div class="gjrm">
+                        <ul>
+                            {volist name='tagList' id='tag'}
+                            <li>
+                            <a target="_blank" href="{:url('/collage/'.$tag['id'])}">{$tag.title} </a></li>
+                            {/volist}
+<!--                            {volist name="country" id= "countrys"}-->
+<!--                            {if $countrys.country}-->
+<!--                            <li class="">-->
+<!--                                <a target="_blank" href="{$countrys.link}" target="_self">{$countrys.country}</a>-->
+<!--                            </li>-->
+<!--                            {/if}-->
+<!--                            {/volist}-->
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 文字广告（静态） -->
+
+    <div id='pdv_6769' class='pdv_class' title='广告位'
+         style='width:1200px;height:61px;top:3319px;left:0px; z-index:26'>
+        <div id='spdv_6769' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border">
+                <div class="fadeInUp">
+                    <div class="fadeInUp">信息汇-留学资讯</div>
+                    <span class="s-line" style="margin-bottom: 20px;"></span></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 文章列表 -->
+
+    <div id='pdv_6770' class='pdv_class' title='留学资讯'
+         style='width:800px;height:514px;top:3390px;left:0px; z-index:27'>
+        <div id='spdv_6770' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border" style="margin:0px;height:100%">
+                <div style="height:42px;border-bottom:1px #ddd solid;">
+                    <div style="float:left;color:#FF8000;text-align:left;font:24px/42px 'microsoft yahei',Verdana, Arial;">
+                        留学资讯
+                    </div>
+                    <div style="float:right;margin-right:8px">
+                        <a href="{:url('/advisory')}"
+                           style="font:14px/42px 'microsoft yahei',Verdana, Arial;display:inline">更多>></a>
+                    </div>
+                </div>
+                <div style="padding:0px">
+
+                    <div class="mainzx">
+
+                        {volist name="advisoryList" id='adv_list'}
+                        {if $i <= 3}
+                        <div class="zxlist showbf">
+                            <a target="_blank" href="{:url('/cinfo?id='.$adv_list['id'])}">
+                                <img src="PUBLIC{$adv_list['thumb']}" alt="{$adv_list.title}" title="{$adv_list.title}"></a>
+                            <h3><a title="{$adv_list.title}" target="_blank"
+                                   href="{:url('/cinfo?id='.$adv_list['id'])}">{$adv_list.title}</a></h3>
+                            <p>{$adv_list.desc}</p>
+                            <span><br/>{$adv_list.add_time|date="Y-m-d",###}</span>
+                        </div>
+                        {/if}
+                        {/volist}
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 页内图片广告 -->
+
+    <div id='pdv_6772' class='pdv_class' title='广告位'
+         style='width:373px;height:207px;top:3390px;left:827px; z-index:28'>
+        <div id='spdv_6772' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border">
+
+
+                <a href="http://"><img src="STATIC/picture/1501055942.jpg" border="0" width="100%"/></a>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 文章列表 -->
+
+    <div id='pdv_6773' class='pdv_class' title='留学资讯'
+         style='width:373px;height:292px;top:3605px;left:827px; z-index:29'>
+        <div id='spdv_6773' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border" style="margin:0px;height:100%">
+                <div style="height:42px;border-bottom:1px #ddd solid;">
+                    <div style="float:left;color:#FF8000;text-align:left;font:24px/42px 'microsoft yahei',Verdana, Arial;">
+                        留学资讯
+                    </div>
+                    <div style="float:right;margin-right:8px">
+                        <a href="{:url('/advisory')}"
+                           style="font:14px/42px 'microsoft yahei',Verdana, Arial;display:inline">更多>></a>
+                    </div>
+                </div>
+                <div style="padding:0px">
+
+                    <link href="STATIC/css/newslist_1.css" rel="stylesheet" type="text/css"/>
+                    <ul class="newslist_1">
+
+                        {volist name="advisoryList" id='adv_list'}
+                        <li class="newslist_1">
+                            <a href="{:url('/cinfo?id='.$adv_list['id'])}" target="_self" class="newslist_1">{$adv_list.title}</a>
+                        </li>
+                        {/volist}
+
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+{/block}
+<!--底部-->
+
+{block name="script"}
+
+{/block}
+</body>
+</html>

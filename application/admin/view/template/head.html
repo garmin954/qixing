@@ -1,0 +1,48 @@
+   
+
+    
+    <div class="container">
+        <div class="logo"><a href="./index.html">YuanLu</a></div>
+        <div class="left_open">
+            <i title="展开左侧栏" class="iconfont">&#xe667;</i>
+        </div>
+        <ul class="layui-nav left fast-add" lay-filter="">
+
+          <!--<li class="layui-nav-item">-->
+            <!--<a href="javascript:;">+新增</a>-->
+            <!--<dl class="layui-nav-child"> &lt;!&ndash; 二级菜单 &ndash;&gt;-->
+              <!--<dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>资讯</a></dd>-->
+              <!--<dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>图片</a></dd>-->
+               <!--<dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>用户</a></dd>-->
+            <!--</dl>-->
+          <!--</li>-->
+            {volist name="left_nav" id ="nav_top"}
+            {if condition="$nav_top['types'] eq 1"}
+            <li class="layui-nav-item">
+                <a href="javascript:;" onclick="navShow('nav-id-{$nav_top.id}')" ><i class="iconfont">{$nav_top.icon}  {$nav_top.title}</i></a>
+            </li>
+            {/if}
+            {/volist}
+        </ul>
+
+
+        <ul class="layui-nav right" lay-filter="">
+
+
+          <li class="layui-nav-item" lay-unselect="">
+                <a href="javascript:;"><img src="http://t.cn/RCzsdCq" class="layui-nav-img">{$Think.session.user_info.username}<span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                  <dd><a href="javascript:;">修改信息</a></dd>
+                  <dd><a href="javascript:;">安全管理</a></dd>
+                  <dd><a href="{:url('admin/login/outLogin')}">退了</a></dd>
+                </dl>
+          </li>
+
+          
+          <li class="layui-nav-item to-index"><a target="_blank" href="/"><i class="iconfont" style="margin-right: 5px;">&#xe67f;</i><cite>前台首页</cite></a></li>
+        </ul>
+        
+    </div>
+    <!--<link href="https://cdn.bootcss.com/layer/2.3/skin/layer.css" rel="stylesheet">-->
+    <!--<script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>-->
+    <!--<script>layer.msg("没有权限操作！",{icon:5,shade:0.5,time:2000})</script>-->

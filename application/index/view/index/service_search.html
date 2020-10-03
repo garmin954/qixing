@@ -1,0 +1,98 @@
+{extend name="template/base" /}
+{block name="link"}
+<link href="STATIC/css/advsglobalpic2.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/topmenu.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/dropmenu40.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/shop_search_dolphin.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/pagetitlemenu_1.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/nav_1.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/newsquery.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/a.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/newscontent.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
+<script src="https://www.layuicdn.com/layui/layui.js"></script>
+<style>
+    #contain{height: auto!important;margin-bottom: 50px!important;}
+    #top{height: 200px!important;}
+    #pdv_6938{position: relative!important;}
+    #pdv_6920{float: left}
+    @media screen and (max-width: 600px) {
+        * {
+            margin: 0;padding: 0px;
+        }
+        #contain{
+            width: 100%!important;
+        }
+        #bottom,#top{
+            display: none!important;
+        }
+        .layui-input{width: 70%!important;}
+        .layui-card-body{width: 90%!important;}
+        .layui-form{overflow-x: scroll}
+        .number-main{display: none}
+    }
+</style>
+{/block}
+{block name="header"}
+{/block}
+
+{block name="content"}
+<div style="min-height: 435px">
+<div class="layui-card" style="box-shadow: 1px 1px 5px lightgrey">
+    <div class="layui-card-body" style="width: 400px;margin: 0 auto">
+        <form action="" class="layui-form">
+            <input type="text" name="number" class="layui-input" value="{:input('param.number')}" placeholder="请输入服务编号" style="width: 330px;display: inline-block">
+            <button class="layui-btn" style="float: right"> 查询</button>
+        </form>
+    </div>
+</div>
+<div class="layui-form">
+    {if $exist == 1}
+    {if count($serviceList)}
+        <table class="layui-table">
+        <colgroup>
+            <col width="150">
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th  class="number-main">服务编号</th>
+            <th>姓名</th>
+            <th>日期</th>
+            <th>服务更新</th>
+            <th>备注</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name="$serviceList" id ='slist'}
+
+            <tr>
+                {if $key==0}
+                <td class="number-main" rowspan="{:count($serviceList)}">{$slist.number}</td>
+                <td rowspan="{:count($serviceList)}">{$slist.name}</td>
+                {/if}
+
+                <td >{$slist.time|date='Y-m-d',###}</td>
+                <td >{$slist.info}</td>
+                <td >{$slist.memo}</td>
+            </tr>
+
+        {/volist}
+        </tbody>
+    </table>
+    {else}
+        <p style="text-align: center;width: 100%;margin-top: 150px;color: red">改服务暂时无服务进度！</p>
+    {/if}
+    {else/}
+        <p style="text-align: center;width: 100%;margin-top: 150px">输入编号查询服务进度</p>
+    {/if}
+</div>
+</div>
+{/block}
+<!--底部-->
+
+{block name="script"}
+
+{/block}

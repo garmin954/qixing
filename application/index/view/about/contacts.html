@@ -1,0 +1,84 @@
+{extend name="template/base" /}
+{block name="seo"}
+<meta name="keywords" content=" yuanlu,yladmin,远路建站,网站建设，官网建设，仿站"/>
+<meta name="description" content=" 远路专业建站1549088785qq.com"/>
+{/block}
+{block name="link"}
+<link href="STATIC/css/advsglobalpic2.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/topmenu.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/dropmenu40.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/shop_search_dolphin.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/pagetitlemenu_1.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/nav_1.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/newsquery.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/a.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/newscontent.css" rel="stylesheet" type="text/css" />
+
+<style>
+    #contain{height: auto!important;margin-bottom: 50px!important;}
+    #top{height: 200px!important;}
+    #pdv_6938{position: relative!important;}
+    #pdv_6920{float: left}
+</style>
+{/block}
+{block name="header"}
+{/block}
+
+{block name="content"}
+
+<div style="position: relative;display: inline-block;width: 100%;">
+    {include file="template/about"}
+
+
+    <!-- 当前位置提示条 -->
+
+    <div id='pdv_6924' class='pdv_class'  title='当前位置' style='width:910px;height:48px;top:0px;left:290px; z-index:10'>
+        <div id='spdv_6924' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+            <div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px #dddddd solid;background:#fff;">
+                <div style="height:25px;margin:1px;display:none;background:#cccccc;">
+                    <div style="float:left;margin-left:12px;line-height:25px;font-weight:bold;color:#fff">
+                        当前位置
+                    </div>
+                    <div style="float:right;margin-right:10px;display:none">
+                        <a href="-1" style="line-height:25px;color:#fff">更多</a>
+                    </div>
+                </div>
+                <div style="padding:0px">
+
+                    <link href="STATIC/css/nav_1.css" rel="stylesheet" type="text/css" />
+                    <div id="nav">
+                        您现在的位置：<a href="/">关于我们</a>
+                        &gt; <a href="/" >{$info['cate_name']}</a>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 全站翻页文章列表 -->
+    <div id="pdv_6938" class="pdv_class" title="文章正文" style="width: 910px; float: right; z-index: 11;">
+        <div id="spdv_6938" class="pdv_content" style="overflow:visible;width:100%;position: relative;height: 100%">
+            <div class="pdv_border">
+
+                <div id="newscontent">
+
+                    <div id="con" class="con">
+                        {$info['content']}
+                    </div>
+
+                </div>
+                <br>
+            </div>
+
+        </div>
+    </div>
+</div>
+{/block}
+<!--底部-->
+
+{block name="script"}
+
+{/block}

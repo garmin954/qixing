@@ -1,0 +1,67 @@
+{extend name="template/template" /}
+
+{block name="body"}
+
+<body>
+<div class="x-body" style="padding-top: 0px">
+    <form class="layui-form">
+
+        <input type="hidden" name="id" value="{$Request.param.id}">
+
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title" style="margin-bottom: 20px">
+                <li class="layui-this">基本设置</li>
+                <!--<li class="">描述SEO</li>-->
+                <!--<li class="">内容</li>-->
+            </ul>
+            <div class="layui-tab-content " >
+                <div class="layui-tab-item layui-show">
+
+                    <div class="layui-form-item">
+                        <label   class="layui-form-label">
+                            <span class="x-red">*</span>标签名称
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="cname" name="title"  value="{$lists.title}"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">状态：</label>
+                        <div class="layui-input-block" style="width: 50px">
+                            <input type="checkbox"  name="status" lay-skin="switch" value="{$lists['status']}" lay-text="开启|关闭"   {if condition="$lists['status'] eq 1 "}checked{/if}>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="layui-tab-item">
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label   class="layui-form-label">
+            </label>
+            <button id="btn"  type="button" class="layui-btn" lay-filter="add"  >
+                增加
+            </button>
+        </div>
+    </form>
+</div>
+
+
+
+{/block}
+{block name="js"}
+{include file="template/publish"}
+
+{/block}

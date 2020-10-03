@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Uploadify Implementation</title>
+    <link rel="stylesheet" type="text/css" href="/static/vendor/uploadify/uploadify.css">
+    <script src="/static/admin/js/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/vendor/uploadify/jquery.uploadify.min.js"></script>
+
+
+    <script type="text/javascript">
+
+  
+
+     $("#touch_icon").uploadify({
+      //file_path_name 是分类保存图片的文件夹名
+      //type 值可以自定义,传到控制器
+      'formData'        : {'file_path_name' : 'touch_icon','type' : '1'},
+      'width'           : 104,
+      'height'          : 30,
+      'swf'             : '/static/vendor/uploadify/uploadify.swf',
+       'uploader'       : "{:url('index/system/upimg')}",
+      'buttonText'      : '图片上传',
+      'fileTypeDesc'    : '手机小图标',
+      'fileObjName'     : 'images',
+      'method'          : 'post',
+      'onUploadSuccess' : function(file, data, response) {
+        if(response)
+        {
+          var obj = JSON.parse(data);
+          $("#touch_img").find("a").attr("href", obj.data);
+          $("#touch_img").find(".icon-picture").attr("onmouseover", "toolTip('<img src= " + obj.data + ">')");
+          $("#t_icon").attr("value", obj.data);
+          $("#touch_img").attr("class", "show");
+        }
+      },
+  });
+
+   
+    </script>
+</head>
+<body>
+    <a href="javascript:"  name="file_upload" id="file_upload" > 文件</a>
+    <input type="file" name="touch_icon" id="touch_icon" />
+</body>
+</html>

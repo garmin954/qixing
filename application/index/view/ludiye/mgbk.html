@@ -1,0 +1,656 @@
+{extend name="template/ludiye" /}
+{block name="link"}
+
+<meta name="keywords" content="关键词" />
+<meta name="description" content="描述" />
+
+<style>
+    #contain{height: auto!important;margin-bottom: 50px!important;}
+    #top{height: 200px!important;}
+    #pdv_6938{position: relative!important;}
+    #pdv_6920{float: left}
+    body{
+        background: #F7F7F7
+    }
+</style>
+{/block}
+{block name="header"}
+{/block}
+
+{block name="content"}
+
+<div class="channel">
+    <img src="LUDIYE/images/banner6.jpg" alt="" />
+</div>
+
+<div class="menu_type_4">
+    <div class="link">
+        <a href="#p1" class="current">
+            优势介绍
+        </a>
+        <a href="#p2">
+            申请方案
+        </a>
+        <a href="#p3">
+            申请条件
+        </a>
+        <a href="#p4">
+            时间规划
+        </a>
+        <a href="#p5">留学费用</a>
+        <a href="#p6">
+            院校推荐
+        </a>
+        <a href="#p7">服务优势</a>
+    </div>
+</div>
+
+
+<div class="main">
+    <div class="usa_type_1" id="p1">
+        <div class="titlemodel4">
+            美国本科留学优势
+        </div>
+        <div class="list">
+            <ul>
+                <li>
+                    <h2 class="h2it">教育资源世界领先</h2>
+                    <div class="dec">
+                        众多世界顶尖名校<br />师资力量强大，<br />教育设备领先。
+                    </div>
+                </li>
+                <li>
+                    <h2 class="h2it">奖学金种类丰富多样</h2>
+                    <div class="dec">
+                        多种奖学金供不同<br />背景的留学生申请，<br />公平竞争。
+                    </div>
+                </li>
+                <li>
+                    <h2 class="h2it">学制专业灵活可变</h2>
+                    <div class="dec">
+                        不同类型的院校承认学分互转，多种途径入读理想院校。
+                    </div>
+                </li>
+                <li>
+                    <h2 class="h2it">无需高考成绩申请</h2>
+                    <div class="dec">
+                        校内校外均有勤工俭学机会，减轻生活经济压力，体会美国本土生活。
+                    </div>
+                </li>
+                <li>
+                    <h2 class="h2it">勤工俭学岗位多</h2>
+                    <div class="dec">
+                        本科以高中成绩申请，无需高考，既有机会入读世界一流大学。
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <a href="{:url('/message')}" target='blank'  class="basebtn3">想了解更多 ？点此免费留学规划</a>
+    </div>
+    <div class="usa_type_2" id="p2">
+        <div class="titlemodel4">美国本科留学 4大申请方案</div>
+        <div class="list">
+            <ul>
+                <li>
+                    <h2 class="h2tit">途径一 直申本科</h2>
+                    <div class="line"></div>
+                    <div class="dec">
+                        <p>面向学生：高三、高中毕业</p>
+                        <p>方案优势：直接申请入读美国本科，节约时间和金钱成本。申请材料：高中成绩单、语言成绩（托福或雅思）、新SAT/ACT、SAT Subjects等</p>
+                    </div>
+                    <a href="{:url('/message')}" target='blank'  class="more">免费留学规划</a>
+                </li>
+                <li>
+                    <h2 class="h2tit">途径二 “双录取”本科</h2>
+                    <div class="line"></div>
+                    <div class="dec">
+                        <p>面向学生：高三、高中毕业</p>
+                        <p>方案优势：适用于语言成绩不理想，但标准化考试成绩、高中成绩优秀的学生群体；申请人获取大学语言中心录取书和本科条件录取书。</p>
+                        <p>申请材料：高中成绩单、语言成绩（托福或雅思）、新SAT/ACT、SAT Subjects等</p>
+                    </div>
+                    <a href="{:url('/message')}" target='blank'  class="more">免费留学规划</a>
+                </li>
+                <li>
+                    <h2 class="h2tit">途径三 社区大学“2+2”</h2>
+                    <div class="line"></div>
+                    <div class="dec">
+                        <p>面向学生：高三、高中毕业（适用于工薪家庭、无标准化考试成绩的学生群体）</p>
+                        <p>方案优势：先读2年社区大学，后转入公立大学学习两年，获得美国本科文凭。公立大学学费便宜，另外部分与公立大学（TOP50）签有转学协议，后续能更容易地进入美国名校学习。</p>
+                        <p>
+                            申请材料/条件：详见“美国社区大学”（做链接到“美国社区大学”页面）
+                        </p>
+                    </div>
+                    <a href="{:url('/message')}" target='blank'  class="more">免费留学规划</a>
+                </li>
+                <li>
+                    <h2 class="h2tit">途径四 转学</h2>
+                    <div class="line"></div>
+                    <div class="dec">
+                        <p>面向学生：大一、大二学生（对在读院校不满意的学生群体）方案优势：国内专业学分转入美国大学对应专业，只需修完转入大学规定的其他学分即可毕业，并获得相应大学学士学位。多数美国大学提供秋季转学，部分提供春季转学。 </p>
+                        <p>申请材料：高中成绩单、大学成绩单、语言成绩（雅思或托福）、课程描述等</p>
+                    </div>
+                    <a href="{:url('/message')}" target='blank'  class="more">免费留学规划</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="usa_type_3" id="p3">
+        <div class="title">美国本科留学 <strong>录取条件</strong></div>
+        <div class="tabbox">
+            <table width="100%"  border="0" cellspacing="0" cellpadding="0" class="">
+                <tr>
+                    <td>
+                        申请材料
+                    </td>
+                    <td>
+                        录取要求
+                    </td>
+                    <td>
+                        TOP1-30
+                    </td>
+                    <td>
+                        TOP31-60
+                    </td>
+                    <td>
+                        TOP61-100
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        高中均分
+                    </td>
+                    <td>
+                        GPA
+                    </td>
+                    <td>
+                        3.7+
+                    </td>
+                    <td>
+                        3.5-3.7
+                    </td>
+                    <td>
+                        3.0-3.5
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">
+                        语言成绩
+                    </td>
+                    <td>
+                        托福
+                    </td>
+                    <td>
+                        105+
+                    </td>
+                    <td>
+                        100+
+                    </td>
+                    <td>
+                        85+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        雅思
+                    </td>
+                    <td>
+                        7+
+                    </td>
+                    <td>
+                        7
+                    </td>
+                    <td>
+                        6.5+
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">
+                        标准化成绩
+                    </td>
+                    <td>
+                        SAT
+                    </td>
+                    <td>
+                        1450-1500
+                    </td>
+                    <td>
+                        1350+
+                    </td>
+                    <td>
+                        1300+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ACT
+                    </td>
+                    <td>
+                        33-35
+                    </td>
+                    <td>
+                        30
+                    </td>
+                    <td>
+                        30
+                    </td>
+                </tr>
+            </table>
+            <a href="{:url('/message')}" target='blank'  class="basebtn3">想了解更多 ？点此免费留学规划</a>
+        </div>
+    </div>
+    <div class="usa_type_4" id="p4">
+        <div class="title">努力打造令您满意的留学<strong>服务</strong>,，只为献给更好的<strong>你</strong></div>
+        <div class="title2">申请时间规划</div>
+        <div class="list">
+            <ul>
+                <li>
+                    <div class="icon">
+                        <img src="LUDIYE/images/e1.png" alt="" />
+                    </div>
+                    <div class="tit">
+                        高一
+                    </div>
+                    <div class="dec">
+                        <p>咨询规划院校，</p>
+                        <p>全面了解美国本科留学</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="icon">
+                        <img src="LUDIYE/images/e2.png" alt="" />
+                    </div>
+                    <div class="tit">
+                        高二上学期
+                    </div>
+                    <div class="dec">
+                        <p>参加语言培训（托福/雅思), </p>
+                        <p>准备考试</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="icon">
+                        <img src="LUDIYE/images/e3.png" alt="" />
+                    </div>
+                    <div class="tit">
+                        高二下学期
+                    </div>
+                    <div class="dec">
+                        <p>参加语言考试，准备SAT/SAT </p>
+                        <p>Subjects考试，准备申请材料</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="icon">
+                        <img src="LUDIYE/images/e4.png" alt="" />
+                    </div>
+                    <div class="tit">
+                        高三上学期
+                    </div>
+                    <div class="dec">
+                        <p>参加SAT/SAT </p>
+                        <p>Subjects的考试，提交申请材料</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="icon">
+                        <img src="LUDIYE/images/e5.png" alt="" />
+                    </div>
+                    <div class="tit">
+                        高三寒假
+                    </div>
+                    <div class="dec">
+                        <p>参加招生面试等待录取结果</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <a href="{:url('/message')}" target='blank'  class="basebtn3">想了解更多 ？点此免费留学规划</a>
+    </div>
+    <div class="usa_type_5" id="p5">
+        <h2 class="h2tit1">美国本科留学生活费</h2>
+        <div class="dec1">
+            <p>纽约生活费最高190000-200000人民币/年；</p>
+            <p>其他地区生活费约150000人民币/年。</p>
+            <p>不同消费水平有较大差异，具体费用分类如下：</p>
+        </div>
+        <div class="list">
+            <ul>
+                <li>
+                    <div class="imgbox">
+                        <img src="LUDIYE/images/ew1.jpg" alt="" />
+                    </div>
+                    <div class="conbox">
+                        <h2 class="h2tit">住宿费</h2>
+                        <div class="dec">
+                            <p>
+                                纽约最高约97000人民币/年，
+                            </p>
+                            <p>
+                                其他州约60000人民币/年。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="imgbox">
+                        <img src="LUDIYE/images/ew2.jpg" alt="" />
+                    </div>
+                    <div class="conbox">
+                        <h2 class="h2tit">餐饮费</h2>
+                        <div class="dec">
+                            <p>
+                                纽约最高约28000人民币/年，
+                            </p>
+                            <p>
+                                其他州约10000-20000人民币/年
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="imgbox">
+                        <img src="LUDIYE/images/ew3.jpg" alt="" />
+                    </div>
+                    <div class="conbox">
+                        <h2 class="h2tit">交通费</h2>
+                        <div class="dec">
+                            <p>
+                                约8000-20000人民币/年，
+                            </p>
+                            <p>
+                                取决于不同的交通方式。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="imgbox">
+                        <img src="LUDIYE/images/ew4.jpg" alt="" />
+                    </div>
+                    <div class="conbox">
+                        <h2 class="h2tit">杂费</h2>
+                        <div class="dec">
+                            <p>
+                                约10000-30000人民币/年，
+                            </p>
+                            <p>
+                                不同消费水平有一定差异。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <a href="{:url('/message')}" target='blank'  class="basebtn3">想了解更多 ？点此免费留学规划</a>
+    </div>
+    	<div class="block_type_6 type2s" id="p6">
+		<h2 class="title2">2020 U.S. News美国大学排行榜（综合院校）</h2>
+		<div class="list">
+			<div class="title">
+				<div class="s1">
+					排名
+				</div>
+				<div class="s2">
+					University
+				</div>
+				<div class="s3">
+					大学名称
+				</div>
+				<div class="s4">
+					录取率
+				</div>
+				<div class="s5">
+					学费/年
+				</div>
+				<div class="s6">
+					2020年排名
+				</div>
+			</div>
+			<div class="listall">
+				<p>
+					<span class="s1">1</span>
+					<span class="s2">Princeton University	</span>
+					<span class="s3">普林斯顿大学	</span>
+					<span class="s4">5%	                  </span>
+					<span class="s5"> $51,870	         </span>
+					<span class="s6"><a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank' >想了解更多  免费留学规划</a>	</span>
+				</p>
+				<p>
+					<span class="s1">2</span>
+					<span class="s2">Harvard University	                  </span>
+					<span class="s3">哈佛大学	                          </span>
+					<span class="s4">5%	                   </span>
+					<span class="s5">$51,925	         </span>
+					<span class="s6"><a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank' >想了解更多  免费留学规划</a>	</span>
+				</p>
+				<p>
+					<span class="s1">3</span>
+					<span class="s2">Columbia University	            </span>
+					<span class="s3">哥伦比亚大学	                    </span>
+					<span class="s4">6%                        </span>
+					<span class="s5">$61,850	         </span>
+					<span class="s6"><a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank' >想了解更多  免费留学规划</a>	</span>
+				</p>
+				<p>
+					<span class="s1">3</span>
+					<span class="s2">Massachusetts Institute of Technology  </span>
+					<span class="s3">麻省理工学院	                   </span>
+					<span class="s4"> 7%	                   </span>
+					<span class="s5">$53,790	         </span>
+					<span class="s6"><a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank' >想了解更多  免费留学规划</a>	</span>
+				</p>
+				<p>
+					<span class="s1">3</span>
+					<span class="s2">Yale University	            </span>
+					<span class="s3">耶鲁大学	                          </span>
+					<span class="s4">6%	                   </span>
+					<span class="s5">$55,500	         </span>
+					<span class="s6"><a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank' >想了解更多  免费留学规划</a>	</span>
+				</p>
+				<p>
+					<span class="s1">6</span>
+					<span class="s2">Stanford University	                        </span>
+					<span class="s3">斯坦福大学                            </span>
+					<span class="s4"> 7%	                   </span>
+					<span class="s5">$53,529	         </span>
+					<span class="s6"><a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank' >想了解更多  免费留学规划</a>	</span>
+				</p>
+
+				<p>
+					<span class="s1">6</span>
+					<span class="s2">University of Chicago	           </span>
+					<span class="s3"> 芝加哥大学	           </span>
+					<span class="s4">7%	                   </span>
+					<span class="s5">$59,298	         </span>
+					<span class="s6"><a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank' >想了解更多  免费留学规划</a>	</span>
+				</p>
+				<p>
+					<span class="s1">6</span>
+					<span class="s2">University of Pennsylvania	                  </span>
+					<span class="s3">宾夕法尼亚大学	                          </span>
+					<span class="s4">8%	                   </span>
+					<span class="s5">$57,770	         </span>
+					<span class="s6"><a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank' >想了解更多  免费留学规划</a>	</span>
+				</p>
+				<p>
+					<span class="s1">9</span>
+					<span class="s2">Northwestern University	      </span>
+					<span class="s3">西北大学	                    </span>
+					<span class="s4">8%                        </span>
+					<span class="s5">$56,691	         </span>
+					<span class="s6"><a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank' >想了解更多</a> 免费留学规划</span>
+				</p>
+				<p>
+					<span class="s1">10</span>
+					<span class="s2">Duke University	      </span>
+					<span class="s3">杜克大学	              </span>
+					<span class="s4">9%	                   </span>
+					<span class="s5">$58,198	         </span>
+					<span class="s6"><a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank' >想了解更多</a> 免费留学规划</span>
+				</p>
+				<p>
+					<span class="s1">10</span>
+					<span class="s2">Johns Hopkins University	      </span>
+					<span class="s3">约翰斯·霍普金斯大学	                      </span>
+					<span class="s4">11%	                  </span>
+					<span class="s5"> $55,350	         </span>
+					<span class="s6"><a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank' >想了解更多  免费留学规划</a>	</span>
+				</p>
+				<p>
+					<span class="s1">12</span>
+					<span class="s2">California Institute of Technology</span>
+					<span class="s3">加州理工学院	                   </span>
+					<span class="s4"> 7%	                  </span>
+					<span class="s5"> $54,600	        </span>
+					<span class="s6"> <a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank' >想了解更多</a>	免费留学规划</span>
+				</p>
+				<p>
+					<span class="s1">12</span>
+					<span class="s2">Dartmouth College	            </span>
+					<span class="s3">达特茅斯学院	                   </span>
+					<span class="s4">9%	                   </span>
+					<span class="s5">$57,204	         </span>
+					<span class="s6"><a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank' >想了解更多  免费留学规划</a>	</span>
+				</p>
+				<p>
+					<span class="s1">14</span>
+					<span class="s2">Brown University	                 </span>
+					<span class="s3"> 布朗大学	                         </span>
+					<span class="s4">8%	                   </span>
+					<span class="s5">$58,504	         </span>
+					<span class="s6"><a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank' >想了解更多  免费留学规划</a>	</span>
+				</p>
+				<p>
+					<span class="s1">15</span>
+					<span class="s2">University of Notre Dame	            </span>
+					<span class="s3">圣母大学	                        </span>
+					<span class="s4">18%	                   </span>
+					<span class="s5">$55,553	         </span>
+					<span class="s6"><a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank' >想了解更多  免费留学规划</a>	</span>
+				</p>
+			</div>
+		</div> 
+		<a href="http://p.qiao.baidu.com/cps/chat?siteId=13910576&userId=28221420" target='blank'  class="basebtn3">想了解更多？免费留学规划</a>
+	</div>
+
+
+
+    <div class="base_type_block_all style2" id="p7">
+        <div class="type0">
+            <h2 class="h2tit_base"><span>“三对一”服务，全程全时</span></h2>
+            <div class="contbox">
+                <div class="list">
+                    <p>
+                        <strong>留学管家：</strong><span>全程监督服务质量，保证留学申请顺利进行</span>
+                    </p>
+                    <p>
+                        <strong>文案老师：</strong><span>985/211本科或海归硕士，文书质量高，合理 规避薄弱项，润色突出优势项</span>
+                    </p>
+                    <p>
+                        <strong>留学顾问：</strong><span>留学整体规划，涉及选校，协助申请、签证 指导和行前指导</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="type1">
+            <h2 class="h2tit_base"><span>全程服务透明化</span></h2>
+            <div class="list">
+                <ul>
+                    <li>
+                        <div class="icon">
+                            <img src="LUDIYE/images/gh1.png" alt="">
+                        </div>
+                        <div class="tit">
+                            留学管家
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <img src="LUDIYE/images/gh2.png" alt="">
+                        </div>
+                        <div class="tit">
+                            邮件
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <img src="LUDIYE/images/gh3.png" alt="">
+                        </div>
+                        <div class="tit">
+                            申请者
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="type2">
+            <h2 class="h2tit_base"><span>全程服务可追踪</span></h2>
+            <div class="list">
+                <ul>
+                    <li>
+                        <div class="imgbox">
+                            <img src="LUDIYE/images/gz1.png" alt="">
+                        </div>
+                        <div class="title">
+                            <div class="left">01</div>
+                            <div class="right">
+                                点击“服务查询”栏目<br>(官网或公众号)
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="imgbox">
+                            <img src="LUDIYE/images/gz2.png" alt="">
+                        </div>
+                        <div class="title">
+                            <div class="left">02</div>
+                            <div class="right">
+                                输入服务编号
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="imgbox">
+                            <img src="LUDIYE/images/gz3.png" alt="">
+                        </div>
+                        <div class="title">
+                            <div class="left">03</div>
+                            <div class="right">
+                                即可随时随地查询<br>申请进度
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<div class="footer bg2">
+    <h2 class="h2tit">免费留学申请规划</h2>
+    <div class="tabox">
+        <form action="" id="myform">
+            <input type="text" name="name" placeholder="姓名" class="words s1" />
+            <input type="text" name="weixin" placeholder="微信" class="words s2" />
+            <input type="text" name="mobile" placeholder="手机号" class="words s3" />
+            <input type="button" id="send" value="立即预约" class="send" />
+            <div class="tel">
+                <p>咨询热线：</p>
+                <div class="val">
+                    400-8010-621
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{/block}
+<!--底部-->
+
+{block name="script"}
+
+{/block}

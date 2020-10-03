@@ -1,0 +1,112 @@
+{extend name="template/template" /}
+
+{block name="body"}
+<style>
+  .layui-table td, .layui-table th{
+    padding: 6px 5px;
+  }
+</style>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">链接</a>
+        <a>
+          <cite>链接列表</cite></a>
+      </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+
+  <xblock>
+    <button class="layui-btn layui-btn" type="button" id="myfile"><i class="layui-icon"></i>导入服务信息</button>
+    <button class="layui-btn layui-btn-danger" onclick="member_del_all()"><i class="layui-icon"></i>批量删除</button>
+    <button class="layui-btn"
+            onclick="x_admin_show('添加文章','{:url('admin/service/add',array('cate_id'=>$Request.param.cate_id))}',800,550)">
+      <i class="layui-icon"></i>添加
+    </button>
+    <span class="x-right" style="line-height:40px">共有数据：{$nums} 条</span>
+  </xblock>
+  <form action="" id="sort_all">
+  <table class="layui-table">
+    <thead>
+    <tr>
+      <th>
+        <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i
+                class="layui-icon">&#xe605;</i></div>
+      </th>
+      <th>ID</th>
+      <th>服务编号</th>
+      <th>姓名</th>
+      <th>信息</th>
+      <th>备注</th>
+      <th>时间</th>
+      <th>操作</th>
+    </thead>
+    <tbody>
+    {volist name="lists" id="vo"}
+    <tr>
+      <td>
+        <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$vo.id}'><i class="layui-icon">&#xe605;</i>
+        </div>
+      </td>
+      <td>{$vo.id}</td>
+      <td>{$vo.number}</td>
+      <td>{$vo.name}</td>
+      <td>{$vo.info}</td>
+      <td>{$vo.memo}</td>
+      <td>{$vo.time|date='Y-m-d H:i:s',###}</td>
+
+      <td class="td-manage">
+        <a title="编辑" onclick="x_admin_show('修改文章','{:url('admin/service/edit',array('id'=>$vo.id))}',800,550)"
+           href="javascript:;">
+          <i class="layui-icon">&#xe642;</i>
+        </a>
+        <a title="删除" onclick="member_del(this,{$vo.id})" href="javascript:;">
+          <i class="layui-icon">&#xe640;</i>
+        </a>
+      </td>
+</tr>
+{/volist}
+</tbody>
+</table>
+</form>
+<div class="page">
+{$lists->render()}
+</div>
+
+</div>
+{/block}
+{block name="js"}
+{include file="template/layer-js"}
+{include file="template/base"}
+<script type="text/javascript">
+  layui.use(['form','upload'],function(){
+
+    var form=layui.form;
+    var upload=layui.upload;
+
+    upload.render({ //允许上传的文件后缀
+      elem: '#myfile'
+      ,url: "{:url('service/do_upload')}"
+      ,accept: 'file' //普通文件
+      ,exts: 'xls|excel|xlsx' //只允许上传压缩文件
+      ,done: function(res){
+        if(res.code==1){
+          layer.msg('上传成功,已解析数据',{icon:6});
+        }else{
+          layer.msg('解析失败',{icon:5});
+        }
+      }
+    });
+
+    form.on('submit(formsub)',function(data){
+      layer.msg('导入数据具体详情未协商确认,待确认后处理');
+      return false;
+    })
+
+
+  })
+
+</script>
+{/block}

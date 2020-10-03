@@ -1,0 +1,84 @@
+{extend name="template/template" /}
+
+{block name="body"}
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="{:url('admin/cate/lst')}">留言管理</a>
+        <a href="{:url('admin/message/lst')}">留言管理</a>
+        <a>
+          <cite>留言列表</cite></a>
+      </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+
+  <table class="layui-table">
+    <thead>
+    <tr>
+
+      <th style="width: 5%">ID</th>
+      <th  style="width: 10%">姓名</th>
+      <th  style="width: 10%">电话</th>
+      <th style="width: 10%">微信</th>
+      <th style="width: 15%">qq</th>
+      <th style="width: 15%;overflow: hidden;">内容</th>
+      <th style="width: 8%">留言时间</th>
+      <th style="width: 10%">操作</th>
+    </thead>
+    <tbody>
+
+
+
+    {volist name="lists" id="vo"}
+    <tr>
+
+      <td>{$vo.id}</td>
+      <td style="    width: 150px;
+            overflow: hidden;/*超出部分隐藏*/
+            white-space: nowrap;/*不换行*/
+            text-overflow:ellipsis;/*超出部分文字以...显示*/">{$vo.name}</td>
+    <td  style="    width: 150px;
+            overflow: hidden;/*超出部分隐藏*/
+            white-space: nowrap;/*不换行*/
+            text-overflow:ellipsis;/*超出部分文字以...显示*/">{$vo.mobile}</td>
+
+    <td style="    width: 150px;
+            overflow: hidden;/*超出部分隐藏*/
+            white-space: nowrap;/*不换行*/
+            text-overflow:ellipsis;/*超出部分文字以...显示*/">{$vo.weixin}</td>
+      <td style="    width: 150px;
+            overflow: hidden;/*超出部分隐藏*/
+            white-space: nowrap;/*不换行*/
+            text-overflow:ellipsis;/*超出部分文字以...显示*/">{$vo.qq}</td>
+
+      <td onclick="showBox(this)" style="width: 13%;overflow: hidden;position: absolute;
+            overflow: hidden;/*超出部分隐藏*/
+            white-space: nowrap;/*不换行*/
+            text-overflow:ellipsis;/*超出部分文字以...显示*/">{$vo.message}</td>
+
+      <th style="color: red">{:get_time($vo['add_time'])} </th>
+      <td class="td-manage">
+
+  <a title="删除" onclick="member_del(this,{$vo.id})" href="javascript:;">
+    <i class="layui-icon">&#xe640;</i>
+  </a>
+
+
+</td>
+</tr>
+{/volist}
+</tbody>
+</table>
+<div class="page">
+{$lists->render()}
+</div>
+
+</div>
+
+{/block}
+{block name="js"}
+
+{include file="template/layer-js"}
+{include file="template/base"}
+{/block}

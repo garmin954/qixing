@@ -1,0 +1,32 @@
+<div id='pdv_6920' class='pdv_class'  title='关于我们' style='width:263px;height:257px;top:0px;left:0px; z-index:8;position: relative;
+    height: 100%;'>
+    <div id='spdv_6920' class='pdv_content' style='overflow:visible;width:100%;'>
+        <div class="pdv_border" style="margin:0px;height:100%;border:1px #FFC1A2 solid;">
+            <div style="height:42px;border-top:1px #FFC1A2 solid;background:#FFFBFB;">
+                <div style="float:left;color:#FF8000;text-align:left;padding-left:20px;font-weight:bold;font-size:16px;line-height:45px;color:#435477;">关于我们</div>
+                <div style="float:right;margin-right:8px">
+                    <a href="-1" style="font-size:16px;line-height:45px;color:#435477;display:none">更多&gt;&gt;</a>
+                </div>
+            </div>
+            <div  style="padding:0px">
+
+                <link href="STATIC/css/pagetitlemenu_1.css" rel="stylesheet" type="text/css" />
+                <div class="titlemenu_1" >
+
+                    {volist name="aboutList" id="about_list"}
+                        <a href="{$about_list['link']}"   class="titlemenu_1">{$about_list['cate_name']}</a>
+                    {/volist}
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    #pdv_6920{
+        min-height: 450px;
+    }
+</style>

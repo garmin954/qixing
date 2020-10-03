@@ -1,0 +1,227 @@
+@charset "utf-8";
+
+*{
+    box-sizing: border-box;
+
+}
+
+ul,li{
+    list-style: none;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+small{
+    font-size: 80%;
+}
+:focus{
+    outline: none;
+}
+.clearfix{
+    clear:both;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.re{
+    position:relative;
+}
+.ab{
+    position: absolute;
+}
+.tcenter{
+    text-align: center;
+}
+.bcenter{
+    margin:0 auto;
+}
+.block{
+    display: block;
+}
+.bold{
+    font-weight: bold;
+}
+.webhide{
+    display: none;
+}
+.hidden{
+    overflow: hidden;
+}
+.cont{
+    width: 1100px;
+    margin:0 auto;
+    margin-top: 20px;
+}
+.photo img{
+    display: block;
+    margin-left: 40px;
+}
+
+.photo,.intro{
+    float: left;
+}
+.intro{
+    margin-left: 50px;
+}
+.intro p{
+    width: 740px;
+    line-height: 1.76;
+    margin:1em 0;
+}
+.intro h2{
+    margin:10px 0;
+    display:inline-block;
+    margin-right:50px;
+}
+.intro input{
+    border: none;
+    border-radius: 12px;
+    height:74px;
+    overflow:hidden;
+    line-height:36px;
+    /*background-color: #ef2932;*/
+    font-weight: bold;
+    font-size: 18px;
+    padding: 22px 70px;
+    margin:8px 0;
+    cursor:pointer;
+    background:url('http://kycdn.kaiyinedu.com/statics/kaiyin_pc/team/images/kuang.png') no-repeat;
+}
+.title{
+    display: block;
+    background-color: #f1f1f1;
+    font-size: 18px;
+    font-weight: bold;
+    width: 1100px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+/*学生案例*/
+
+.prez-photo img{
+    display: block;
+}
+.offer-prez>div span{
+    display: block;
+    width:300px;
+    height: 60px;
+    background-color: #fff;
+    border:1px solid #f1f1f1;
+    position: absolute;
+    z-index: 100;
+    top:100px;
+    right: 100px;
+    box-shadow:0 2px 1px 1px #f1f1f1;
+    line-height: 60px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 10px
+}
+.offer-prez p{
+    margin-top: 40px;
+    padding: 0 20px;
+    font-size:18px;
+}
+.offer-prez>div{
+    float: left;
+    width: 500px;
+    margin: 25px;
+    height: 300px;
+    position: relative;
+    box-shadow: 0 2px 1px 1px #eee;
+}
+.part2_1{
+    background-color: #fff;
+}
+.part2_2{
+    background-color: #fff;
+}
+#timeline{
+    width: 1100px
+}
+.breadcrumb {
+    border-bottom: 1px solid #E5E5E5;
+    line-height: 40px;
+    height: 40px;
+    width: 1100px;
+    margin: 0 auto;
+    margin-top: 10px;
+    color:#999;
+}
+.breadcrumb span {
+    color:#666;
+}
+.breadcrumb a{
+    color:#999;
+    font-size:15px;
+}
+@media only screen and (max-width: 768px) {
+    .mobhide{
+        display: none;
+    }
+    .webhide{
+        display: block;
+    }
+    .breadcrumb {
+        width: 100%;
+        height: auto;
+        padding: 0 20px;
+        margin:0;
+        background-color: #f8f8f8;
+        font-size: 12px;
+    }
+    .offer-prez>div{
+        width: 100%;
+        margin:0 0 10px 0;
+    }
+    .title{
+        width: 100%;
+    }
+    .prez-photo img{
+        width: 100%;
+    }
+    .offer-prez>div span{
+        right:18px;
+        top:62px;
+    }
+    .offer-prez p{
+        overflow: hidden;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+    .intro{
+        margin:0;
+    }
+    .intro h2{
+        display:block;
+    }
+    .intro p{
+        width: 100%;
+        margin-top:55px;
+    }
+    .cont{
+        width: 100%;
+        padding: 0 20px;
+        margin-bottom:80px;
+        margin-top:20px;
+    }
+    .photo{
+        height:10px;
+    }
+    .photo img{
+        transform: scale(0.5);
+        position: relative;
+        top:-85px;
+        right:-115px;
+    }
+}

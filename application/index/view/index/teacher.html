@@ -1,0 +1,99 @@
+{extend name="template/base" /}
+{block name="link"}
+<link href="STATIC/css/teacher.css" rel="stylesheet" type="text/css"/>
+<link href="STATIC/css/homepage.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
+<script src="https://www.layuicdn.com/layui/layui.js"></script>
+<style>
+    a{text-decoration: none}
+    #top{
+        height: 202px!important;
+    }
+    .gw-nav p {
+        margin-bottom: 5px;
+        line-height: 35px!important;
+    }
+    .gw-nav p:nth-child(3),.gw-nav p:nth-child(2)  {
+        font-size: 15px;
+    }
+    .gw-nav p:nth-child(4) {
+        font-size: 15px;
+    }
+    .layui-col-md2 >ul>li>span{
+        font-size: 25px;
+        line-height: 50px;
+    }
+    .gw-detail{color: white!important;}
+    .about-active{color: #d29f08!important;}
+    ul.pagination {display: inline-block;padding: 0;margin: 0;display: flex;justify-content: center;margin-top: 20px}
+    .pagination a{text-decoration: none;margin-right: 0px!important; }
+    ul.pagination li {display: inline;}
+    .disabled ,.pagination  .active, .pagination li a {color: black; float: left;padding: 8px 16px;text-decoration: none;transition: background-color .3s;border: 1px solid #ddd; margin: 0 4px;}
+    .pagination .active{background-color: #4CAF50;color: white;border: 1px solid #4CAF50;}
+    .disabled{background-color: rgba(236, 236, 236, 0.78);}
+    ul.pagination  a.active {background-color: #4CAF50;color: white;border: 1px solid #4CAF50;}
+    ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+</style>
+{/block}
+{block name="header"}
+{/block}
+{block name="content"}
+<div class="ky-container">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <!-- 列表 -->
+            <div class="layui-col-md2 about-list">
+                <ul>
+                    {volist name="childrenCate" id="children_cate"}
+
+                    <li>
+                        <a {if $current == $children_cate['id']} class="about-active" {/if} style="font-size: 18px" href="{:url('/teacher?cid='.$children_cate['id'])}">
+                            <span>{$children_cate.cate_name}</span>
+                        </a>
+                    </li>
+
+                    {/volist}
+                </ul>
+            </div>
+
+            <!-- 内容 -->
+            <div class="layui-col-md10 about-nav" style="position: relative">
+                <!-- 中方顾问 -->
+                <div class="nav-list zfgu nav-block">
+                    <div class="layui-col-md12 gw-tit">{$cateName}</div>
+                    <div class="layui-row">
+
+                        {if count($artList) > 0}
+                        {volist name="artList" id="art_list"}
+                        <div class="layui-col-md12 gw-con">
+                            <div class="layui-col-xs3 layui-col-sm3 layui-col-md3">
+                                <img src="PUBLIC{$art_list.thumb}"></div>
+                            <div class="layui-col-xs9 layui-col-sm9 layui-col-md9 gw-nav">
+                                <p class="gw-name">{$art_list.title}</p>
+                                {if $art_list.sort_desc}
+                                {$art_list.sort_desc}
+                                {else/}
+                                    <p>从业时间：未知</p>
+                                    <p>从事：未知</p>
+                                {/if}
+                                <p class="gw-des">
+                                    {$art_list.desc}<br>
+                                </p>
+                                <a href="{:url('/tInfo?id='.$art_list['id'])}" class="layui-btn gw-detail">顾问详情</a>
+                                <a href="{:url('/message')}" class="layui-btn layui-btn-normal gw-consulting">在线咨询</a>
+                            </div>
+                        </div>
+                        {/volist}
+                        {else/}
+                        <p style="margin-top: 80px;text-align: center">暂时没有数据</p>
+                        {/if}
+
+                    </div>
+                </div>
+
+                {$artList->render()}
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

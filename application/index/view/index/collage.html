@@ -1,0 +1,126 @@
+{extend name="template/base" /}
+{block name="link"}
+<link href="STATIC/css/advsglobalpic2.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/topmenu.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/dropmenu40.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/shop_search_dolphin.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/pagetitlemenu_1.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/nav_1.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/newsquery.css" rel="stylesheet" type="text/css" />
+<link href="STATIC/css/a.css" rel="stylesheet" type="text/css" />
+<style>
+    /*#contain{height: 600px}*/
+    ul.pagination {display: inline-block;padding: 0;margin: 0;display: flex;justify-content: center}
+    .pagination a{text-decoration: none;margin-right: 0px!important; }
+    ul.pagination li {display: inline;}
+    .disabled ,.pagination  .active, .pagination li a {color: black; float: left;padding: 8px 16px;text-decoration: none;transition: background-color .3s;border: 1px solid #ddd; margin: 0 4px;}
+    .pagination .active{background-color: #4CAF50;color: white;border: 1px solid #4CAF50;}
+    .disabled{background-color: rgba(236, 236, 236, 0.78);}
+    ul.pagination  a.active {background-color: #4CAF50;color: white;border: 1px solid #4CAF50;}
+    ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+    .morede .inMorede li{width: 239px!important;}
+    .morede .inMorede li .maskLayer h2 {
+        font-size: 22px;
+        margin-top: 0px;
+    }
+    .morede .inMorede li .showLayer {
+        margin: 10px 0;
+        height: 65px;
+        width: 100%;
+    }
+</style>
+{/block}
+{block name="header"}
+{/block}
+
+{block name="content"}
+
+
+<div id='pdv_7103' class='pdv_class'  title='海外院校' style='width:1200px;height:100%;top:4px;left:0px; z-index:9;position: relative;'>
+    <div id='spdv_7103' class='pdv_content' style='overflow:visible;width:100%;'>
+        <div class="pdv_border" style="margin:0px;height:100%">
+            <div style="height:42px;border-bottom:1px #ddd solid;">
+                <div style="float:left;color:#FF8000;text-align:left;font:24px/42px 'microsoft yahei',Verdana, Arial;">院校中心</div>
+                <div style="float:right;margin-right:8px">
+                    <a href="-1" style="font:14px/42px 'microsoft yahei',Verdana, Arial;display:none">更多&gt;&gt;</a>
+
+                </div>
+
+            </div>
+            <style>
+                .layui-card >ul{width: 1024px;margin: 0 auto;height: 80px;line-height: 80px;margin-bottom: 40px}
+                .layui-card >ul > li{border-radius: 5px; width:auto; height:auto;float: left;background: #a1a5a7;margin-top: 35px;margin-right: 20px;text-align: center;}
+                .layui-card >ul > li>a{padding: 5px 10px;margin: 5px 10px;font-size: 20px;color: white}
+                .layui-card >ul > li>a:hover{color: #323233;text-decoration: none}
+                .layui-card-active{background: #d49d00!important;}
+
+            </style>
+            <div class="layui-card">
+                <ul>
+                    <li {if $tags == 0} class="layui-card-active"{/if}>
+                    <a href="{:url('/collage')}">全部 </a></li>
+                    {volist name='tagList' id='tag'}
+                    <li {if $tags == $tag['id']} class="layui-card-active"{/if}>
+                    <a href="{:url('/collage/'.$tag['id'])}">{$tag.title} </a></li>
+                    {/volist}
+                </ul>
+            </div>
+            <div  style="padding:0px">
+
+                <div class="morede">
+                    <div class="bd">
+                        <div class="inMorede">
+                            <ul>
+                                {if count($artList) > 0}
+                                {volist name="artList" id='art_list'}
+                                <li>
+                                    <img src="PUBLIC{$art_list['thumb']}" height="218"  style="width: 100%" alt="{$art_list['title']}" />
+                                    <a href="{:url('/cinfo?id='.$art_list['id'])}" title="{$art_list['title']}" target="_blank" class="maskLayer">
+                                        {$art_list['sort_desc']}
+                                        <p class="evenMore">>></p>
+                                    </a>
+                                    <div class="showLayer">
+                                        <a href="{:url('/cinfo?id='.$art_list['id'])}" title="{$art_list['title']}" target="_blank">
+                                            <h2>{$art_list['title']}</h2>
+                                            <p>{$art_list['sort_title']}</p>
+                                        </a>
+                                    </div>
+                                </li>
+                                {/volist}
+
+                                {else/}
+
+                                <p style="text-align: center">没有相关数据</p>
+                                {/if}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="showpages">
+                    {$artList->render()}
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('.morede .inMorede li img').mouseenter(function () {
+                            $(this).parent().find(".maskLayer").addClass('disxianshi');
+                        })
+                        $('.morede .inMorede li').mouseleave(function () {
+                            $(this).parent().find(".maskLayer").removeClass('disxianshi');
+                        });
+                    })
+                </script>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+{/block}
+<!--底部-->
+
+{block name="script"}
+
+{/block}
