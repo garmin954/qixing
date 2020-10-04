@@ -5,6 +5,7 @@ namespace app\api\controller;
 
 
 use app\common\model\Advert;
+use think\Db;
 
 class Index extends Base
 {
@@ -12,8 +13,11 @@ class Index extends Base
     public function getData()
     {
         return $this->responseApi(1,[
+            'top_info' => $this->topInfo(),
+
             'banner_list' => $this->getBanner(),
             'cate_list' => $this->getCategory(),
+            'information_list' => $this->information(),
         ]);
     }
 
@@ -32,9 +36,14 @@ class Index extends Base
     }
 
 
+    public function topInfo()
+    {
+        return db('article')->field('title,thumb,add_time')->where(['top'=> 1, 'cate_id'=> 32,'status'=> 1])->order('id desc')->limit(0, 2)->select();
+    }
+
     public function information()
     {
-        
+        return db('article')->field('title,thumb,add_time,tags')->where(['cate_id'=> 32,'status'=> 1])->order('id desc')->limit(0, 6)->select();
     }
 
     public function navTree($data, $pid)

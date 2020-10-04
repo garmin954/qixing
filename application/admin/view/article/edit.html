@@ -188,7 +188,20 @@
 
                         <!--</div>-->
                     <!--</div>-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">自定义标签：</label>
+                        <div class="layui-input-block" >
+                            <input type="text" name="tags" class="layui-input" value="无" value="{$lists['tags']}">
 
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否推荐：</label>
+                        <div class="layui-input-block" >
+                            <input type="radio" name="top" value="1" title="是" {if condition="$lists['top'] eq 1 "}checked{/if}>
+                            <input type="radio" name="top" value="0" title="否" {if condition="$lists['top'] eq 0 "}checked{/if}>
+                        </div>
+                    </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">状态：</label>
                         <div class="layui-input-block" style="width: 50px">
