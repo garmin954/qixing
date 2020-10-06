@@ -21,6 +21,7 @@ class Index extends Base
                 'banner_list' => $this->getBanner(),
                 'cate_list' => $this->getCategory(),
                 'information_list' => $this->information(),
+                'get_teamwork' => $this->getTeamwork(),
             ];
 
             Cache::set('mobile_index_data', $data, 5*60);
@@ -35,6 +36,12 @@ class Index extends Base
     {
         $advert = new Advert();
         return $advert->where('status', 1)->where('type', 'mobile')->select();
+    }
+
+    public function getTeamwork()
+    {
+        $advert = new Advert();
+        return $advert->where('status', 1)->where('type', 'teamwork')->select();
     }
 
     public function getCategory()

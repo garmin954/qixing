@@ -17,12 +17,18 @@ class Advert extends Base
 	//列表
 	public function lst()
 	{
-        $nums = db('advert')-> count();
-        $lists = db('advert')-> select();
+	    $type = request()->param('type', '');
+	    $condition = [];
+	    if ($type){
+            $condition['type'] = $type;
+        }
+        $nums = db('advert')->where($condition)-> count();
+        $lists = db('advert')->where($condition)-> select();
 
         $this->assign([
             'lists'  =>  $lists,
             'nums'   =>  $nums,
+            'type' => $type
         ]);
 		return view();
 	}
