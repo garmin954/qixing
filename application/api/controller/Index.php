@@ -5,6 +5,7 @@ namespace app\api\controller;
 
 
 use app\common\model\Advert;
+use think\Cache;
 use think\Db;
 
 class Index extends Base
@@ -12,13 +13,22 @@ class Index extends Base
 
     public function getData()
     {
-        return $this->responseApi(1,[
-            'top_info' => $this->topInfo(),
 
-            'banner_list' => $this->getBanner(),
-            'cate_list' => $this->getCategory(),
-            'information_list' => $this->information(),
-        ]);
+        $data = Cache::get('mobile_index_data');
+        if (empty($data)){
+            $data = [
+                'top_info' => $this->topInfo(),
+
+                'banner_list' => $this->getBanner(),
+                'cate_list' => $this->getCategory(),
+                'information_list' => $this->information(),
+            ];
+
+            Cache::set('mobile_index_data', $data, 5*60);
+        }
+
+
+        return $this->responseApi(1,$data);
     }
 
 
