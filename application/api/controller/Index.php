@@ -80,7 +80,7 @@ class Index extends Base
     {
         $data = Cache::get('system_config');
         if (empty($data)){
-            $config = db('system')->select();
+            $config = db('system')->where('type_id', 4)->select();
             $result = array();
             foreach ($config as $key => $val) {
                 if ($val['status'] == 0) {
