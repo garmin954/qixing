@@ -67,8 +67,8 @@ class SystemType extends Base
         if (Request()->isPost()) {
 
             $data = input('post.');
-            $data['value'] = trim(str_replace('/','/',$data['value']));
-            $data['values'] = trim(str_replace('/','/',$data['values']));
+//            $data['value'] = trim(str_replace('/','/',$data['value']));
+//            $data['values'] = trim(str_replace('/','/',$data['values']));
             //插入数据库
             if (db('system_type')->where('id', input('id'))->update($data)!==false) {
 

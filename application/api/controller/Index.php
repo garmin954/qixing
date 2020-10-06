@@ -18,7 +18,6 @@ class Index extends Base
         if (empty($data)){
             $data = [
                 'top_info' => $this->topInfo(),
-
                 'banner_list' => $this->getBanner(),
                 'cate_list' => $this->getCategory(),
                 'information_list' => $this->information(),
@@ -73,5 +72,26 @@ class Index extends Base
             }
         }
         return $arr;
+    }
+
+
+    //获取系统参数
+    public function getConfig()
+    {
+        $data = Cache::get('system_config');
+        if (empty($data)){
+            $config = db('system')->select();
+            $result = array();
+            foreach ($config as $key => $val) {
+                if ($val['status'] == 0) {
+                    $val['value'] = '';
+                }
+                $result[$val['ename']] = str_replace('\\', '/', $val['value']);
+            }
+            $data = $result;
+            Cache::get('system_config', $result, 5*60);
+        }
+
+        return $this->responseApi(1,$data);
     }
 }
