@@ -21,7 +21,9 @@ class Index extends Base
                 'banner_list' => $this->getBanner(),
                 'cate_list' => $this->getCategory(),
                 'information_list' => $this->information(),
-                'get_teamwork' => $this->getTeamwork(),
+                'teamwork_list' => $this->getTeamwork(),
+                'concat_list' => $this->getConcat(),
+
             ];
 
             Cache::set('mobile_index_data', $data, 5*60);
@@ -43,6 +45,13 @@ class Index extends Base
         $advert = new Advert();
         return $advert->where('status', 1)->where('type', 'teamwork')->select();
     }
+
+    public function getConcat()
+    {
+        $advert = new Advert();
+        return $advert->where('status', 1)->where('type', 'concat')->select();
+    }
+
 
     public function getCategory()
     {
