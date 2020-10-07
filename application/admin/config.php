@@ -15,9 +15,5 @@ return [
     'uploads' => ROOT_PATH . 'public/uploads',
 
     'ueditor' => '/ueditor',
-    'include' => [
-        1=> '硕士',
-        2=> '本科',
-        3=> '副学士',
-    ],
+
 ];

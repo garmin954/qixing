@@ -161,6 +161,7 @@ class Index extends Base
         }
 
         $university_list = db('article')->where(['status'=> 1,'cate_id'=>config('home_category_id.yxzx')])
+            ->order('sort asc')
             ->where($map)
             ->where($condition)->select();
 
