@@ -1,5 +1,6 @@
 <?php
 namespace app\admin\Controller;
+use think\Cache;
 use think\Controller;
 use think\Loader;
 use app\admin\controller\Base;
@@ -152,5 +153,11 @@ class Admin extends Base
             'group_access' => implode(',',$access),
         ]);
         return view();
+    }
+
+    public function clearCache()
+    {
+        Cache::clear();
+        $this->success('清除缓存成功 ', 'admin/index/index');
     }
 }

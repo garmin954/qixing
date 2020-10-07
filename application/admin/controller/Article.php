@@ -49,6 +49,7 @@ class Article extends Base
                 return json(array("status"=>0,'msg'=>$validate->getError()));
             }
             $data['tag'] = isset($data['tag'])?implode(',',$data['tag']):'';
+            $data['include'] = isset($data['include'])?implode(',',$data['include']):'';
 
             $data['add_time'] = time();
             //插入数据库
@@ -108,6 +109,8 @@ class Article extends Base
                 return json(array("status"=>0,'msg'=>$validate->getError()));
             }
             $data['tag'] = isset($data['tag'])?implode(',',$data['tag']):'';
+            $data['include'] = isset($data['include'])?implode(',',$data['include']):'';
+
             //插入数据库
             if(db('article')->where('id',input('id'))->update($data) !== false){
 

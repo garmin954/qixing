@@ -144,7 +144,24 @@
                                 {/volist}
                             </div>
                         </div>
+
+                        <div class="layui-form-item" pane="">
+                            <label class="layui-form-label">学历</label>
+                            <div class="layui-input-block">
+                                {volist name="$Think.config.include" key="kid" id="tag"}
+                                <input type="checkbox" name="include[]" lay-skin="primary"  value="{$kid}" title="{$tag}">
+                                {/volist}
+                            </div>
+                        </div>
+
                         {/if}
+
+                        <div class="layui-form-item" pane="">
+                            <label class="layui-form-label">专业</label>
+                            <div class="layui-input-block">
+                                <input type="textarea" class="layui-textarea" name="profession">
+                            </div>
+                        </div>
 
                         <div class="layui-form-item">
                             <label class="layui-form-label">图片 </label>

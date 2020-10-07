@@ -142,7 +142,7 @@ class Index extends Base
     public function getCountry()
     {
         $country = db('tag')->where('status', 1)->select();
-        $type = ['本科','硕士'];
+        $type = config('include');
 
         return $this->responseApi(1, compact('country', 'type'));
     }
@@ -151,17 +151,19 @@ class Index extends Base
     {
         $country = request()->param('country', '');
         $type = request()->param('type', '');
-        $condition = [];
+        $condition = $map = [];
         if ($country){
-//            $condition['tag_ids'] = ['']
+            $map[]= ['exp',Db::raw("FIND_IN_SET({$country},tag)")];
         }
 
-        if ($country !== ''){
-            $country = $country ==0 ? '本科': '硕士';
-            $condition['cate_name'] = ['like', '%'.$country.'%'];
+        if ($type !== ''){
+            $map[]= ['exp',Db::raw("FIND_IN_SET({$type},include)")];
         }
 
-        $university_list = db('cate')->where(['status'=> 1, 'type'=>0, 'pid'=>['>', 0]])->select();
-        return $this->responseApi(1, compact('country', 'type'));
+        $university_list = db('article')->where(['status'=> 1,'cate_id'=>config('home_category_id.yxzx')])
+            ->where($map)
+            ->where($condition)->select();
+
+        return $this->responseApi(1, compact('university_list'));
     }
 }
