@@ -41,6 +41,7 @@
             <th>压缩图</th>
             <th>所属栏目</th>
             <th>创建时间</th>
+            <th>排序</th>
             <th>状态</th>
             <th>操作</th>
         </thead>
@@ -65,7 +66,7 @@
                 {/volist}
             </td>
             <td>{$vo.add_time|date="Y-m-d H:i:s",###}</td>
-
+            <td>{$vo.sort}</td>
             <td class="td-status">
                 <div id="{$vo.id}" onclick="closes(this)"
                      class="layui-unselect layui-form-switch

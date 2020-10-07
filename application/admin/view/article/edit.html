@@ -202,6 +202,17 @@
                             <input type="radio" name="top" value="0" title="否" {if condition="$lists['top'] eq 0 "}checked{/if}>
                         </div>
                     </div>
+
+                    <div class="layui-form-item">
+                        <label   class="layui-form-label">
+                            <span class="x-red">*</span>排序
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="sort" name="sort" value="{$lists['sort']}"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
                     <div class="layui-form-item">
                         <label class="layui-form-label">状态：</label>
                         <div class="layui-input-block" style="width: 50px">

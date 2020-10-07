@@ -55,11 +55,38 @@ class Index extends Base
 
     public function getCategory()
     {
+        $data = Cache::get('tag_article');
+        if (empty($data)){
+            $data =[];
+            $tag_list = db('tag')->where(['status'=> 1])->order('sort asc')->select();
+            foreach ($tag_list as $value){
+                $map = [];
+                $map[]= ['exp',Db::raw("FIND_IN_SET({$value['id']},tag)")];
+                $children =  db('article')->order('sort asc')->limit(0, 3)
+                    ->where(['cate_id'=>config('home_category_id.yxzx'),'status'=> 1])->where($map)
+                    ->field('id,title as cate_name,thumb')->select();
+
+                if ($children){
+                    $data[] = [
+                        'cate_name' =>$value['title'],
+                        'id' => $value['id'],
+                        'thumb' =>  $value['thumb'],
+                        'children' => $children,
+                    ];
+                }
+
+            }
+            Cache::set('tag_article', $data, 8*60);
+        }
+
+        return $data;
+    }
+    public function getRealCategory()
+    {
         $list = db('cate')->where(['status'=> 1, 'type'=>0])->order('sort asc')->select();
 
         return $this->navTree($list, 0);;
     }
-
 
     public function topInfo()
     {
@@ -117,6 +144,24 @@ class Index extends Base
         $country = db('tag')->where('status', 1)->select();
         $type = ['本科','硕士'];
 
+        return $this->responseApi(1, compact('country', 'type'));
+    }
+
+    public function getUniversity()
+    {
+        $country = request()->param('country', '');
+        $type = request()->param('type', '');
+        $condition = [];
+        if ($country){
+//            $condition['tag_ids'] = ['']
+        }
+
+        if ($country !== ''){
+            $country = $country ==0 ? '本科': '硕士';
+            $condition['cate_name'] = ['like', '%'.$country.'%'];
+        }
+
+        $university_list = db('cate')->where(['status'=> 1, 'type'=>0, 'pid'=>['>', 0]])->select();
         return $this->responseApi(1, compact('country', 'type'));
     }
 }

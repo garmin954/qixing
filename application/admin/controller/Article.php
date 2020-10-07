@@ -20,7 +20,7 @@ class Article extends Base
     {
         //获取列表
         if( input('cate_id')){
-            $lists = db('article')->order('id desc')->where('cate_id',input('cate_id'))->select();
+            $lists = db('article')->order('id desc')->order('sort asc')->where('cate_id',input('cate_id'))->select();
             $nums = db('article')->where('cate_id',input('cate_id'))-> count();
 
         }else{

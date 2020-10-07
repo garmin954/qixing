@@ -37,7 +37,8 @@
 
       <th>ID</th>
       <th>标签名称</th>
-
+      <th>背景图</th>
+      <th>排序</th>
       <th>状态</th>
       <th>操作</th>
     </thead>
@@ -46,8 +47,9 @@
     <tr   >
 
       <td>{$vo.id}</td>
-
       <td>{$vo.title}</td>
+      <td><img src="/public/{$vo.thumb}"  style="width: 80px" alt=""></td>
+      <td>{$vo.sort}</td>
       <td class="td-status">
         <div id="{$vo.id}" onclick="closes(this)"
              class="layui-unselect layui-form-switch
