@@ -110,4 +110,13 @@ class Index extends Base
 
         return $this->responseApi(1,$data);
     }
+
+
+    public function getCountry()
+    {
+        $country = db('tag')->where('status', 1)->select();
+        $type = ['本科','硕士'];
+
+        return $this->responseApi(1, compact('country', 'type'));
+    }
 }
