@@ -203,6 +203,19 @@ class Index extends Base
             return $this->responseApi(1, compact('info'));
         }
         return $this->responseApi(0);
+    }
 
+    public function getArticleList()
+    {
+        $page = request()->param('page', 1);
+        $size = request()->param('size', 10);
+        $cate_id = request()->param('cate_id', 0);
+
+        $list = db('article')->where(['status'=> 1, 'cate_id'=> $cate_id])
+            ->order('sort asc')->limit(($page-1)*$size, $size)->select();
+
+        $total =  db('article')->where(['status'=> 1, 'cate_id'=> $cate_id])->count();
+
+        return $this->responseApi(1, compact('list','total'));
     }
 }
