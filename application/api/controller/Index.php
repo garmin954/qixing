@@ -90,12 +90,12 @@ class Index extends Base
 
     public function topInfo()
     {
-        return db('article')->field('title,thumb,add_time')->where(['top'=> 1, 'cate_id'=> 32,'status'=> 1])->order('id desc')->limit(0, 2)->select();
+        return db('article')->field('id,title,thumb,add_time')->where(['top'=> 1, 'cate_id'=> 32,'status'=> 1])->order('id desc')->limit(0, 2)->select();
     }
 
     public function information()
     {
-        return db('article')->field('title,thumb,add_time,tags')->where(['cate_id'=> 32,'status'=> 1])->order('id desc')->limit(0, 6)->select();
+        return db('article')->field('id,title,thumb,add_time,tags')->where(['cate_id'=> 32,'status'=> 1])->order('id desc')->limit(0, 6)->select();
     }
 
     public function navTree($data, $pid)
