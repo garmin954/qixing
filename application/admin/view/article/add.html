@@ -9,7 +9,7 @@
                 <ul class="layui-tab-title" style="margin-bottom: 20px">
                     <li class="layui-this">基本设置</li>
                     <!--<li class="">文件上传</li>-->
-                    <li class="">描述SEO</li>
+                    <li class="">描述</li>
                     <li class="">内容</li>
                     <!--<li class="">相册</li>-->
                 </ul>
@@ -153,15 +153,15 @@
                                 {/volist}
                             </div>
                         </div>
-
-                        {/if}
-
                         <div class="layui-form-item" pane="">
                             <label class="layui-form-label">专业</label>
                             <div class="layui-input-block">
-                                <input type="textarea" class="layui-textarea" name="profession">
+                                <textarea  class="layui-textarea" name="profession"></textarea>
                             </div>
                         </div>
+                        {/if}
+
+
 
                         <div class="layui-form-item">
                             <label class="layui-form-label">图片 </label>
@@ -212,7 +212,7 @@
                                 <span class="x-red">*</span>排序
                             </label>
                             <div class="layui-input-inline">
-                                <input type="text" id="sort" name="sort"
+                                <input type="text" id="sort" name="sort" value="50"
                                        autocomplete="off" class="layui-input">
                             </div>
                         </div>

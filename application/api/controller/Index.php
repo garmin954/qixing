@@ -23,7 +23,7 @@ class Index extends Base
                 'information_list' => $this->information(),
                 'teamwork_list' => $this->getTeamwork(),
                 'concat_list' => $this->getConcat(),
-
+                'case_list' => $this->getCaseList(),
             ];
 
             Cache::set('mobile_index_data', $data, 5*60);
@@ -166,5 +166,12 @@ class Index extends Base
             ->where($condition)->select();
 
         return $this->responseApi(1, compact('university_list'));
+    }
+
+    public function getCaseList()
+    {
+        return db('article')->order('sort asc')->limit(0,8)
+            ->where(['status'=>1,'cate_id'=> config('case_id')])->select();
+
     }
 }
