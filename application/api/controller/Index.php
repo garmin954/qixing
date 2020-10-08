@@ -123,7 +123,7 @@ class Index extends Base
     {
         $data = Cache::get('system_config');
         if (empty($data)){
-            $config = db('system')->where('type_id', 4)->select();
+            $config = db('system')->whereIn('type_id', ['4','5'])->select();
             $result = array();
             foreach ($config as $key => $val) {
                 if ($val['status'] == 0) {
@@ -193,5 +193,16 @@ class Index extends Base
             ->where($condition)->order('sort asc')->limit(0, $limit)->select();
 
         return $this->responseApi(1, compact('university', 'information'));
+    }
+
+    public function getArticleInfo()
+    {
+        $id = request()->param('id', 0);
+        $info = db('article')->where('status', 1)->where('id', $id)->find();
+        if ($info){
+            return $this->responseApi(1, compact('info'));
+        }
+        return $this->responseApi(0);
+
     }
 }

@@ -175,7 +175,25 @@
 
                       </script>
               {/if}
+                      {if condition="$disploy.type eq 8"}
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">{$disploy.cname}：<br><code>{$disploy.ename}</code></label>
+                        <div class="layui-input-block">
+                          <textarea name="{$disploy.ename}" id="container_{$disploy.ename}"  type="text/plain" >{$disploy['value']|htmlspecialchars_decode}</textarea>
+                        </div>
+                      </div>
 
+                      <script>
+                        $(function () {
+
+                          var ue = UE.getEditor('container_{$disploy.ename}',{
+                            initialFrameHeight:'400',
+                            initialFrameWidth:'100%',
+
+                          });
+                        })
+                      </script>
+                      {/if}
                 </div>
                   {/volist}
                   </div>
@@ -195,7 +213,10 @@
 {include file="template/uploads"}
 {include file="template/layer-js"}
     <script type="text/javascript" src="STATIC/vendor/uploadifive/jquery.uploadifive.min.js"></script>
-
+<!-- 配置文件 -->
+<script type="text/javascript" src="STATIC/vendor/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="STATIC/vendor/ueditor/ueditor.all.js"></script>
     <!--<link rel="stylesheet" type="text/css" href="STATIC/vendor/uploadifive/uploadifive.css" />-->
 
     <script type="text/javascript">
