@@ -174,4 +174,24 @@ class Index extends Base
             ->where(['status'=>1,'cate_id'=> config('case_id')])->select();
 
     }
+
+    public function search()
+    {
+        $value = request()->param('value', '');
+        $limit = 99;
+        $condition = [];
+        if ($value){
+            $condition['title'] = ['like', '%'.$value.'%'];
+        }else{
+            $limit = 10;
+        }
+
+        $university = db('article')->where(['status'=>1, 'cate_id'=> config('home_category_id.yxzx')])
+            ->where($condition)->order('sort asc')->limit(0, $limit)->select();
+
+        $information = db('article')->where(['status'=>1, 'cate_id'=> config('home_category_id.lxzx')])
+            ->where($condition)->order('sort asc')->limit(0, $limit)->select();
+
+        return $this->responseApi(1, compact('university', 'information'));
+    }
 }
